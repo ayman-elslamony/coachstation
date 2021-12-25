@@ -287,7 +287,7 @@ accentColor: Color(0xFF142c43),
                       ),
                       headline5: TextStyle(
                         fontFamily: 'CairoBold',
-                        fontSize: 18,
+                        fontSize: 20,
                         color: Colors.grey[800],
                         fontWeight: FontWeight.bold,
                       ),

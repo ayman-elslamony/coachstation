@@ -32,7 +32,6 @@
   "karate_coach": "karate coach",
   "about_the_coach": "About the coach",
   "training_places": "Training places",
-  "age": "Age",
   "certificates": "Certificates",
   "information_about_the_coach": "Information about the coach",
   "reserve_now":"Reserve Now",
@@ -55,7 +54,18 @@
   "confirm_new_pass": "Confirm New Password",
   "change": "Change",
   "enter_new_pass": "Please Enter Your New Password",
-
+  "please_enter_the_following_data": "Please enter the following data",
+  "age": "Age",
+  "height": "Height",
+  "weight": "Weight",
+  "level": "Level",
+  "choose_age": "Choose Age",
+  "choose_height": "Choose Height",
+  "choose_weight": "Choose Weight",
+  "choose_level": "Choose Level",
+  "junior": "Junior",
+  "average": "Average",
+  "advanced": "Advanced",
 
 
   "remainingTime":"Remaining time",
@@ -114,7 +124,7 @@
   "sar": "SAR",
   "description": "Description",
   "quantity": "Quantity",
-  "weight": "Weight",
+
   "additions": "Packaging type",
   "notes": "Notes",
   "continue_shopping": "Continue Shopping",
