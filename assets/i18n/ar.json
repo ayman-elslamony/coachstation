@@ -68,10 +68,14 @@
   "junior": "مبتدئ",
   "average": "متوسط",
   "advanced": "متقدم",
-
   "year": "سنة",
-
-
+  "all": "الكل",
+  "fitness": "لياقة بدنية",
+  "athletics": "العاب قوى",
+  "zimba": "زمبا",
+  "yoga": "يوغا",
+  "program_details": "تفاصيل البرنامج",
+  "description": "الوصف",
 
 
 
@@ -121,13 +125,11 @@
   "add": "اضافة",
   "add_credit_card": "اضافة بطاقة إئتمان ",
   "month": "الشهر",
-
   "card_no": "رقم الكارت",
   "cvv_no": "CVV/CVC رقم",
   "expiry_date": "  تاريخ الانتهاء",
   "kilo_price": "سعر الكيلو",
   "sar": "ريال",
-  "description": "الوصف",
   "quantity": "الكمية",
   "additions": "نوع التغليف",
   "notes": "ملاحظات",

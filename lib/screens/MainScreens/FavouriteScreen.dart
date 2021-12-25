@@ -160,7 +160,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           defaultCard(
                               function: () {},
                               context: context,
-                              text:
+                              textTitle:
                                   '${AppLocalizations.of(context).trans('gyms')}',
                               imageUrl: gymList[index],
                               cardWidth: media.width,

@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 const defaultColor = const Color(0xFFf1c40e);
-
+final List<String> imgList = [
+  'https://thumbs.dreamstime.com/t/gym-24699087.jpg',
+  'https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg=',
+  'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX26664924.jpg',
+  'https://media.istockphoto.com/photos/muscular-trainer-writing-on-clipboard-picture-id675179390?k=20&m=675179390&s=612x612&w=0&h=7LP7-OamGu-b8XG-VKcJuamK5s80ke-4oJ5siUrjFVA=',
+  'https://www.muscleandfitness.com/wp-content/uploads/2019/11/Young-Muscular-Man-Doing-Lunges-In-Dark-Gym.jpg?w=1109&h=614&crop=1&quality=86&strip=all',
+  'https://www.giggsmeat.com/wp-content/uploads/2020/10/4wqKj5zM2a-min.jpg'
+];
 Widget defaultButton({
   double width = double.infinity,
   Color background = defaultColor,
@@ -35,80 +42,108 @@ Widget defaultButton({
         color: background,
       ),
     );
-Widget defaultShowTime({BuildContext context,String textTime}){
+
+Widget defaultShowTime({BuildContext context, String textTime}) {
   return Row(
-  children: [
-  Container(
-  decoration: BoxDecoration(
-  border: Border.all(
-  color: Colors.red[500],
-  ),
-  color: Colors.red,
-  borderRadius: BorderRadius.all(
-  Radius.circular(20),
-  ),
-  ),
-  width: 12,
-  height: 12,
-  child: SizedBox()),
-  SizedBox(width: 5.0,),
-  defaultSubtitleTextTwo(
-  context: context, text: textTime),
-  ],
+    children: [
+      Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.red[500],
+            ),
+            color: Colors.red,
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          width: 12,
+          height: 12,
+          child: SizedBox()),
+      SizedBox(
+        width: 5.0,
+      ),
+      defaultSubtitleTextTwo(context: context, text: textTime),
+    ],
   );
 }
+
 Widget defaultCard({
   @required Function function,
   @required BuildContext context,
-  @required String text,
+  @required String textTitle,
+  String textSubTitle,
   @required String imageUrl,
   @required double cardWidth,
   @required double containerTextWidth,
   @required double cardHeight,
-
 }) =>
     Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.fill,
-              height: cardHeight ?? 100,
-              width: cardWidth ?? 120,
-            ),
-          ),
-          Container(
-            height: 28,
-            width: containerTextWidth,
-            decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(10.0),
-                    topLeft: Radius.circular(18.0))),
-            child: Center(
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontFamily: 'CairoRegular',
-                  fontSize: 16,
-                  color: Colors.grey[800],
-                  fontWeight: FontWeight.bold,
-                ),
+      child: InkWell(
+        onTap: function,
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.fill,
+                height: cardHeight ?? 100,
+                width: cardWidth ?? 120,
               ),
             ),
-          ),
-        ],
+            Container(
+              height: textSubTitle!=null?50:28,
+              width: containerTextWidth,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(10.0),
+                      topLeft: Radius.circular(18.0))),
+              child: textSubTitle!=null?Column(
+
+                children: [
+                Text(
+                  textTitle,
+                  style: TextStyle(
+                    fontFamily: 'CairoRegular',
+                    fontSize: 16,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  textSubTitle,
+                  style: TextStyle(
+                    height: 0.8,
+                    fontFamily: 'CairoRegular',
+                    fontSize: 14,
+                    color:Colors.grey[800],
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],):Center(
+            child: Text(
+              textTitle,
+              style: TextStyle(
+                fontFamily: 'CairoRegular',
+                fontSize: 16,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+    ),
+            ),
+          ],
+        ),
       ),
     );
 
 Widget defaultLocationWithIcon(
     {@required BuildContext context, String textLocation}) {
   return InkWell(
-    onTap: (){
+    onTap: () {
       navigateTo(context, GoogleMapScreen());
     },
     child: Row(
@@ -126,7 +161,31 @@ Widget defaultLocationWithIcon(
     ),
   );
 }
-
+Widget subtitleOfHomeScreen({
+  Function function,
+  BuildContext context,
+  String textKey,
+  bool isEnableSpaceBeforeArrow=false
+}) {
+  return InkWell(
+    onTap: function,
+    child: Row(
+      children: [
+        Text(
+          '${AppLocalizations.of(context).trans(textKey)}',
+          style: Theme.of(context).textTheme.headline4,
+        ),
+  isEnableSpaceBeforeArrow ==true? Spacer():SizedBox()
+,
+  Icon(
+          Icons.arrow_forward_ios,
+          size: 18.0,
+        ),
+        isEnableSpaceBeforeArrow ==false? Spacer():SizedBox()
+      ],
+    ),
+  );
+}
 Widget defaultArticle({
   @required Function function,
   @required BuildContext context,
@@ -212,17 +271,14 @@ Widget defaultTextButton({
       ),
     );
 
-Widget defaultSubtitleTextOne({
-  @required BuildContext context,
-  @required String text,
-  Color color
-}) =>
+Widget defaultSubtitleTextOne(
+        {@required BuildContext context, @required String text, Color color}) =>
     Text(
       text,
       style: TextStyle(
         fontFamily: 'CairoRegular',
         fontSize: 16,
-        color: color??Colors.grey[800],
+        color: color ?? Colors.grey[800],
         fontWeight: FontWeight.bold,
       ),
     );
@@ -295,17 +351,18 @@ OutlineInputBorder textFormFieldBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15.0),
     borderSide: BorderSide(color: defaultColor));
 
-Widget defaultAppBar({
-  @required BuildContext context,
-  String titleKey,
-  List<Widget> actions,
-  Function onClickedBackButton
-}) =>
+Widget defaultAppBar(
+        {@required BuildContext context,
+        String titleKey,
+        List<Widget> actions,
+        Function onClickedBackButton}) =>
     SliverAppBar(
       leading: IconButton(
-          onPressed: onClickedBackButton==null?() {
-            Navigator.pop(context);
-          }:onClickedBackButton,
+          onPressed: onClickedBackButton == null
+              ? () {
+                  Navigator.pop(context);
+                }
+              : onClickedBackButton,
           icon: const ImageIcon(
             AssetImage(
               'images/arrowLeft.png',

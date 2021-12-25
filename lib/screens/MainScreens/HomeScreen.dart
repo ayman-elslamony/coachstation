@@ -31,28 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'https://www.giggsmeat.com/wp-content/uploads/2020/10/4wqKj5zM2a-min.jpg',
   ];
 
-  Widget subtitleOfHomeScreen({
-    Function function,
-    BuildContext context,
-    String textKey,
-  }) {
-    return InkWell(
-      onTap: function,
-      child: Row(
-        children: [
-          Text(
-            '${AppLocalizations.of(context).trans(textKey)}',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 18.0,
-          ),
-          Spacer()
-        ],
-      ),
-    );
-  }
+
 
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
@@ -227,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) => defaultCard(
                               function: () {},
                               context: context,
-                              text:
+                              textTitle:
                               '${AppLocalizations.of(context).trans('discover')}',
                               imageUrl: discoverList[index],
                               cardWidth: media.width * 0.35,
@@ -246,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) => defaultCard(
                               function: () {},
                               context: context,
-                              text:
+                              textTitle:
                               '${AppLocalizations.of(context).trans('gyms')}',
                               imageUrl: gymList[index],
                               cardWidth: media.width * 0.4,

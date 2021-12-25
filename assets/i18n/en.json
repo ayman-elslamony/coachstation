@@ -66,6 +66,12 @@
   "junior": "Junior",
   "average": "Average",
   "advanced": "Advanced",
+  "all": "All",
+  "fitness": "Fitness",
+  "athletics": "Athletics",
+  "zimba": "Zimba",
+  "yoga": "Yoga",
+  "program_details": "Program Details",
 
 
   "remainingTime":"Remaining time",

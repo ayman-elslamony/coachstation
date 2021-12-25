@@ -1,16 +1,9 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/screens/SubScreens/VirtualExerciseHomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-class VirtualExerciseModel {
-  int age;
-  int weight;
-  int level;
-  int height;
-
-  VirtualExerciseModel({this.age, this.weight, this.level, this.height});
-}
 
 class VirtualExercise extends StatefulWidget {
   @override
@@ -198,13 +191,17 @@ class _VirtualExerciseState extends State<VirtualExercise> {
                 height: 20.0,
               ),
               defaultButton(
-                  function: null,
+                  function: () {
+                    navigateTo(context, VirtualExerciseHomeScreen());
+                  },
+//                  _enableConfirmedButton?(){
+//                    navigateTo(context, VirtualExerciseHomeScreen());
+//          }:null,
                   text: '${AppLocalizations.of(context).trans('submit_order')}',
                   width: media.width * 0.7,
                   background: _enableConfirmedButton
                       ? Theme.of(context).primaryColor
                       : Color(0xFFf1e42e)),
-
             ],
           )),
         ],

@@ -2,6 +2,7 @@ import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
 import 'package:coachstation/screens/SubScreens/ChangeLanguageScreen.dart';
+import 'package:coachstation/screens/SubScreens/MyProgramScreen.dart';
 import 'package:coachstation/screens/SubScreens/PersonalPageScreen.dart';
 import 'package:coachstation/screens/SubScreens/VirtualExercise.dart';
 import 'package:flutter/material.dart';
@@ -141,6 +142,9 @@ class _MoreScreenState extends State<MoreScreen> {
                       title:
                           '${AppLocalizations.of(context).trans('nutritional_programs')}'),
                   showMoreInfoCard(
+                    onTap: (){
+                      navigateTo(context, MyProgramScreen());
+                    },
                       context: context,
                       imgUrl: 'images/fileSilver.png',
                       title:
