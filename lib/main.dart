@@ -1,115 +1,339 @@
+import 'package:coachstation/provider/locale_provider.dart';
+
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
+
+import 'Localization/app_localization_delegate.dart';
+import 'provider/changeIndexPage.dart';
+import 'screens/IntroScreens/Login.dart';
+import 'screens/IntroScreens/Register.dart';
+import 'screens/IntroScreens/Splash.dart';
+import 'screens/MainScreens/NavigationHome.dart';
+
+const domain = "https://wekala.greencodet.com";
+const photosPreUrl = "https://wekala.greencodet.com/storage/";
+
+//Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//  await Firebase.initializeApp();
+//
+//  print("Handling a background message: ${message.messageId}");
+//}
+AndroidNotificationChannel channel = AndroidNotificationChannel(
+  'high_importance_channel', // id
+  'High Importance Notifications', // title
+  importance: Importance.high,
+);
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+//  await Firebase.initializeApp();
+//  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+//  _firebaseMessaging.requestPermission(
+//      sound: true, badge: true, alert: true
+//  );
+
+//  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+//  await flutterLocalNotificationsPlugin
+//      .resolvePlatformSpecificImplementation<
+//      AndroidFlutterLocalNotificationsPlugin>()
+//      ?.createNotificationChannel(channel);
+
+  SystemChrome.setEnabledSystemUIOverlays([
+    SystemUiOverlay.top,
+    SystemUiOverlay.bottom,
+  ]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+    statusBarColor: Colors.transparent, // Color for Android
+  ));
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class _MyAppState extends State<MyApp> {
+//  Future onDidReceiveLocalNotification(
+//      int id, String title, String body, String payload) async {
+//    // display a dialog with the notification details, tap ok to go to another page
+//    showDialog(
+//      context: context,
+//      builder: (BuildContext context) => CupertinoAlertDialog(
+//        title: Text(title),
+//        content: Text(body),
+//        actions: [
+//          CupertinoDialogAction(
+//            isDefaultAction: true,
+//            child: Text('Ok'),
+//            onPressed: () async {
+//              Navigator.of(context, rootNavigator: true).pop();
+//              // await Navigator.push(
+//              //   context,
+//              //   MaterialPageRoute(
+//              //     builder: (context) => SecondScreen(payload),
+//              //   ),
+//              // );
+//            },
+//          )
+//        ],
+//      ),
+//    );
+//  }
+//
+//  askForNotificationsPermission()async{
+//    final status = await Permission.notification.request();
+//    if (status == PermissionStatus.granted) {
+//      print('Permission granted');
+//    } else if (status == PermissionStatus.denied) {
+//      print('Denied. Show a dialog with a reason and again ask for the permission.');
+//    } else if (status == PermissionStatus.permanentlyDenied) {
+//      print('permanentlyDenied. Show a dialog with a reason and again ask for the permission.');
+//
+//      // showAlertDialog(context,content: 'يجب الموافقة علي تصريح موقعك الحالي للإستكمال',onOk: ()=>Navigator.pop(context));
+//    }
+//  }
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void initState() {
+    super.initState();
+//    askForNotificationsPermission();
+//    var initialzationSettingsAndroid =
+//    AndroidInitializationSettings('@mipmap/launcher_icon');
+//    final IOSInitializationSettings initializationSettingsIOS =
+//    IOSInitializationSettings(onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+//    var initializationSettings =
+//    InitializationSettings(android: initialzationSettingsAndroid,iOS:initializationSettingsIOS );
+//
+//    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+//    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+//      RemoteNotification notification = message.notification;
+//      AndroidNotification android = message.notification?.android;
+//      if (notification != null && android != null) {
+//        flutterLocalNotificationsPlugin.show(
+//            notification.hashCode,
+//            notification.title,
+//            notification.body,
+//            NotificationDetails(
+//              android: AndroidNotificationDetails(
+//                channel.id,
+//                channel.name,
+//                // TODO add a proper drawable resource to android, for now using
+//                //      one that already exists in example app.
+//                icon: '@mipmap/launcher_icon',
+//              ),
+//            ));
+//      }
+//    });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<LocaleProvider>(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider.value(
+          value: ChangeIndex(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+//        ChangeNotifierProvider<UserDataProvider>(
+//            create: (_) => UserDataProvider()),
+//        ChangeNotifierProvider<BrandsProvider>(
+//            create: (_) => BrandsProvider()),
+//        ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider()),
+//        ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
+//        ChangeNotifierProvider<OffersProvider>(create: (_) => OffersProvider()),
+//        ChangeNotifierProvider<AlarmsProvider>(create: (_) => AlarmsProvider()),
+//        ChangeNotifierProvider<FixingPlacesProvider>(create: (_) => FixingPlacesProvider()),
+//        ChangeNotifierProvider<ProductsProvider>(create: (_) => ProductsProvider()),
+//        ChangeNotifierProvider<VendorsProvider>(create: (_) => VendorsProvider()),
+//        ChangeNotifierProvider<OrdersProvider>(create: (_) => OrdersProvider()),
+//        ChangeNotifierProvider<NotificationsProvider>(create: (_) => NotificationsProvider()),
+//        ChangeNotifierProvider<SettingProvider>(create:(_) =>SettingProvider() ),
+//        ChangeNotifierProvider<ContactUsProvider>(create:(_) =>ContactUsProvider() ,),
+        //ContactUsProvider
+      ],
+      child: Consumer<LocaleProvider>(builder:
+          (BuildContext context, LocaleProvider localeProvider, Widget child) {
+
+            return MaterialApp(
+            localizationsDelegates: const [
+              AppLocalizationsDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate
+            ],
+            supportedLocales: const [
+              Locale('ar'),
+              Locale('en'),
+            ],
+            locale: localeProvider.locale,
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+                scaffoldBackgroundColor: Colors.white,
+                canvasColor: Colors.transparent,
+                primaryColor: const Color(0xFFf1c40e),
+                primaryColorLight: const Color(0xFFf1c40e),
+accentColor: Color(0xFF142c43),
+//                textSelectionColor: Colors.grey[600],
+//                textSelectionHandleColor: const Color(0xFFf1c40e),
+                //  accentColor: const Color(0xFFeccc3c),
+                // backgroundColor: const Color(0xFFf8b42c),
+                cardColor: const Color(0xFFf8b42c),
+                //  iconTheme: const IconThemeData(color: Color(0xFF207cc4)),
+                visualDensity: VisualDensity.adaptivePlatformDensity,
+                floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: const Color(0xFF207cc4),
+                ),
+                bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                  selectedLabelStyle: TextStyle(
+                    fontFamily: 'DIN',
+                  ),
+                  unselectedLabelStyle: TextStyle(
+                    fontFamily: 'DIN',
+                  ),
+                ),
+                appBarTheme: AppBarTheme(
+                  elevation: 0.0,
+                  titleTextStyle: TextStyle(
+                      fontFamily: 'CairoRegular',
+                      color: const Color(0xffffffff),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22),
+                  color: Color(0xFF142c43),
+                  iconTheme: const IconThemeData(
+                    color: Color(0xffffffff),
+                  ),
+                ),
+                dialogTheme: DialogTheme(
+                    contentTextStyle: TextStyle(
+                      fontFamily: 'DIN',
+                      fontSize: 19,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    titleTextStyle: TextStyle(
+                      fontFamily: 'DIN',
+                      fontSize: 19,
+                      color: const Color(0xFF039666),
+                      fontWeight: FontWeight.bold,
+                    )),
+                textTheme: ThemeData.light().textTheme.copyWith(
+                      subtitle1: TextStyle(
+                        fontFamily: 'CairoRegular',
+                        fontSize: 16,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                      bodyText1: TextStyle(
+                        fontFamily: 'CairoRegular',
+                        fontSize: 19,
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
+                      ),
+                      button: TextStyle(
+                        fontFamily: 'CairoRegular',
+                        color: Colors.black,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      bodyText2: TextStyle(
+                        fontFamily: 'DIN',
+                        color: Colors.grey[800],
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      subtitle2: TextStyle(
+                        fontFamily: 'CairoRegular',
+                        color: Colors.grey[800],
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      headline1: TextStyle(
+                        fontFamily: 'DIN',
+                        fontSize: 19,
+                        color: Colors.grey[700],
+                        // fontWeight: FontWeight.bold,
+                      ),
+                      headline2: TextStyle(
+                        fontFamily: 'CairoRegular',
+                        fontSize: 14,
+                        color: Colors.grey[800],
+                        // fontWeight: FontWeight.bold,
+                      ),
+                      headline3: TextStyle(
+                        fontFamily: 'DIN',
+                        fontSize: 18,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                      headline4: TextStyle(
+                        fontFamily: 'CairoBold',
+                        fontSize: 18,
+                        color: Colors.grey[800],
+                      ),
+                      headline5: TextStyle(
+                        fontFamily: 'CairoBold',
+                        fontSize: 18,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                fontFamily: 'DIN'),
+            title: 'Wekalah',
+            home: NavigationHome(),
+            //SplashScreen(),
+            //LoginScreen(),
+            //RegisterScreen(),
+            //Splash(),
+            // home: OrderDetailes(),
+            routes: {
+//              Splash.routName: (context) => Splash(),
+//              NavigationHome.routName: (context) => NavigationHome(),
+//              Login.routName: (context) => Login(),
+//              ForgetPassword.routName: (context) => ForgetPassword(),
+//              Register.routName: (context) => Register(),
+//              Home.routName: (context) => Home(),
+//              CartScreen.routName: (context) => CartScreen(),
+//              CarsModels.routName: (context) => CarsModels(),
+//              FixingPlaces.routName: (context) => FixingPlaces(),
+//              ProductDetails.routName: (context) => ProductDetails(),
+//              MyOrders.routName: (context) => MyOrders(),
+//              PaymentScreens.routName: (context) => PaymentScreens(),
+//              TermsParent.routName: (context) => TermsParent(),
+//              SearchScreen.routName:(context)=>SearchScreen(),
+//              ContactUs.routName: (context) => ContactUs(),
+//              UserProfile.routName: (context) => UserProfile(),
+//              OrderTracking.routName: (context) => OrderTracking(),
+//              PreviousOrders.routName: (context) => PreviousOrders(),
+//              FavouritesScreen.routName: (context) => FavouritesScreen(),
+//              NotificationsScreen.routName: (context) => NotificationsScreen(),
+//              AlarmsScreen.routName: (context) => AlarmsScreen(),
+//              MoreScreen.routName: (context) => MoreScreen(),
+//              CatalogueScreen.routName: (context) => CatalogueScreen(),
+//              Stores.routName: (context) => Stores(),
+//              StoreDetails.routName: (context) => StoreDetails(),
+//              AlarmDetails.routName:(context)=>AlarmDetails(),
+//              AddAlarm.routName:(context)=>AddAlarm(),
+//              ChangePassword.routName:(context)=>ChangePassword(),
+//              OrderDetails.routName:(context)=>OrderDetails(),
+//              Verification.routName:(context)=>Verification(),
+//              CarDetails.routName:(context)=>CarDetails(),
+            });
+      }),
     );
   }
 }
