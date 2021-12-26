@@ -294,10 +294,20 @@ accentColor: Color(0xFF142c43),
                 fontFamily: 'DIN'),
             title: 'Wekalah',
             home: NavigationHome(),
+//
+//          ShowPresentScreen(),
             //SplashScreen(),
             //LoginScreen(),
             //RegisterScreen(),
-            //Splash(),
+
+
+
+
+
+
+
+
+                //Splash(),
             // home: OrderDetailes(),
             routes: {
 //              Splash.routName: (context) => Splash(),

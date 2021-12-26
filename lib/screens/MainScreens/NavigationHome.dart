@@ -34,10 +34,8 @@ class NavigationHome extends StatefulWidget {
 class _NavigationHomeState extends State<NavigationHome> {
   List<Widget> mainWidgets = [
 
-   HomeScreen(),
-    ShowPresentScreen(),
-
-//    ProgramScreen(),
+    HomeScreen(),
+    ProgramScreen(),
     TrainersScreen(),
     FavouriteScreen(),
     MoreScreen(),
