@@ -201,7 +201,7 @@ class _VirtualExerciseState extends State<VirtualExercise> {
                   width: media.width * 0.7,
                   background: _enableConfirmedButton
                       ? Theme.of(context).primaryColor
-                      : Color(0xFFf1e42e)),
+                      : Color(0xFFf3db7c)),
             ],
           )),
         ],

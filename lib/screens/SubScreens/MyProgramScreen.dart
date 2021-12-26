@@ -11,22 +11,6 @@ class MyProgramScreen extends StatefulWidget {
 }
 
 class _MyProgramScreenState extends State<MyProgramScreen> {
-  Widget showTextWithIcon(
-      {@required BuildContext context, String iconUrl, String titleText}) {
-    return Row(
-      children: [
-        ImageIcon(
-          AssetImage(iconUrl),
-          size: 15,
-          color: Colors.red,
-        ),
-        SizedBox(
-          width: 5.0,
-        ),
-        defaultSubtitleTextTwo(context: context, text: titleText),
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

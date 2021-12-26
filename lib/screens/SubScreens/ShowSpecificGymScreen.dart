@@ -463,8 +463,7 @@ class _SubscriptionsInGymState extends State<SubscriptionsInGym> {
                 function: widget.programTypeResult != 0?() {}:null,
                 text: '${AppLocalizations.of(context).trans('subscribe_now')}',
                 radius: 20,
-                background: widget.programTypeResult == 0?Color(0xFFf3db7c
-                ):defaultColor,
+                background: widget.programTypeResult == 0?Color(0xFFf3db7c):defaultColor,
                 width: media.width * 0.6)
           ],
         ),

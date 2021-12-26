@@ -326,6 +326,22 @@ Widget defaultSubtitleTextOne(
         fontWeight: FontWeight.bold,
       ),
     );
+Widget showTextWithIcon(
+    {@required BuildContext context, String iconUrl, String titleText}) {
+  return Row(
+    children: [
+      ImageIcon(
+        AssetImage(iconUrl),
+        size: 15,
+        color: Colors.red,
+      ),
+      SizedBox(
+        width: 5.0,
+      ),
+      defaultSubtitleTextTwo(context: context, text: titleText),
+    ],
+  );
+}
 
 Widget defaultSubtitleTextTwo(
         {@required BuildContext context,

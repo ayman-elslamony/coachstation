@@ -101,12 +101,15 @@
   "brief": "نبذة",
   "coaches": "المدربين",
   "by_share": "بالحصة",
+  "free_by_share": "حصة مجانية",
+  "get_the_present": "احصل على الهدية",
+
   "Monthly": "شهرى",
   "three_months": "3 أشهر",
   "instead_of": "بدلاً من",
   "subscriptions": "الاشتركات",
   "subscribe_through_the_app_and_get_the_discount": "اشترك من خلال التطبيق واحصل على الخصم",
-
+"present": "الهدايا",
 
 
   "enter_phone/mail": "من فضلك ادخل رقم الجوال او البريد الالكتروني",
