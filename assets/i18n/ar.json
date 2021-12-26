@@ -96,9 +96,16 @@
   "physical_therapy": "علاج طبيعى",
   "swimming": "سباحة",
   "jim": "جيم",
-
   "subscribe_now": "اشترك الأن",
-
+  "addresses": "العناوين",
+  "brief": "نبذة",
+  "coaches": "المدربين",
+  "by_share": "بالحصة",
+  "Monthly": "شهرى",
+  "three_months": "3 أشهر",
+  "instead_of": "بدلاً من",
+  "subscriptions": "الاشتركات",
+  "subscribe_through_the_app_and_get_the_discount": "اشترك من خلال التطبيق واحصل على الخصم",
 
 
 
@@ -233,7 +240,6 @@
   "distinctive_sign": "علامة مميزة (اختياري)",
   "select_ur_location": "حدد موقعك",
   "locate": "تحديد",
-  "addresses": "العناوين",
   "prev_orders": "طلباتى",
   "liked_products": "المنتجات المفضلة",
   "credit_card": "بطاقة الإئتمان",

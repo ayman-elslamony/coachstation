@@ -4,6 +4,7 @@ import 'package:coachstation/provider/changeIndexPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'FilterAllGymScreen.dart';
+import 'ShowSpecificGymScreen.dart';
 
 class ShowAllGymsScreen extends StatefulWidget {
   @override
@@ -81,7 +82,9 @@ class _ShowAllGymsScreenState extends State<ShowAllGymsScreen> {
                   SizedBox(),
                   ListView.builder(
                     itemBuilder: (context, index) => defaultCard(
-                        function: () {},
+                        function: () {
+                          navigateTo(context, ShowSpecificGymScreen());
+                        },
                         context: context,
                         textTitle: 'Gold Gym',
                         imageUrl: imgList[index],

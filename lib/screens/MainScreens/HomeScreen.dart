@@ -4,6 +4,7 @@ import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/screens/SubScreens/ShowAllArticlesScreen.dart';
 import 'package:coachstation/screens/SubScreens/ShowAllGymsScreen.dart';
 import 'package:coachstation/screens/SubScreens/ShowOneArticleScreen.dart';
+import 'package:coachstation/screens/SubScreens/ShowSpecificGymScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -228,7 +229,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: media.height * 0.15,
                         child: ListView.builder(
                           itemBuilder: (context, index) => defaultCard(
-                              function: () {},
+                              function: () {
+                                navigateTo(context, ShowSpecificGymScreen());
+                              },
                               context: context,
                               textTitle:
                               '${AppLocalizations.of(context).trans('gyms')}',

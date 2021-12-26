@@ -93,6 +93,10 @@
   "swimming": "Swimming",
   "physical_therapy": "Physical Therapy",
   "jim": "Jim",
+  "brief": "Brief",
+  "coaches": "Coaches",
+  "addresses": "Addresses",
+  "subscriptions": "Subscriptions",
 
   "remainingTime":"Remaining time",
   "enter_phone/mail": "Please Enter Your Email or Phone without country key",
@@ -252,10 +256,14 @@
   "distinctive_sign": "Landmark (Optional)",
   "select_ur_location": "Check Your Location",
   "locate": "Locate",
-  "addresses": "Addresses",
   "prev_orders": "My Orders",
   "liked_products": "Liked Products",
   "credit_card": "Credit Card",
+  "subscribe_through_the_app_and_get_the_discount": "Subscribe through the app and get the discount",
+  "by_share": "By Share",
+  "Monthly": "Monthly",
+  "three_months": "3 months",
+  "instead_of": "instead of",
 
 
   "terms": "Application terms",

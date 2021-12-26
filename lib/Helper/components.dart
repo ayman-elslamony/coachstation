@@ -1,6 +1,7 @@
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/screens/SubScreens/GoogleMapScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 const defaultColor = const Color(0xFFf1c40e);
@@ -339,6 +340,96 @@ Widget defaultSubtitleTextTwo(
         fontWeight: FontWeight.bold,
       ),
     );
+Widget defaultTrainerCard({BuildContext context,Function onTap}) {
+  return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10.0,left: 8.0,right: 8.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(11.0)),
+              border: Border.all(color: Colors.grey)),
+          child: Row(
+            children: [
+              Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 45,
+                    child: ClipOval(
+                      child: Image.asset(
+                        "images/userProfile.png",
+                        fit: BoxFit.cover,
+                        width: 90,
+                        height: 90,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: CircleAvatar(
+                      radius: 15,
+                      child: ClipOval(
+                        child: Image.asset(
+                          "images/allah.png",
+                          fit: BoxFit.cover,
+                          width: 40,
+                          height: 40,
+                        ),
+                      ),
+                    ),
+                    left: 5.0,
+                    bottom: 0.0,
+                  )
+                ],
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'النادى الرياضى',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    defaultSubtitleTextTwo(
+                        context: context, text: 'المدرب محمد سيد'),
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          initialRating: 4,
+                          minRating: 1,
+                          itemSize: 15,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 4,
+                          itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => ImageIcon(
+                            AssetImage('images/star.png'),
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                          },
+                        ),
+                        Spacer(),
+                        defaultLocationWithIcon(
+                            context: context,
+                            textLocation: 'الرياض'
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+  );
+}
 
 Widget defaultFormField({
   @required TextEditingController controller,
