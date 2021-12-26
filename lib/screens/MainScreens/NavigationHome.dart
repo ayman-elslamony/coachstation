@@ -186,7 +186,7 @@ class _NavigationHomeState extends State<NavigationHome> {
                               ),
                             ),
                             title: Text(
-                                AppLocalizations.of(context).trans("program"),
+                                AppLocalizations.of(context).trans("trainer"),
                                 style: TextStyle(
                                     fontSize: media.width * 0.028,
                                     fontFamily: 'Net'))),
@@ -206,7 +206,7 @@ class _NavigationHomeState extends State<NavigationHome> {
                               ),
                             ),
                             title: Text(
-                                AppLocalizations.of(context).trans("home"),
+                                AppLocalizations.of(context).trans("favourite"),
                                 style: TextStyle(
                                     fontSize: media.width * 0.028,
                                     fontFamily: 'Net'))),

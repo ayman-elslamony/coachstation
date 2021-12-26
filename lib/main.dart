@@ -211,7 +211,7 @@ accentColor: Color(0xFF142c43),
                       fontFamily: 'CairoRegular',
                       color: const Color(0xffffffff),
                       fontWeight: FontWeight.bold,
-                      fontSize: 22),
+                      fontSize: 18),
                   color: Color(0xFF142c43),
                   iconTheme: const IconThemeData(
                     color: Color(0xffffffff),

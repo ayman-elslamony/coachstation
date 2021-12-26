@@ -138,33 +138,30 @@ class _TrainersScreenState extends State<TrainersScreen> {
       enablePullDown: true,
       controller: _refreshController,
       onRefresh: _onRefresh,
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          Consumer<ChangeIndex>(
-            builder: (context, changeIndex, child) => defaultAppBar(
+      child: Consumer<ChangeIndex>(
+          builder: (context, changeIndex, child) =>
+          Scaffold(
+            appBar: defaultAppBar(
                 context: context, titleKey: 'trainer',
-onClickedBackButton: (){
-  changeIndex.changeIndexFunction(0);
-},
+                onClickedBackButton: (){
+                  changeIndex.changeIndexFunction(0);
+                },
                 actions: [
-              IconButton(
-                  onPressed: () {
-                    navigateTo(context, FilterTrainerScreen());
-                  }, icon: Icon(Icons.edgesensor_high_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-            ]),
-          ),
-          SliverToBoxAdapter(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics:  NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => trainerCard(),
+                  IconButton(
+                      onPressed: () {
+                        navigateTo(context, FilterTrainerScreen());
+                      }, icon: Icon(Icons.edgesensor_high_outlined)),
+                  IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+                ]),
+          body: SizedBox(
+            height: media.height,
+            width: media.width,
+            child: ListView.builder(
+              itemBuilder: (context, index) => trainerCard(),
               itemCount: 9,
-              )),
-
-        ],
-      ),
-    );
+            ),
+          ),
+        ),
+      ),);
   }
 }

@@ -119,7 +119,7 @@ class _VirtualExerciseState extends State<VirtualExercise> {
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 23,
+                  size: 18,
                 )),
             title: Text(
               '${AppLocalizations.of(context).trans('virtual_exercise')}',

@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/screens/SubScreens/ShowAllArticlesScreen.dart';
+import 'package:coachstation/screens/SubScreens/ShowAllGymsScreen.dart';
+import 'package:coachstation/screens/SubScreens/ShowOneArticleScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -217,7 +220,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       subtitleOfHomeScreen(
-                          function: () {}, context: context, textKey: 'gyms'),
+                          function: () {
+                            navigateTo(context, ShowAllGymsScreen());
+                          }, context: context, textKey: 'gyms'),
                       SizedBox(
                         width: media.width,
                         height: media.height * 0.15,
@@ -236,7 +241,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       subtitleOfHomeScreen(
-                          function: () {},
+                          function: () {
+                            navigateTo(context, ShowAllArticlesScreen());
+                          },
                           context: context,
                           textKey: 'articles'),
                       SizedBox(
@@ -244,19 +251,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: media.height * 0.23,
                         child: ListView.builder(
                           itemBuilder: (context, index) => defaultArticle(
-                              function: () {},
+                              function: () {
+                                navigateTo(context, ShowOneArticleScreen());
+                              },
                               context: context,
                               textSubTitle:
                               'لقم تم توليد هذا النص من مولد النص العربى',
                               textTitle:
                               '${AppLocalizations.of(context).trans('gyms')}',
                               imageUrl: imgList[0],
-                              articleWidth: media.width * 0.5,
+                              articleWidth: media.width * 0.4,
+                              imageHeight: media.height * 0.11,
                               articleHeight: media.height * 0.22),
                           itemCount: imgList.length,
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
+                      SizedBox(height: 50,),
                     ],
                   ),
                 )

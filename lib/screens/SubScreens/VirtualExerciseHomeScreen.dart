@@ -1,12 +1,8 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
-import 'package:coachstation/screens/SubScreens/TrainerProfileScreen.dart';
-import 'package:coachstation/screens/SubScreens/TrainingPlaces.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-
 import 'ShowVirtualExerciseDetails.dart';
 
 class VirtualExerciseHomeScreen extends StatefulWidget {
@@ -37,7 +33,7 @@ class _VirtualExerciseHomeScreenState extends State<VirtualExerciseHomeScreen> {
                       AssetImage(
                         'images/arrowLeft.png',
                       ),
-                      size: 23,
+                      size: 18,
                     )),
               ),
               title: Text(
@@ -93,7 +89,7 @@ class _VirtualExerciseHomeScreenState extends State<VirtualExerciseHomeScreen> {
                           context: context,
                           textTitle:
                           'Chest',
-                          textSubTitle: '10 تمارين',
+                          textSubTitleOne: '10 تمارين',
                           imageUrl: imgList[index],
                           cardWidth: media.width,
                           containerTextWidth: media.width * 0.4,

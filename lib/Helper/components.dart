@@ -71,7 +71,8 @@ Widget defaultCard({
   @required Function function,
   @required BuildContext context,
   @required String textTitle,
-  String textSubTitle,
+  String textSubTitleOne,
+  String textSubTitleTwo,
   @required String imageUrl,
   @required double cardWidth,
   @required double containerTextWidth,
@@ -94,14 +95,14 @@ Widget defaultCard({
               ),
             ),
             Container(
-              height: textSubTitle!=null?50:28,
+              height: textSubTitleOne!=null?50:35,
               width: containerTextWidth,
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(10.0),
                       topLeft: Radius.circular(18.0))),
-              child: textSubTitle!=null?Column(
+              child: textSubTitleOne!=null?Column(
 
                 children: [
                 Text(
@@ -113,16 +114,51 @@ Widget defaultCard({
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  textSubTitle,
-                  style: TextStyle(
-                    height: 0.8,
-                    fontFamily: 'CairoRegular',
-                    fontSize: 14,
-                    color:Colors.grey[800],
-                    fontWeight: FontWeight.bold,
+                  textSubTitleTwo!=null?Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      textSubTitleOne,
+                      style: TextStyle(
+                        height: 1.2,
+                        fontFamily: 'CairoRegular',
+                        fontSize: 13,
+                        color:Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      ' - ',
+                      style: TextStyle(
+                        height: 1.2,
+                        fontFamily: 'CairoRegular',
+                        fontSize: 14,
+                        color:Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      textSubTitleTwo,
+                      style: TextStyle(
+                        height: 0.8,
+                        fontFamily: 'CairoRegular',
+                        fontSize: 15,
+                        color:Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                  ],
+                ):Text(
+                    textSubTitleOne,
+                    style: TextStyle(
+                      height: 0.8,
+                      fontFamily: 'CairoRegular',
+                      fontSize: 14,
+                      color:Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                )
               ],):Center(
             child: Text(
               textTitle,
@@ -192,64 +228,71 @@ Widget defaultArticle({
   @required String textTitle,
   @required String textSubTitle,
   @required String imageUrl,
+  @required double imageHeight,
   @required double articleWidth,
   @required double articleHeight,
 }) =>
     Padding(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: articleHeight,
-        width: articleWidth,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Align(
-              alignment: AlignmentDirectional.topCenter,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.fill,
-                  height: articleHeight * 0.65,
-                  width: articleWidth,
-                ),
-              ),
-            ),
-            Container(
-              width: articleWidth,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  )),
-              child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
-                title: Text(
-                  textTitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 15,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
+      child: InkWell(
+        onTap: function,
+        child: SizedBox(
+          height: articleHeight,
+          width: articleWidth,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Align(
+                alignment: AlignmentDirectional.topCenter,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
                   ),
-                ),
-                subtitle: Text(
-                  textSubTitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 11,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.fill,
+                    height: imageHeight,
+                    width: articleWidth,
                   ),
                 ),
               ),
-            )
-          ],
+              Container(
+                width: articleWidth,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    )),
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  title: Text(
+                    textTitle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'CairoRegular',
+                      fontSize: 15,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    textSubTitle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'CairoRegular',
+                      fontSize: 11,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -354,9 +397,10 @@ OutlineInputBorder textFormFieldBorder = OutlineInputBorder(
 Widget defaultAppBar(
         {@required BuildContext context,
         String titleKey,
+          bool isTextNotKey=false,
         List<Widget> actions,
         Function onClickedBackButton}) =>
-    SliverAppBar(
+    AppBar(
       leading: IconButton(
           onPressed: onClickedBackButton == null
               ? () {
@@ -367,10 +411,10 @@ Widget defaultAppBar(
             AssetImage(
               'images/arrowLeft.png',
             ),
-            size: 23,
+            size: 18,
           )),
       title: Text(
-        '${AppLocalizations.of(context).trans(titleKey)}',
+          isTextNotKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}',
       ),
       titleSpacing: 2.0,
       actions: actions,

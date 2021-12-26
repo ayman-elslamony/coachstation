@@ -114,7 +114,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                       AssetImage(
                         'images/arrowLeft.png',
                       ),
-                      size: 23,
+                      size: 18,
                     )),
               ),
               title: Text(

@@ -34,7 +34,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 23,
+                  size: 18,
                 )),
             title: Text(
               '${AppLocalizations.of(context).trans('edit_personal_page')}',
