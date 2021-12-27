@@ -133,6 +133,9 @@ class _MoreScreenState extends State<MoreScreen> {
                       title:
                           '${AppLocalizations.of(context).trans('virtual_exercise')}'),
                   showMoreInfoCard(
+                    onTap: (){
+
+                    },
                       context: context,
                       imgUrl: 'images/homeBottomSilver.png',
                       title:
