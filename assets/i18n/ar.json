@@ -139,9 +139,18 @@
   "mada": "مدى",
   "fawry": "فورى",
   "payment": "الدفع",
+  "start_now": "ابدء الأن",
+  "training_programs": "برامج تدريبية",
+  "salary": "السعر",
+  "from_most_to_least": "من الأكثر إلى الأقل",
+  "from_least_to_most": "من الأقل إلى الأكثر",
+  "step1_of_4": "خطوة 1 من 4",
+  "step2_of_4": "خطوة 2 من 4",
+  "step3_of_4": "خطوة 3 من 4",
+  "step4_of_4": "خطوة 4 من 4",
+  "subscription_type": "نوع الإشتراك",
 
-
-
+  "choose_the_coach": "اختر المدرب",
 
 
   "enter_phone/mail": "من فضلك ادخل رقم الجوال او البريد الالكتروني",
@@ -197,7 +206,6 @@
   "additions": "نوع التغليف",
   "notes": "ملاحظات",
   "continue_shopping": "تابع التسوق",
-
   "delivery_fee": "خدمة التوصيل",
   "items_price": "المجموع الفرعي",
   "cart": "العربة",

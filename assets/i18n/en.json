@@ -126,8 +126,17 @@
   "payment_methods": "Payment Methods",
   "mada": "Mada",
   "fawry": "Fawry",
-
-
+  "start_now": "Start Now",
+  "training_programs": "Training Programs",
+  "salary": "Salary",
+  "from_most_to_least": "From most to least",
+  "from_least_to_most": "From least to most",
+  "step1_of_4": "Step 1 of 4",
+  "step2_of_4": "Step 2 of 4",
+  "step3_of_4": "Step 3 of 4",
+  "step4_of_4": "Step 4 of 4",
+  "choose_the_coach": "Choose the coach",
+  "subscription_type": "Subscription type",
 
   "remainingTime": "Remaining time",
   "enter_phone/mail": "Please Enter Your Email or Phone without country key",

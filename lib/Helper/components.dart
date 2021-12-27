@@ -342,7 +342,30 @@ Widget showTextWithIcon(
     ],
   );
 }
-
+Widget showAvilableTimeInOneDay(
+    {BuildContext context, String dayName, String startTime, String endTime}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 13.0),
+    child: Column(
+      children: [
+        Container(
+          height: 35,
+          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+          decoration: BoxDecoration(
+              color: Theme.of(context).accentColor,
+              borderRadius: BorderRadius.all(Radius.circular(8.0))),
+          child: Center(
+              child: defaultSubtitleTextTwo(
+                  context: context,
+                  text: dayName ?? 'الأحد',
+                  textColor: Colors.white)),
+        ),
+        defaultShowTime(context: context, textTime: startTime ?? 'من 30 10 ص'),
+        defaultShowTime(context: context, textTime: endTime ?? 'إلى 50 11 ص'),
+      ],
+    ),
+  );
+}
 Widget defaultSubtitleTextTwo(
         {@required BuildContext context,
         @required String text,
@@ -447,8 +470,190 @@ Widget defaultTrainerCard({BuildContext context,Function onTap}) {
   );
 }
 
+
+
+
+Widget bottomNavigationBar({@required BuildContext context,@required Size media,@required int currentIndex,@required Function onTap}){
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(0),
+        topLeft: Radius.circular(0),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.2),
+          spreadRadius: 0.0,
+          blurRadius: 0.0,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    ),
+    child: ClipRRect(
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(0),
+        topLeft: Radius.circular(0),
+      ),
+      child: BottomNavigationBar(
+        elevation: 0.0,
+        items: [
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("home"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("program"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("trainer"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("favourite"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/menuBottom.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/menuBar.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("more"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+        ],
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Theme.of(context).primaryColor,
+        showUnselectedLabels: true,
+        currentIndex: currentIndex,
+        onTap: onTap,
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(size: 25),
+        unselectedIconTheme:
+        IconThemeData(color: Colors.black45, size: 25),
+        // selectedItemColor: Theme.of(context).primaryColor,
+        selectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 12,
+            fontFamily: 'Net'),
+        unselectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 12,
+            fontFamily: 'Net'),
+      ),
+    ),
+  );
+}
+//bottomNavigationBar: Consumer<ChangeIndex>(
+//builder: (context, changeIndex, child) =>bottomNavigationBar(
+//context: context,
+//onTap: (index){
+//setState(() {
+//changeIndex.index=index;
+//});
+//Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+//pageBuilder:
+//(context, animation1, animation2) =>
+//NavigationHome(),
+//transitionDuration: Duration(seconds: 0),
+//),(Route<dynamic> route) => false);
+//},
+//media: media,
+//currentIndex: changeIndex.index
+//),
+//),
+
+
+
+
+
+
+
+
+
+
+
+
+
 Widget defaultFormField({
-  @required TextEditingController controller,
+  TextEditingController controller,
   @required TextInputType type,
   Function onSubmit,
   Function onChange,
@@ -461,40 +666,46 @@ Widget defaultFormField({
   Function suffixPressed,
   bool isClickable = true,
 }) =>
-    TextFormField(
-      controller: controller,
-      keyboardType: type,
-      obscureText: isPassword,
-      enabled: isClickable,
-      onFieldSubmitted: onSubmit,
-      onChanged: onChange,
-      onTap: onTap,
-      validator: validate,
-      cursorColor: defaultColor,
-      decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: Icon(
-          prefix,
+    InkWell(
+      onTap: isClickable==false?onTap:null,
+      child: TextFormField(
+        controller: controller,
+        keyboardType: type,
+        obscureText: isPassword,
+        enabled: isClickable,
+        onFieldSubmitted: onSubmit,
+        onChanged: onChange,
+        validator: validate,
+        cursorColor: defaultColor,
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: Icon(
+            prefix,
+          ),
+          labelStyle: TextStyle(
+            color: Colors.grey[600],
+            fontSize: 18
+          ),
+          suffixIcon: suffix != null
+              ? IconButton(
+                  onPressed: suffixPressed,
+                  icon: Icon(
+                    suffix,
+                  ),
+                )
+              : null,
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              borderSide: BorderSide(color: Colors.grey[300])),
+          focusedErrorBorder: textFormFieldBorder,
+          focusedBorder: textFormFieldBorder,
+          disabledBorder: textFormFieldBorder,
+          errorBorder: textFormFieldBorder,
+          errorStyle: TextStyle(color: defaultColor),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              borderSide: BorderSide(color: Colors.grey[300])),
         ),
-        suffixIcon: suffix != null
-            ? IconButton(
-                onPressed: suffixPressed,
-                icon: Icon(
-                  suffix,
-                ),
-              )
-            : null,
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.grey[300])),
-        focusedErrorBorder: textFormFieldBorder,
-        focusedBorder: textFormFieldBorder,
-        disabledBorder: textFormFieldBorder,
-        errorBorder: textFormFieldBorder,
-        errorStyle: TextStyle(color: defaultColor),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.grey[300])),
       ),
     );
 OutlineInputBorder textFormFieldBorder = OutlineInputBorder(

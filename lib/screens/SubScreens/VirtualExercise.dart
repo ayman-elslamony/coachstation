@@ -1,8 +1,11 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/screens/SubScreens/VirtualExerciseHomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:provider/provider.dart';
 
 
 class VirtualExercise extends StatefulWidget {
@@ -206,6 +209,7 @@ class _VirtualExerciseState extends State<VirtualExercise> {
           )),
         ],
       ),
+
     );
   }
 }
