@@ -1,5 +1,6 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/screens/SubScreens/ReservationScreen.dart';
 import 'package:flutter/material.dart';
 
 class TrainingPlaces extends StatefulWidget {
@@ -125,7 +126,9 @@ Widget showCardAboutReservationPlace(
             height: 10.0,
           ),
           defaultButton(
-              function: () {},
+              function: () {
+                navigateTo(context, ReservationScreenStepOne());
+              },
               text: '${AppLocalizations.of(context).trans('reserve_now')}',
               radius: 20,
               width: media.width * 0.6),

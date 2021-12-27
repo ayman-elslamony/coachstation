@@ -4,6 +4,7 @@ import 'package:coachstation/screens/SubScreens/ProgramDetailsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import 'ReservationInSpecificNutritionalProgramScreen.dart';
 import 'WeekProgressForSpecificExercise.dart';
 
 class ShowSpecificNutritionalProgramsScreen extends StatefulWidget {
@@ -279,7 +280,9 @@ class _ShowSpecificNutritionalProgramsScreenState
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 defaultButton(
-                    function: () {},
+                    function: () {
+                      navigateTo(context, ReservationInSpecificNutritionalProgramScreen());
+                    },
                     text: '${AppLocalizations.of(context).trans('subscribe_now')}',
                     radius: 20,
                     width: media.width * 0.6),

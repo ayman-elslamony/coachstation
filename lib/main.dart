@@ -304,9 +304,6 @@ accentColor: Color(0xFF142c43),
 
 
 
-
-
-
                 //Splash(),
             // home: OrderDetailes(),
             routes: {
