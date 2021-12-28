@@ -4,6 +4,8 @@ import 'package:coachstation/screens/SubScreens/ProgramDetailsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import 'WeekProgressForSpecificExercise.dart';
+
 class ShowSpecificVirtualExerciseDetails extends StatefulWidget {
   String titleOfExercise;
 
@@ -151,7 +153,7 @@ class _ShowSpecificVirtualExerciseDetailsState
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 23,
+                  size: 18,
                 )),
             title: Text(
               widget.titleOfExercise,
@@ -263,7 +265,9 @@ class _ShowSpecificVirtualExerciseDetailsState
                 ListView.builder(
                     itemBuilder: (context, index) => showWeeksProgress(
                       onTap: (){
-
+                          navigateTo(context, WeekProgressForSpecificExercise(
+                            title: 'الاسبوع الاول',
+                          ));
                       },
                       index: index,
                           media: media,

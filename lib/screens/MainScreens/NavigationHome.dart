@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, unnecessary_this, unnecessary_string_interpolations, use_rethrow_when_possible, non_constant_identifier_names, unnecessary_brace_in_string_interps, prefer_final_fields, prefer_const_constructors, use_key_in_widget_constructors
 
 //import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:coachstation/screens/SubScreens/ShowPresentScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
@@ -32,7 +33,6 @@ class NavigationHome extends StatefulWidget {
 
 class _NavigationHomeState extends State<NavigationHome> {
   List<Widget> mainWidgets = [
-
 
     HomeScreen(),
     ProgramScreen(),
@@ -186,7 +186,7 @@ class _NavigationHomeState extends State<NavigationHome> {
                               ),
                             ),
                             title: Text(
-                                AppLocalizations.of(context).trans("program"),
+                                AppLocalizations.of(context).trans("trainer"),
                                 style: TextStyle(
                                     fontSize: media.width * 0.028,
                                     fontFamily: 'Net'))),
@@ -206,7 +206,7 @@ class _NavigationHomeState extends State<NavigationHome> {
                               ),
                             ),
                             title: Text(
-                                AppLocalizations.of(context).trans("home"),
+                                AppLocalizations.of(context).trans("favourite"),
                                 style: TextStyle(
                                     fontSize: media.width * 0.028,
                                     fontFamily: 'Net'))),

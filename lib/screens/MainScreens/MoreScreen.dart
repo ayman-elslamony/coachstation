@@ -1,8 +1,11 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/SubScreens/AllTrainingProgramsScreen.dart';
 import 'package:coachstation/screens/SubScreens/ChangeLanguageScreen.dart';
+import 'package:coachstation/screens/SubScreens/HomeWorkoutScreen.dart';
 import 'package:coachstation/screens/SubScreens/MyProgramScreen.dart';
+import 'package:coachstation/screens/SubScreens/NutritionalProgramsDetailsScreen.dart';
 import 'package:coachstation/screens/SubScreens/PersonalPageScreen.dart';
 import 'package:coachstation/screens/SubScreens/VirtualExercise.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +60,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     AssetImage(
                       'images/arrowLeft.png',
                     ),
-                    size: 23,
+                    size: 18,
                   )),
             ),
           ),
@@ -132,11 +135,17 @@ class _MoreScreenState extends State<MoreScreen> {
                       title:
                           '${AppLocalizations.of(context).trans('virtual_exercise')}'),
                   showMoreInfoCard(
+                    onTap: (){
+navigateTo(context, HomeWorkoutScreen());
+                    },
                       context: context,
                       imgUrl: 'images/homeBottomSilver.png',
                       title:
                           '${AppLocalizations.of(context).trans('home_workout')}'),
                   showMoreInfoCard(
+                    onTap: (){
+                      navigateTo(context, NutritionalProgramsDetailsScreen());
+                    },
                       context: context,
                       imgUrl: 'images/userProfile.png',
                       title:
@@ -149,6 +158,14 @@ class _MoreScreenState extends State<MoreScreen> {
                       imgUrl: 'images/fileSilver.png',
                       title:
                           '${AppLocalizations.of(context).trans('my_program')}'),
+                  showMoreInfoCard(
+                      onTap: (){
+                        navigateTo(context, AllTrainingProgramsScreen());
+                      },
+                      context: context,
+                      imgUrl: 'images/fileSilver.png',
+                      title:
+                      '${AppLocalizations.of(context).trans('training_programs')}'),
                   showMoreInfoCard(
                       context: context,
                       imgUrl: 'images/userProfile.png',

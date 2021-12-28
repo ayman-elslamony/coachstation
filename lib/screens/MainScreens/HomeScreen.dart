@@ -1,6 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/screens/SubScreens/ShowAllArticlesScreen.dart';
+import 'package:coachstation/screens/SubScreens/ShowAllGymsScreen.dart';
+import 'package:coachstation/screens/SubScreens/ShowOneArticleScreen.dart';
+import 'package:coachstation/screens/SubScreens/ShowSpecificGymScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -12,14 +16,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
-  final List<String> imgList = [
-    'https://thumbs.dreamstime.com/t/gym-24699087.jpg',
-    'https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg=',
-    'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX26664924.jpg',
-    'https://media.istockphoto.com/photos/muscular-trainer-writing-on-clipboard-picture-id675179390?k=20&m=675179390&s=612x612&w=0&h=7LP7-OamGu-b8XG-VKcJuamK5s80ke-4oJ5siUrjFVA=',
-    'https://www.muscleandfitness.com/wp-content/uploads/2019/11/Young-Muscular-Man-Doing-Lunges-In-Dark-Gym.jpg?w=1109&h=614&crop=1&quality=86&strip=all',
-    'https://www.giggsmeat.com/wp-content/uploads/2020/10/4wqKj5zM2a-min.jpg'
-  ];
   final List<String> gymList = [
     'https://thumbs.dreamstime.com/t/gym-24699087.jpg',
     'https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg=',
@@ -217,13 +213,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       subtitleOfHomeScreen(
-                          function: () {}, context: context, textKey: 'gyms'),
+                          function: () {
+                            navigateTo(context, ShowAllGymsScreen());
+                          }, context: context, textKey: 'gyms'),
                       SizedBox(
                         width: media.width,
                         height: media.height * 0.15,
                         child: ListView.builder(
                           itemBuilder: (context, index) => defaultCard(
-                              function: () {},
+                              function: () {
+                                navigateTo(context, ShowSpecificGymScreen());
+                              },
                               context: context,
                               textTitle:
                               '${AppLocalizations.of(context).trans('gyms')}',
@@ -236,7 +236,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       subtitleOfHomeScreen(
-                          function: () {},
+                          function: () {
+                            navigateTo(context, ShowAllArticlesScreen());
+                          },
                           context: context,
                           textKey: 'articles'),
                       SizedBox(
@@ -244,19 +246,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: media.height * 0.23,
                         child: ListView.builder(
                           itemBuilder: (context, index) => defaultArticle(
-                              function: () {},
+                              function: () {
+                                navigateTo(context, ShowOneArticleScreen());
+                              },
                               context: context,
                               textSubTitle:
                               'لقم تم توليد هذا النص من مولد النص العربى',
                               textTitle:
                               '${AppLocalizations.of(context).trans('gyms')}',
                               imageUrl: imgList[0],
-                              articleWidth: media.width * 0.5,
+                              articleWidth: media.width * 0.4,
+                              imageHeight: media.height * 0.11,
                               articleHeight: media.height * 0.22),
                           itemCount: imgList.length,
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
+                      SizedBox(height: 50,),
                     ],
                   ),
                 )

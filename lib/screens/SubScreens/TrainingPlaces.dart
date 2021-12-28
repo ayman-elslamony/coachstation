@@ -1,5 +1,6 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/screens/SubScreens/ReservationScreen.dart';
 import 'package:flutter/material.dart';
 
 class TrainingPlaces extends StatefulWidget {
@@ -7,30 +8,7 @@ class TrainingPlaces extends StatefulWidget {
   _TrainingPlacesState createState() => _TrainingPlacesState();
 }
 
-Widget showAvilableTimeInOneDay(
-    {BuildContext context, String dayName, String startTime, String endTime}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 13.0),
-    child: Column(
-      children: [
-        Container(
-          height: 35,
-          padding: const EdgeInsets.symmetric(horizontal: 35.0),
-          decoration: BoxDecoration(
-              color: Theme.of(context).accentColor,
-              borderRadius: BorderRadius.all(Radius.circular(8.0))),
-          child: Center(
-              child: defaultSubtitleTextTwo(
-                  context: context,
-                  text: dayName ?? 'الأحد',
-                  textColor: Colors.white)),
-        ),
-        defaultShowTime(context: context, textTime: startTime ?? 'من 30 10 ص'),
-        defaultShowTime(context: context, textTime: endTime ?? 'إلى 50 11 ص'),
-      ],
-    ),
-  );
-}
+
 
 Widget showAvilableTimeInIntervalTime(
     {BuildContext context,
@@ -125,7 +103,9 @@ Widget showCardAboutReservationPlace(
             height: 10.0,
           ),
           defaultButton(
-              function: () {},
+              function: () {
+                navigateTo(context, ReservationScreenStepOne());
+              },
               text: '${AppLocalizations.of(context).trans('reserve_now')}',
               radius: 20,
               width: media.width * 0.6),

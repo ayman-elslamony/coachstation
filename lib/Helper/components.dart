@@ -1,6 +1,7 @@
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/screens/SubScreens/GoogleMapScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 const defaultColor = const Color(0xFFf1c40e);
@@ -71,7 +72,8 @@ Widget defaultCard({
   @required Function function,
   @required BuildContext context,
   @required String textTitle,
-  String textSubTitle,
+  String textSubTitleOne,
+  String textSubTitleTwo,
   @required String imageUrl,
   @required double cardWidth,
   @required double containerTextWidth,
@@ -94,14 +96,14 @@ Widget defaultCard({
               ),
             ),
             Container(
-              height: textSubTitle!=null?50:28,
+              height: textSubTitleOne!=null?50:35,
               width: containerTextWidth,
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(10.0),
                       topLeft: Radius.circular(18.0))),
-              child: textSubTitle!=null?Column(
+              child: textSubTitleOne!=null?Column(
 
                 children: [
                 Text(
@@ -113,16 +115,51 @@ Widget defaultCard({
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  textSubTitle,
-                  style: TextStyle(
-                    height: 0.8,
-                    fontFamily: 'CairoRegular',
-                    fontSize: 14,
-                    color:Colors.grey[800],
-                    fontWeight: FontWeight.bold,
+                  textSubTitleTwo!=null?Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      textSubTitleOne,
+                      style: TextStyle(
+                        height: 1.2,
+                        fontFamily: 'CairoRegular',
+                        fontSize: 13,
+                        color:Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      ' - ',
+                      style: TextStyle(
+                        height: 1.2,
+                        fontFamily: 'CairoRegular',
+                        fontSize: 14,
+                        color:Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      textSubTitleTwo,
+                      style: TextStyle(
+                        height: 0.8,
+                        fontFamily: 'CairoRegular',
+                        fontSize: 15,
+                        color:Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                  ],
+                ):Text(
+                    textSubTitleOne,
+                    style: TextStyle(
+                      height: 0.8,
+                      fontFamily: 'CairoRegular',
+                      fontSize: 14,
+                      color:Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                )
               ],):Center(
             child: Text(
               textTitle,
@@ -192,64 +229,71 @@ Widget defaultArticle({
   @required String textTitle,
   @required String textSubTitle,
   @required String imageUrl,
+  @required double imageHeight,
   @required double articleWidth,
   @required double articleHeight,
 }) =>
     Padding(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: articleHeight,
-        width: articleWidth,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Align(
-              alignment: AlignmentDirectional.topCenter,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.fill,
-                  height: articleHeight * 0.65,
-                  width: articleWidth,
-                ),
-              ),
-            ),
-            Container(
-              width: articleWidth,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  )),
-              child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
-                title: Text(
-                  textTitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 15,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
+      child: InkWell(
+        onTap: function,
+        child: SizedBox(
+          height: articleHeight,
+          width: articleWidth,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Align(
+                alignment: AlignmentDirectional.topCenter,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
                   ),
-                ),
-                subtitle: Text(
-                  textSubTitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 11,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.fill,
+                    height: imageHeight,
+                    width: articleWidth,
                   ),
                 ),
               ),
-            )
-          ],
+              Container(
+                width: articleWidth,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    )),
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  title: Text(
+                    textTitle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'CairoRegular',
+                      fontSize: 15,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    textSubTitle,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'CairoRegular',
+                      fontSize: 11,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -282,7 +326,46 @@ Widget defaultSubtitleTextOne(
         fontWeight: FontWeight.bold,
       ),
     );
-
+Widget showTextWithIcon(
+    {@required BuildContext context, String iconUrl, String titleText}) {
+  return Row(
+    children: [
+      ImageIcon(
+        AssetImage(iconUrl),
+        size: 15,
+        color: Colors.red,
+      ),
+      SizedBox(
+        width: 5.0,
+      ),
+      defaultSubtitleTextTwo(context: context, text: titleText),
+    ],
+  );
+}
+Widget showAvilableTimeInOneDay(
+    {BuildContext context, String dayName, String startTime, String endTime}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 13.0),
+    child: Column(
+      children: [
+        Container(
+          height: 35,
+          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+          decoration: BoxDecoration(
+              color: Theme.of(context).accentColor,
+              borderRadius: BorderRadius.all(Radius.circular(8.0))),
+          child: Center(
+              child: defaultSubtitleTextTwo(
+                  context: context,
+                  text: dayName ?? 'الأحد',
+                  textColor: Colors.white)),
+        ),
+        defaultShowTime(context: context, textTime: startTime ?? 'من 30 10 ص'),
+        defaultShowTime(context: context, textTime: endTime ?? 'إلى 50 11 ص'),
+      ],
+    ),
+  );
+}
 Widget defaultSubtitleTextTwo(
         {@required BuildContext context,
         @required String text,
@@ -296,9 +379,281 @@ Widget defaultSubtitleTextTwo(
         fontWeight: FontWeight.bold,
       ),
     );
+Widget defaultTrainerCard({BuildContext context,Function onTap}) {
+  return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10.0,left: 8.0,right: 8.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(11.0)),
+              border: Border.all(color: Colors.grey)),
+          child: Row(
+            children: [
+              Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 45,
+                    child: ClipOval(
+                      child: Image.asset(
+                        "images/userProfile.png",
+                        fit: BoxFit.cover,
+                        width: 90,
+                        height: 90,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: CircleAvatar(
+                      radius: 15,
+                      child: ClipOval(
+                        child: Image.asset(
+                          "images/allah.png",
+                          fit: BoxFit.cover,
+                          width: 40,
+                          height: 40,
+                        ),
+                      ),
+                    ),
+                    left: 5.0,
+                    bottom: 0.0,
+                  )
+                ],
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'النادى الرياضى',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    defaultSubtitleTextTwo(
+                        context: context, text: 'المدرب محمد سيد'),
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          initialRating: 4,
+                          minRating: 1,
+                          itemSize: 15,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 4,
+                          itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => ImageIcon(
+                            AssetImage('images/star.png'),
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                          },
+                        ),
+                        Spacer(),
+                        defaultLocationWithIcon(
+                            context: context,
+                            textLocation: 'الرياض'
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+  );
+}
+
+
+
+
+Widget bottomNavigationBar({@required BuildContext context,@required Size media,@required int currentIndex,@required Function onTap}){
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(0),
+        topLeft: Radius.circular(0),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.2),
+          spreadRadius: 0.0,
+          blurRadius: 0.0,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    ),
+    child: ClipRRect(
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(0),
+        topLeft: Radius.circular(0),
+      ),
+      child: BottomNavigationBar(
+        elevation: 0.0,
+        items: [
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("home"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("program"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/fileSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("trainer"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomGrey.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/homeBottomSilver.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("favourite"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/menuBottom.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: ImageIcon(
+                  AssetImage('images/menuBar.png'),
+                  size: media.width * 0.06,
+                ),
+              ),
+              title: Text(
+                  AppLocalizations.of(context).trans("more"),
+                  style: TextStyle(
+                      fontSize: media.width * 0.028,
+                      fontFamily: 'Net'))),
+        ],
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Theme.of(context).primaryColor,
+        showUnselectedLabels: true,
+        currentIndex: currentIndex,
+        onTap: onTap,
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(size: 25),
+        unselectedIconTheme:
+        IconThemeData(color: Colors.black45, size: 25),
+        // selectedItemColor: Theme.of(context).primaryColor,
+        selectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 12,
+            fontFamily: 'Net'),
+        unselectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 12,
+            fontFamily: 'Net'),
+      ),
+    ),
+  );
+}
+//bottomNavigationBar: Consumer<ChangeIndex>(
+//builder: (context, changeIndex, child) =>bottomNavigationBar(
+//context: context,
+//onTap: (index){
+//setState(() {
+//changeIndex.index=index;
+//});
+//Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+//pageBuilder:
+//(context, animation1, animation2) =>
+//NavigationHome(),
+//transitionDuration: Duration(seconds: 0),
+//),(Route<dynamic> route) => false);
+//},
+//media: media,
+//currentIndex: changeIndex.index
+//),
+//),
+
+
+
+
+
+
+
+
+
+
+
+
 
 Widget defaultFormField({
-  @required TextEditingController controller,
+  TextEditingController controller,
   @required TextInputType type,
   Function onSubmit,
   Function onChange,
@@ -311,40 +666,46 @@ Widget defaultFormField({
   Function suffixPressed,
   bool isClickable = true,
 }) =>
-    TextFormField(
-      controller: controller,
-      keyboardType: type,
-      obscureText: isPassword,
-      enabled: isClickable,
-      onFieldSubmitted: onSubmit,
-      onChanged: onChange,
-      onTap: onTap,
-      validator: validate,
-      cursorColor: defaultColor,
-      decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: Icon(
-          prefix,
+    InkWell(
+      onTap: isClickable==false?onTap:null,
+      child: TextFormField(
+        controller: controller,
+        keyboardType: type,
+        obscureText: isPassword,
+        enabled: isClickable,
+        onFieldSubmitted: onSubmit,
+        onChanged: onChange,
+        validator: validate,
+        cursorColor: defaultColor,
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: Icon(
+            prefix,
+          ),
+          labelStyle: TextStyle(
+            color: Colors.grey[600],
+            fontSize: 18
+          ),
+          suffixIcon: suffix != null
+              ? IconButton(
+                  onPressed: suffixPressed,
+                  icon: Icon(
+                    suffix,
+                  ),
+                )
+              : null,
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              borderSide: BorderSide(color: Colors.grey[300])),
+          focusedErrorBorder: textFormFieldBorder,
+          focusedBorder: textFormFieldBorder,
+          disabledBorder: textFormFieldBorder,
+          errorBorder: textFormFieldBorder,
+          errorStyle: TextStyle(color: defaultColor),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              borderSide: BorderSide(color: Colors.grey[300])),
         ),
-        suffixIcon: suffix != null
-            ? IconButton(
-                onPressed: suffixPressed,
-                icon: Icon(
-                  suffix,
-                ),
-              )
-            : null,
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.grey[300])),
-        focusedErrorBorder: textFormFieldBorder,
-        focusedBorder: textFormFieldBorder,
-        disabledBorder: textFormFieldBorder,
-        errorBorder: textFormFieldBorder,
-        errorStyle: TextStyle(color: defaultColor),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.grey[300])),
       ),
     );
 OutlineInputBorder textFormFieldBorder = OutlineInputBorder(
@@ -354,9 +715,10 @@ OutlineInputBorder textFormFieldBorder = OutlineInputBorder(
 Widget defaultAppBar(
         {@required BuildContext context,
         String titleKey,
+          bool isTextNotKey=false,
         List<Widget> actions,
         Function onClickedBackButton}) =>
-    SliverAppBar(
+    AppBar(
       leading: IconButton(
           onPressed: onClickedBackButton == null
               ? () {
@@ -367,10 +729,10 @@ Widget defaultAppBar(
             AssetImage(
               'images/arrowLeft.png',
             ),
-            size: 23,
+            size: 18,
           )),
       title: Text(
-        '${AppLocalizations.of(context).trans(titleKey)}',
+          isTextNotKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}',
       ),
       titleSpacing: 2.0,
       actions: actions,

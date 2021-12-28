@@ -1,8 +1,11 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/screens/SubScreens/VirtualExerciseHomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:provider/provider.dart';
 
 
 class VirtualExercise extends StatefulWidget {
@@ -119,7 +122,7 @@ class _VirtualExerciseState extends State<VirtualExercise> {
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 23,
+                  size: 18,
                 )),
             title: Text(
               '${AppLocalizations.of(context).trans('virtual_exercise')}',
@@ -201,11 +204,12 @@ class _VirtualExerciseState extends State<VirtualExercise> {
                   width: media.width * 0.7,
                   background: _enableConfirmedButton
                       ? Theme.of(context).primaryColor
-                      : Color(0xFFf1e42e)),
+                      : Color(0xFFf3db7c)),
             ],
           )),
         ],
       ),
+
     );
   }
 }

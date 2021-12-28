@@ -1,4 +1,5 @@
 import 'package:coachstation/provider/locale_provider.dart';
+import 'package:coachstation/screens/SubScreens/ShowPresentScreen.dart';
 
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
@@ -211,7 +212,7 @@ accentColor: Color(0xFF142c43),
                       fontFamily: 'CairoRegular',
                       color: const Color(0xffffffff),
                       fontWeight: FontWeight.bold,
-                      fontSize: 22),
+                      fontSize: 18),
                   color: Color(0xFF142c43),
                   iconTheme: const IconThemeData(
                     color: Color(0xffffffff),
@@ -294,10 +295,17 @@ accentColor: Color(0xFF142c43),
                 fontFamily: 'DIN'),
             title: 'Wekalah',
             home: NavigationHome(),
+//
+//          ShowPresentScreen(),
             //SplashScreen(),
             //LoginScreen(),
             //RegisterScreen(),
-            //Splash(),
+
+
+
+
+
+                //Splash(),
             // home: OrderDetailes(),
             routes: {
 //              Splash.routName: (context) => Splash(),

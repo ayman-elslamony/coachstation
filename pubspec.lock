@@ -141,6 +141,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.6"
+  expansion_tile_card:
+    dependency: "direct main"
+    description:
+      name: expansion_tile_card
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -468,7 +475,7 @@ packages:
       name: path_provider_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.10"
+    version: "2.0.11"
   path_provider_ios:
     dependency: transitive
     description:
@@ -816,7 +823,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   xdg_directories:
     dependency: transitive
     description:

@@ -52,7 +52,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 23,
+                  size: 18,
                 )),
             title: Text(
               '${AppLocalizations.of(context).trans('language')}',
