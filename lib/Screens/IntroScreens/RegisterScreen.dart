@@ -37,8 +37,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _isSubmitting = false;
   bool _isChecked = false;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
   final _formKey = GlobalKey<FormState>();
+  bool _nameValidator = false;
+  bool _phoneValidator = false;
+  bool _emailValidator = false;
+  bool _passwordValidator = false;
+
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var emailController = TextEditingController();
@@ -88,14 +92,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     return Scaffold(
         key: _scaffoldKey,
+       appBar: defaultAppBar(context: context, titleKey: 'regist'),
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           slivers: [
-            defaultAppBar(context: context, titleKey: 'regist'),
             SliverToBoxAdapter(
               child: Container(
-                height: media.height,
+                // height: media.height,
                 width: media.width,
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -106,12 +110,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   key: _formKey,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 28.0, vertical: 20.0),
+                        horizontal: 28.0, vertical: 0.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: media.height * 0.1,
+                        const SizedBox(
+                          height: 20,
                         ),
                         Text(
                           '${AppLocalizations.of(context).trans('name')}',
@@ -120,15 +124,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         defaultFormField(
                           controller: nameController,
                           type: TextInputType.text,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return '${AppLocalizations.of(context).trans('invalid_name')}';
+                          validate: (val){
+                            if(val == null || val.isEmpty){
+                              setState(() {
+                                _nameValidator =true;
+                              });
                             }
-
+                            else{
+                              setState(() {
+                                _nameValidator =false;
+                              });
+                            }
                             return null;
                           },
+                          onTap: (){
+                            setState(() {
+                              _nameValidator =false;
+                            });
+                          },
                         ),
-                        SizedBox(
+                        _nameValidator ? Align(
+                          alignment: AppLocalizations.of(context).locale.languageCode == "en" ? Alignment.centerRight : Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: Text('${AppLocalizations.of(context).trans('invalid_name')}',style: TextStyle(color: Colors.red,fontSize: 11),),
+                          ),
+                        )
+                            :
+                        const SizedBox(),
+                        const SizedBox(
                           height: 10.0,
                         ),
                         Text(
@@ -138,15 +162,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         defaultFormField(
                           controller: phoneController,
                           type: TextInputType.text,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return '${AppLocalizations.of(context).trans('invalid_phone_num')}';
+                          validate: (val){
+                            if(val == null || val.isEmpty){
+                              setState(() {
+                                _phoneValidator =true;
+                              });
                             }
-
+                            else{
+                              setState(() {
+                                _phoneValidator =false;
+                              });
+                            }
                             return null;
                           },
+                          onTap: (){
+                            setState(() {
+                              _phoneValidator =false;
+                            });
+                          },
                         ),
-                        SizedBox(
+                        _phoneValidator ? Align(
+                          alignment: AppLocalizations.of(context).locale.languageCode == "en" ? Alignment.centerRight : Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: Text('${AppLocalizations.of(context).trans('invalid_phone_num')}',style: TextStyle(color: Colors.red,fontSize: 11),),
+                          ),
+                        )
+                            :
+                        const SizedBox(),
+                        const SizedBox(
                           height: 10.0,
                         ),
                         Text(
@@ -156,15 +200,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         defaultFormField(
                           controller: emailController,
                           type: TextInputType.text,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return '${AppLocalizations.of(context).trans('invalid_email')}';
+                          validate: (val){
+                            if(val == null || val.isEmpty){
+                              setState(() {
+                                _emailValidator =true;
+                              });
                             }
-
+                            else{
+                              setState(() {
+                                _emailValidator =false;
+                              });
+                            }
                             return null;
                           },
+                          onTap: (){
+                            setState(() {
+                              _emailValidator =false;
+                            });
+                          },
                         ),
-                        SizedBox(
+                        _emailValidator ? Align(
+                          alignment: AppLocalizations.of(context).locale.languageCode == "en" ? Alignment.centerRight : Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: Text('${AppLocalizations.of(context).trans('invalid_email')}',style: TextStyle(color: Colors.red,fontSize: 11),),
+                          ),
+                        )
+                            :
+                        const SizedBox(),
+                        const SizedBox(
                           height: 10.0,
                         ),
                         Text(
@@ -174,15 +238,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         defaultFormField(
                           controller: passwordController,
                           type: TextInputType.text,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return '${AppLocalizations.of(context).trans('invalid_pass')}';
+                          validate: (val){
+                            if(val == null || val.isEmpty){
+                              setState(() {
+                                _passwordValidator =true;
+                              });
                             }
-
+                            else{
+                              setState(() {
+                                _passwordValidator =false;
+                              });
+                            }
                             return null;
                           },
+                          onTap: (){
+                            setState(() {
+                              _passwordValidator =false;
+                            });
+                          },
                         ),
-                        SizedBox(
+                        _passwordValidator ? Align(
+                          alignment: AppLocalizations.of(context).locale.languageCode == "en" ? Alignment.centerRight : Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: Text('${AppLocalizations.of(context).trans('invalid_pass')}',style: TextStyle(color: Colors.red,fontSize: 11),),
+                          ),
+                        )
+                            :
+                        const SizedBox(),
+                        const SizedBox(
                           height: 10.0,
                         ),
                         Align(
@@ -244,7 +328,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 15.0,
+                          height: 30.0,
                         ),
                         _isSubmitting
                             ? Padding(
@@ -258,7 +342,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             : defaultButton(
                                 text:
                                     '${AppLocalizations.of(context).trans('register')}',
-                                function: () {},
+                                function: () {
+                                  if (_formKey.currentState.validate()) {
+                                    print(phoneController.text);
+                                    print(passwordController.text);
+                                  }
+                                },
                               ),
                       ],
                     ),

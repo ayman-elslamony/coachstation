@@ -68,8 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
             expandedHeight: 60,
-            title: Text('${AppLocalizations.of(context).trans('Home')}'),
-            actions: []
+            title: Image.asset("images/appBarIcon.png",height: 40,),
+            centerTitle: true,
+            actions: [],
+            leading: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Image.asset("images/appBarMenuIcon.png",height: 10,),
+            ),
           ),
           SliverToBoxAdapter(
             child: Column(
@@ -79,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   items: imgList
                       .map((item) => ClipRRect(
                           borderRadius:
-                              BorderRadius.all(Radius.circular(5.0)),
+                              BorderRadius.all(Radius.circular(0.0)),
                           child: Image.network(item,
                               fit: BoxFit.cover, width: 1000.0)))
                       .toList(),
@@ -101,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         });
                       }),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Row(
@@ -119,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color:
                                 (Theme.of(context).brightness == Brightness.dark
                                         ? Colors.white
-                                        : Colors.black)
+                                        : Theme.of(context).accentColor)
                                     .withOpacity(
                                         _current == entry.key ? 0.9 : 0.4)),
                       ),

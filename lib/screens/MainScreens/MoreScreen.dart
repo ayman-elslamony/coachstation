@@ -123,7 +123,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   ),
                   showMoreInfoCard(
                       context: context,
-                      imgUrl: 'images/userProfile.png',
+                      imgUrl: 'images/greyCoaches.png',
                       title:
                           '${AppLocalizations.of(context).trans('trainer')}'),
                   showMoreInfoCard(
@@ -131,15 +131,15 @@ class _MoreScreenState extends State<MoreScreen> {
                       navigateTo(context, VirtualExercise());
                     },
                       context: context,
-                      imgUrl: 'images/userProfile.png',
+                      imgUrl: 'images/dumble.png',
                       title:
                           '${AppLocalizations.of(context).trans('virtual_exercise')}'),
                   showMoreInfoCard(
                     onTap: (){
-navigateTo(context, HomeWorkoutScreen());
+                     navigateTo(context, HomeWorkoutScreen());
                     },
                       context: context,
-                      imgUrl: 'images/homeBottomSilver.png',
+                      imgUrl: 'images/home.png',
                       title:
                           '${AppLocalizations.of(context).trans('home_workout')}'),
                   showMoreInfoCard(
@@ -147,7 +147,7 @@ navigateTo(context, HomeWorkoutScreen());
                       navigateTo(context, NutritionalProgramsDetailsScreen());
                     },
                       context: context,
-                      imgUrl: 'images/userProfile.png',
+                      imgUrl: 'images/food.png',
                       title:
                           '${AppLocalizations.of(context).trans('nutritional_programs')}'),
                   showMoreInfoCard(
@@ -168,7 +168,7 @@ navigateTo(context, HomeWorkoutScreen());
                       '${AppLocalizations.of(context).trans('training_programs')}'),
                   showMoreInfoCard(
                       context: context,
-                      imgUrl: 'images/userProfile.png',
+                      imgUrl: 'images/heart.png',
                       title:
                           '${AppLocalizations.of(context).trans('favourite')}'),
                   showMoreInfoCard(
@@ -186,7 +186,7 @@ navigateTo(context, HomeWorkoutScreen());
                           '${AppLocalizations.of(context).trans('language')}'),
                   showMoreInfoCard(
                       context: context,
-                      imgUrl: 'images/userProfile.png',
+                      imgUrl: 'images/logout.png',
                       title: '${AppLocalizations.of(context).trans('logout')}'),
                 ],
               ),

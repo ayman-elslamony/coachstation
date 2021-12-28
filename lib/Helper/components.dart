@@ -17,7 +17,7 @@ Widget defaultButton({
   double width = double.infinity,
   Color background = defaultColor,
   bool isUpperCase = true,
-  double radius = 18.0,
+  double radius = 25.0,
   @required Function function,
   @required String text,
 }) =>
@@ -304,6 +304,9 @@ Widget defaultTextButton({
   @required String textKey,
 }) =>
     TextButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
+      ),
       onPressed: function,
       child: Text(
         '${AppLocalizations.of(context).trans(textKey)}',
@@ -666,50 +669,55 @@ Widget defaultFormField({
   Function suffixPressed,
   bool isClickable = true,
 }) =>
-    InkWell(
-      onTap: isClickable==false?onTap:null,
-      child: TextFormField(
-        controller: controller,
-        keyboardType: type,
-        obscureText: isPassword,
-        enabled: isClickable,
-        onFieldSubmitted: onSubmit,
-        onChanged: onChange,
-        validator: validate,
-        cursorColor: defaultColor,
-        decoration: InputDecoration(
-          labelText: label,
-          prefixIcon: Icon(
-            prefix,
+    SizedBox(
+      height: 55.0,
+      child: InkWell(
+        onTap: isClickable==false?onTap:null,
+        child: TextFormField(
+          controller: controller,
+          keyboardType: type,
+          obscureText: isPassword,
+          enabled: isClickable,
+          onFieldSubmitted: onSubmit,
+          onChanged: onChange,
+          onTap: onTap??(){},
+          validator: validate,
+          cursorColor: defaultColor,
+          decoration: InputDecoration(
+            labelText: label,
+            prefixIcon: prefix != null ? Icon(
+              prefix,
+            ) : null ,
+            labelStyle: TextStyle(
+              color: Colors.grey[600],
+              fontSize: 18
+            ),
+            suffixIcon: suffix != null
+                ? IconButton(
+                    onPressed: suffixPressed,
+                    icon: Icon(
+                      suffix,
+                    ),
+                  )
+                : null,
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(color: Colors.grey[300])),
+            focusedErrorBorder: textFormFieldBorder,
+            focusedBorder: textFormFieldBorder,
+            disabledBorder: textFormFieldBorder,
+            errorBorder: textFormFieldBorder,
+            errorStyle: TextStyle(color: defaultColor),
+            contentPadding: EdgeInsets.only(bottom: 10,right: 15,left: 15),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(color: Colors.grey[300])),
           ),
-          labelStyle: TextStyle(
-            color: Colors.grey[600],
-            fontSize: 18
-          ),
-          suffixIcon: suffix != null
-              ? IconButton(
-                  onPressed: suffixPressed,
-                  icon: Icon(
-                    suffix,
-                  ),
-                )
-              : null,
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(color: Colors.grey[300])),
-          focusedErrorBorder: textFormFieldBorder,
-          focusedBorder: textFormFieldBorder,
-          disabledBorder: textFormFieldBorder,
-          errorBorder: textFormFieldBorder,
-          errorStyle: TextStyle(color: defaultColor),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(color: Colors.grey[300])),
         ),
       ),
     );
 OutlineInputBorder textFormFieldBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(15.0),
+    borderRadius: BorderRadius.circular(10.0),
     borderSide: BorderSide(color: defaultColor));
 
 Widget defaultAppBar(
@@ -747,7 +755,7 @@ Widget myDivider() => Padding(
       ),
     );
 
-void navigateTo(context, widget) => Navigator.push(
+void navigateTo(context, Widget widget) => Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => widget,

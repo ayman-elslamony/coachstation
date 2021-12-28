@@ -1,10 +1,10 @@
 {
   "password": "كلمة المرور",
   "invalid_name": "من فضلك ادخل اسم المستخدم",
-  "invalid_email": "من فضلك ادخل البريد الإلكترونى",
   "invalid_pass": "من فضلك ادخل كلمة المرور",
   "phone_num": "رقم الجوال",
-  "invalid_phone_num": "من فضلك اخل رقم الجوال",
+  "invalid_phone_num": "من فضلك اخل رقم جوال صحيح",
+  "invalid_email": "من فضلك اخل رقم بريد إلكتروني صحيح",
   "login": "دخول",
   "have_no_acc_register": "ليس لديك حساب؟ ",
   "register": "تسجيل",

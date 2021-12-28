@@ -115,10 +115,10 @@ class _NavigationHomeState extends State<NavigationHome> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 0.0,
-                        blurRadius: 0.0,
-                        offset: Offset(0, 3), // changes position of shadow
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -174,14 +174,14 @@ class _NavigationHomeState extends State<NavigationHome> {
                             icon: Padding(
                               padding: const EdgeInsets.only(bottom: 4),
                               child: ImageIcon(
-                                AssetImage('images/fileGrey.png'),
+                                AssetImage('images/greyCoaches.png'),
                                 size: media.width * 0.06,
                               ),
                             ),
                             activeIcon: Padding(
                               padding: const EdgeInsets.only(bottom: 4),
                               child: ImageIcon(
-                                AssetImage('images/fileSilver.png'),
+                                AssetImage('images/coloredCoaches.png'),
                                 size: media.width * 0.06,
                               ),
                             ),
@@ -194,15 +194,16 @@ class _NavigationHomeState extends State<NavigationHome> {
                             icon: Padding(
                               padding: const EdgeInsets.only(bottom: 4),
                               child: ImageIcon(
-                                AssetImage('images/homeBottomGrey.png'),
+                                AssetImage('images/heart.png'),
                                 size: media.width * 0.06,
                               ),
                             ),
                             activeIcon: Padding(
                               padding: const EdgeInsets.only(bottom: 4),
                               child: ImageIcon(
-                                AssetImage('images/homeBottomSilver.png'),
+                                AssetImage('images/heart.png'),
                                 size: media.width * 0.06,
+                                color: Theme.of(context).primaryColor,
                               ),
                             ),
                             title: Text(

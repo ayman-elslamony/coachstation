@@ -1,3 +1,4 @@
+import 'package:coachstation/Screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/provider/locale_provider.dart';
 import 'package:coachstation/screens/SubScreens/ShowPresentScreen.dart';
 
@@ -16,10 +17,9 @@ import 'package:provider/provider.dart';
 
 import 'Localization/app_localization_delegate.dart';
 import 'provider/changeIndexPage.dart';
-import 'screens/IntroScreens/Login.dart';
-import 'screens/IntroScreens/Register.dart';
-import 'screens/IntroScreens/Splash.dart';
-import 'screens/MainScreens/NavigationHome.dart';
+import 'screens/IntroScreens/LoginScreen.dart';
+import 'screens/IntroScreens/RegisterScreen.dart';
+import 'screens/IntroScreens/SplashScreen.dart';
 
 const domain = "https://wekala.greencodet.com";
 const photosPreUrl = "https://wekala.greencodet.com/storage/";
@@ -56,7 +56,7 @@ void main() {
     SystemUiOverlay.bottom,
   ]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-    statusBarColor: Colors.transparent, // Color for Android
+    statusBarColor: Color(0xFF142c43), // Color for Android
   ));
   runApp(MyApp());
 }
@@ -185,9 +185,11 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
                 scaffoldBackgroundColor: Colors.white,
                 canvasColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
                 primaryColor: const Color(0xFFf1c40e),
                 primaryColorLight: const Color(0xFFf1c40e),
-accentColor: Color(0xFF142c43),
+                accentColor: Color(0xFF142c43),
 //                textSelectionColor: Colors.grey[600],
 //                textSelectionHandleColor: const Color(0xFFf1c40e),
                 //  accentColor: const Color(0xFFeccc3c),

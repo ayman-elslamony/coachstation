@@ -8,7 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:coachstation/Helper/Helper.dart';
 
 import 'package:coachstation/provider/locale_provider.dart';
-import 'package:coachstation/screens/IntroScreens/Login.dart';
+import 'package:coachstation/screens/IntroScreens/LoginScreen.dart';
 import 'package:coachstation/screens/IntroScreens/Verification.dart';
 import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen>
 //      ..checkGeolocationPermissionStatus(
 //          locationPermission: GeolocationPermission.location);
 //    });
-
+    _navigateToNextScreen();
   }
   
 
