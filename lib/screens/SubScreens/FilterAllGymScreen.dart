@@ -17,20 +17,23 @@ class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: RadioListTile(
-        groupValue: true,
-        contentPadding: EdgeInsets.all(2.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: isSelected,
-        onChanged: (newValue) {
-          setState(() {
-            isSelected = newValue;
-          });
-        },
-        controlAffinity:
-            ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: RadioListTile(
+          groupValue: true,
+          contentPadding: EdgeInsets.all(2.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: isSelected,
+          onChanged: (newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          controlAffinity:
+              ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }
@@ -73,6 +76,7 @@ class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
                               isSelected: false),
                           checkedBoxCard(
                               context: context, text: 'تبوك', isSelected: false),
+                          SizedBox(height: 12.0,),
                         ]),
 
                     Padding(
@@ -92,7 +96,7 @@ class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
                                 context: context,
                                 text: 'افضل تقييم',
                                 isSelected: false),
-                            SizedBox(height: 15.0,)
+                            SizedBox(height: 12.0,),
                           ]),
                     ),
 
@@ -114,7 +118,7 @@ class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
                   defaultButton(
                       function: () {},
                       width: media.width * 0.4,
-                      background: Colors.grey,
+                      background: Colors.grey[300],
                       text:
                       '${AppLocalizations.of(context).trans('reset')}')
                 ],

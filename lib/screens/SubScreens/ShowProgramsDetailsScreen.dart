@@ -154,7 +154,7 @@ class _ShowProgramsDetailsScreenState extends State<ShowProgramsDetailsScreen> {
             Icon(
               Icons.arrow_forward_ios,
               size: 18.0,
-              color: isEnabled ? Colors.grey[800] : Colors.grey[400],
+              color: isEnabled ? Colors.grey[800] : Colors.grey[300],
             ),
           ],
         ),
@@ -211,7 +211,7 @@ class _ShowProgramsDetailsScreenState extends State<ShowProgramsDetailsScreen> {
                       children: [
                         showTextIcon(
                             context: context,
-                            iconUrl: 'images/calendar.png',
+                            iconUrl: 'images/clock.png',
                             titleText: '10 أسابيع'),
                         SizedBox(
                           width: 40.0,
@@ -222,7 +222,9 @@ class _ShowProgramsDetailsScreenState extends State<ShowProgramsDetailsScreen> {
                             titleText: '29 فبراير 2022'),
                       ],
                     ),
-                    Divider(),
+                    Divider(
+                      color: Colors.grey[300],
+                    ),
                     SizedBox(
                       width: media.width,
                       height: media.height * 0.17,
@@ -233,12 +235,14 @@ class _ShowProgramsDetailsScreenState extends State<ShowProgramsDetailsScreen> {
                         itemCount: 3,
                       ),
                     ),
-                    Divider(),
+                    Divider(
+                      color: Colors.grey[300],
+                    ),
                     showTextIcon(
                         context: context,
                         iconUrl: 'images/locationMark.png',
                         titleText: 'جولدز جيم الرياض'),
-                    Divider(),
+                    Divider(color: Colors.grey[300],),
                     Row(
                       children: [
                         Text(
@@ -254,7 +258,7 @@ class _ShowProgramsDetailsScreenState extends State<ShowProgramsDetailsScreen> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontFamily: 'CairoRegular',
-                          fontSize: 14,
+                          fontSize: 13,
                           color: Colors.grey[800],
                           fontWeight: FontWeight.bold,
                         ),

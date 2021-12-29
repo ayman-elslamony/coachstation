@@ -27,7 +27,7 @@ class _MoreScreenState extends State<MoreScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
           decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: Colors.grey[100],
               borderRadius: BorderRadius.all(Radius.circular(25.0))),
           child:     ListTile(
               leading: ImageIcon(
@@ -94,7 +94,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 0.0),
                         decoration: BoxDecoration(
-                            color: Colors.grey[200],
+                            color: Colors.grey[100],
                             borderRadius:
                                 BorderRadius.all(Radius.circular(25.0))),
                         child: ListTile(
@@ -115,11 +115,17 @@ class _MoreScreenState extends State<MoreScreen> {
                                   '${AppLocalizations.of(context).trans('personal_page')}',
                             ))),
                   ),
-                  showMoreInfoCard(
-                      context: context,
-                      imgUrl: 'images/greyCoaches.png',
-                      title:
-                          '${AppLocalizations.of(context).trans('trainer')}'),
+                  Consumer<ChangeIndex>(
+builder: (context, changeIndex, child) =>(
+                     showMoreInfoCard(
+                      onTap: (){
+                        changeIndex.changeIndexFunction(2);
+                      },
+                        context: context,
+                        imgUrl: 'images/greyCoaches.png',
+                        title:
+                            '${AppLocalizations.of(context).trans('trainer')}'))
+                  ),
                   showMoreInfoCard(
                     onTap: (){
                       navigateTo(context, VirtualExercise());
@@ -160,11 +166,17 @@ class _MoreScreenState extends State<MoreScreen> {
                       imgUrl: 'images/fileSilver.png',
                       title:
                       '${AppLocalizations.of(context).trans('training_programs')}'),
-                  showMoreInfoCard(
-                      context: context,
-                      imgUrl: 'images/heart.png',
-                      title:
-                          '${AppLocalizations.of(context).trans('favourite')}'),
+                  Consumer<ChangeIndex>(
+                      builder: (context, changeIndex, child) =>(
+                          showMoreInfoCard(
+                              onTap: (){
+                                changeIndex.changeIndexFunction(3);
+                              },
+                              context: context,
+                              imgUrl: 'images/heart.png',
+                              title:
+                              '${AppLocalizations.of(context).trans('favourite')}'))
+                  ),
                   showMoreInfoCard(
                       context: context,
                       imgUrl: 'images/contact.png',

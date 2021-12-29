@@ -37,6 +37,9 @@ class _VirtualExerciseHomeScreenState extends State<VirtualExerciseHomeScreen> {
                       size: 15,
                     )),
               ),
+              actions: [
+                IconButton(onPressed: () {}, icon: Image.asset("images/search.png",height: 20,)),
+              ],
               title: Text(
                 '${AppLocalizations.of(context).trans('virtual_exercise')}',
               ),

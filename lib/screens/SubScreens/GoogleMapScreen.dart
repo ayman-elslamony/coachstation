@@ -10,23 +10,17 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          defaultAppBar(
-            context: context,
-            titleKey: 'map',
-          ),
-          SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-            child: Center(
-                child: defaultButton(function: null, text: 'Show Map Here'),
-            ),
-          ),
-              )),
-        ],
+      appBar: defaultAppBar(
+        context: context,
+        titleKey: 'map',
       ),
-    );
+      body:  Padding(
+      padding: const EdgeInsets.all(8.0),
+    child: Container(
+    child: Center(
+    child: defaultButton(function: null, text: 'Show Map Here'),
+    ))
+
+    ));
   }
 }

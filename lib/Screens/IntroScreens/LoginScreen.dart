@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 
+import 'ForgetPasswordScreen.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -51,8 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Center(
                             child: Container(
-                                width: 200,
-                                height: 200,
+                                width: media.width*0.55,
+                                height: media.height*0.25,
                                 child: Image.asset(
                                     'images/coachStationBlackIcon.png')),
                           ),
@@ -61,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Text(
                             '${AppLocalizations.of(context).trans('phone_num')}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                           defaultFormField(
                             onTap: (){
@@ -104,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Text(
                             '${AppLocalizations.of(context).trans('password')}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                           defaultFormField(
                             validate: (val){
@@ -152,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     text: '${AppLocalizations.of(context).trans('forgot_pass')}',
                                     textColor: Color(0xFFcc775a)),
                                 onTap: () {
-                                  // navigateTo(context,ForgetPasswordScreen());
+                                   navigateTo(context,ForgetPasswordScreen());
 
                                 },
                               ),

@@ -30,7 +30,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(11.0)),
-                border: Border.all(color: Colors.grey)),
+                border: Border.all(color: Colors.grey[300])),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -59,6 +59,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                       ),
                       defaultSubtitleTextTwo(
                           context: context, text: 'اللياقة والعلاج الطبيعى'),
+                      SizedBox(height: 8.0,),
                       Row(
                         children: [
                           RatingBar.builder(
@@ -87,7 +88,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                     icon: ImageIcon(
                       AssetImage('images/deleteIcon.png'),
                       color: Colors.red,
-                      size: 20.0,
+                      size: 18.0,
                     ))
               ],
             ),
@@ -113,15 +114,15 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               bottom: TabBar(
                 labelColor: Theme.of(context).primaryColor,
                 indicatorColor: Theme.of(context).primaryColor,
-                unselectedLabelColor: Colors.grey,
+                unselectedLabelColor: Colors.white,
                 tabs: [
                   Tab(
                     text:
-                        '${AppLocalizations.of(context).trans('about_the_coach')}',
+                        '${AppLocalizations.of(context).trans('trainers')}',
                   ),
                   Tab(
                     text:
-                        '${AppLocalizations.of(context).trans('training_places')}',
+                        '${AppLocalizations.of(context).trans('training_room')}',
                   ),
                 ],
               ),
@@ -134,11 +135,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 child: TabBarView(
                   children: [
                     ListView.builder(
-                      padding: EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(0.0),
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) => trainerCard(),
-                      itemCount: 8,
+                      itemCount: 7,
                     ),
                     ListView.builder(
                       padding: EdgeInsets.all(12.0),
@@ -159,7 +160,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             child: InkWell(
                               onTap: () {},
                               child: CircleAvatar(
-                                radius: 20,
+                                radius: 19,
                                   backgroundColor: Colors.white,
                                   child: ImageIcon(
                                     AssetImage('images/deleteIcon.png'),

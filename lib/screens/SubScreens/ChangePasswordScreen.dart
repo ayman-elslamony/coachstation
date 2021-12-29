@@ -33,8 +33,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               'images/password.png',
               color: Theme.of(context).primaryColor,
               fit: BoxFit.fill,
-              height: media.height*0.18,
-              width: media.width*0.22,
+              height: media.height*0.16,
+              width: media.width*0.24,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(

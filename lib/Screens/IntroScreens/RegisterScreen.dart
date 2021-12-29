@@ -119,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Text(
                           '${AppLocalizations.of(context).trans('name')}',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         defaultFormField(
                           controller: nameController,
@@ -157,7 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Text(
                           '${AppLocalizations.of(context).trans('phone_num')}',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         defaultFormField(
                           controller: phoneController,
@@ -195,7 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Text(
                           '${AppLocalizations.of(context).trans('email')}',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         defaultFormField(
                           controller: emailController,
@@ -233,7 +233,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Text(
                           '${AppLocalizations.of(context).trans('password')}',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         defaultFormField(
                           controller: passwordController,

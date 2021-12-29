@@ -188,7 +188,6 @@ class _MyAppState extends State<MyApp> {
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
                 primaryColor: const Color(0xFFf1c40e),
-                primaryColorLight: const Color(0xFFf1c40e),
                 accentColor: Color(0xFF142c43),
 //                textSelectionColor: Colors.grey[600],
 //                textSelectionHandleColor: const Color(0xFFf1c40e),
@@ -213,7 +212,7 @@ class _MyAppState extends State<MyApp> {
                   titleTextStyle: TextStyle(
                       fontFamily: 'CairoBold',
                       color: const Color(0xffffffff),
-                      fontSize: 20),
+                      fontSize: 17),//20
                   color: Color(0xFF142c43),
                   iconTheme: const IconThemeData(
                     color: Color(0xffffffff),
@@ -225,6 +224,7 @@ class _MyAppState extends State<MyApp> {
                       fontSize: 14),
                   unselectedLabelStyle: TextStyle(
                       fontFamily: 'CairoBold',
+                      color: Colors.white,
                       fontSize: 14),
                 ),
                 dialogTheme: DialogTheme(
@@ -248,10 +248,9 @@ class _MyAppState extends State<MyApp> {
                         fontWeight: FontWeight.bold,
                       ),
                       bodyText1: TextStyle(
-                        fontFamily: 'CairoRegular',
-                        fontSize: 19,
-                        color: Colors.grey[700],
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'CairoBold',
+                        fontSize: 14,
+                        color: Colors.grey[800],
                       ),
                       button: TextStyle(
                         fontFamily: 'CairoRegular',
@@ -274,20 +273,20 @@ class _MyAppState extends State<MyApp> {
                       ),
                       headline1: TextStyle(
                         fontFamily: 'CairoBold',
-                        fontSize: 12,
+                        fontSize: 11,
                         height: 1.5,
                         color: Colors.grey[600],
                         // fontWeight: FontWeight.bold,
                       ),
                       headline2: TextStyle(
                         fontFamily: 'CairoBold',
-                        fontSize: 14,
+                        fontSize: 13,
                         color: Colors.grey[800],
                         // fontWeight: FontWeight.bold,
                       ),
                       headline3: TextStyle(
                         fontFamily: 'CairoBold',
-                        fontSize: 16,
+                        fontSize: 15,
                         color: Colors.grey[800],
                       ),
                       headline4: TextStyle(
@@ -301,7 +300,7 @@ class _MyAppState extends State<MyApp> {
                         color: Colors.grey[800],
                       ),
                     ),
-                fontFamily: 'DIN'),
+               ),
             title: 'Coach Station',
             home: SplashScreen(),
 //

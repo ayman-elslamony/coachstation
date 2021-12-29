@@ -60,7 +60,7 @@ class _ShowSpecificVirtualExerciseDetailsState
         padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 8.0),
         decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: Colors.grey),
+            border: Border.all(color: Colors.grey[300]),
             borderRadius: BorderRadius.all(
               Radius.circular(10.0),
             )),
@@ -128,6 +128,7 @@ class _ShowSpecificVirtualExerciseDetailsState
             Icon(
               Icons.arrow_forward_ios,
               size: 18.0,
+              color: Colors.grey[300],
             ),
           ],
         ),

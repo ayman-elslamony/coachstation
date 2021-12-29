@@ -16,7 +16,7 @@ class ShowPresentDetailsScreen extends StatefulWidget {
 class _ShowPresentDetailsScreenState extends State<ShowPresentDetailsScreen> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
-  Widget socialMediaWidget({String urlImg, Function function}) {
+  Widget socialMediaWidget({String urlImg, Function function,bool enableColor=false}) {
     return InkWell(
       onTap: function,
       child: Padding(
@@ -29,6 +29,7 @@ class _ShowPresentDetailsScreenState extends State<ShowPresentDetailsScreen> {
               fit: BoxFit.cover,
               width: 50,
               height: 50,
+              color: enableColor==true?defaultColor:null,
             ),
           ),
         ),
@@ -108,12 +109,9 @@ class _ShowPresentDetailsScreenState extends State<ShowPresentDetailsScreen> {
                               vertical: 8.0, horizontal: 4.0),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: (Theme.of(context).brightness ==
-                                  Brightness.dark
-                                  ? Colors.white
-                                  : Colors.black)
-                                  .withOpacity(
-                                  _current == entry.key ? 0.9 : 0.4)),
+                              color: ( Theme.of(context).accentColor)
+                          .withOpacity(
+                      _current == entry.key ? 0.9 : 0.4)),
                         ),
                       );
                     }).toList(),
@@ -168,7 +166,7 @@ class _ShowPresentDetailsScreenState extends State<ShowPresentDetailsScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       socialMediaWidget(
-                          function: () {}, urlImg: 'images/insta.png'),
+                          function: () {}, urlImg: 'images/call.png',enableColor: true),
                       socialMediaWidget(
                           function: () {}, urlImg: 'images/whatapp.png'),
                       socialMediaWidget(
@@ -201,7 +199,7 @@ class _ShowPresentDetailsScreenState extends State<ShowPresentDetailsScreen> {
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(11.0)),
-                  border: Border.all(color: Colors.grey)),
+                  border: Border.all(color: Colors.grey[300])),
               child: Column(
                 children: [
                   SizedBox(
@@ -211,7 +209,7 @@ class _ShowPresentDetailsScreenState extends State<ShowPresentDetailsScreen> {
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontFamily: 'CairoRegular',
-                        fontSize: 14,
+                        fontSize: 13,
                         color: Colors.grey[800],
                         fontWeight: FontWeight.bold,
                       ),

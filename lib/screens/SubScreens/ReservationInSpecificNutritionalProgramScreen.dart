@@ -53,7 +53,7 @@ class _ReservationInSpecificNutritionalProgramScreenState
                       bottom: 12.0, left: 10.0, right: 10.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: Colors.grey[300]),
                       borderRadius: BorderRadius.all(
                         Radius.circular(10.0),
                       )),
@@ -97,7 +97,7 @@ class _ReservationInSpecificNutritionalProgramScreenState
                         ),
                       ),
                       Divider(
-                        color: Colors.grey[700],
+                        color: Colors.grey[300],
                         height: 2.9,
                       ),
                       Text(
@@ -160,6 +160,8 @@ class ReservationScreenStepThree extends StatefulWidget {
 class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree> {
 
   int radioTilePaymentResult = 0;
+
+
   Widget radioTileCard({BuildContext context, int index, String titleKey,bool isTextNotTitleKey=false,String imgUrl}) {
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
@@ -169,32 +171,36 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
+          border: Border.all(color: Colors.grey[300])),
       child: SizedBox(
-        child: RadioListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-          activeColor: Theme.of(context).primaryColor,
-          title: Row(
-            children: [
-              Image.asset(imgUrl??'images/insta.png',height: 35,width: 80,),
-              defaultSubtitleTextOne(
-                  context: context,
-                  text: isTextNotTitleKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}'),
-            ],
-          ),
+        child: Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+          child: RadioListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            activeColor: Theme.of(context).primaryColor,
+            title: Row(
+              children: [
+                Image.asset(imgUrl,height: 30,width: 50,fit: BoxFit.fill ,),SizedBox(width: 12.0,),
+                defaultSubtitleTextOne(
+                    context: context,
+                    text: isTextNotTitleKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}'),
+              ],
+            ),
 
-          value: index,
-          groupValue: radioTilePaymentResult,
-          onChanged: (value) {
-            setState(() {
-              print(value);
-              radioTilePaymentResult = value;
-            });
-          }, //  <-- leading Checkbox
+            value: index,
+            groupValue: radioTilePaymentResult,
+            onChanged: (value) {
+              setState(() {
+                print(value);
+                radioTilePaymentResult = value;
+              });
+            }, //  <-- leading Checkbox
+          ),
         ),
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -238,25 +244,35 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
                   children: [
 
                     radioTileCard(
-                      context: context,
-                      index: 1,
-                      titleKey: 'visa',
+                        context: context,
+                        index: 1,
+                        titleKey: 'visa',
+                        imgUrl: 'images/visa.png'
                     ),
                     radioTileCard(
                         context: context,
                         index:2,
                         titleKey: 'STC Pay',
-                        isTextNotTitleKey:true
+                        isTextNotTitleKey:true,
+                        imgUrl: 'images/stc_pay.png'
                     ),
                     radioTileCard(
-                      context: context,
-                      index: 3,
-                      titleKey: 'mada',
+                        context: context,
+                        index: 3,
+                        titleKey: 'mada',
+                        imgUrl: 'images/mada.png'
+                    ),
+                    radioTileCard(
+                        context: context,
+                        index: 4,
+                        titleKey: 'fawry',
+                        imgUrl: 'images/fawry_logo.png'
                     )
                     ,radioTileCard(
                         context: context,
-                        index: 4,
+                        index: 5,
                         titleKey: 'American Express',
+                        imgUrl: 'images/american_express.png',
                         isTextNotTitleKey:true
                     ),
                   ],

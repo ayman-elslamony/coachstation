@@ -84,7 +84,7 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                             bottom: 12.0, left: 10.0, right: 10.0),
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Colors.grey[300]),
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.0),
                             )),
@@ -126,7 +126,7 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                               ),
                             ),
                             Divider(
-                              color: Colors.grey[700],
+                              color: Colors.grey[300],
                               height: 2.3,
                             ),
                             Padding(

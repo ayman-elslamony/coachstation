@@ -19,19 +19,22 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: CheckboxListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: isSelected,
-        onChanged: (newValue) {
-          setState(() {
-            isSelected = newValue;
-          });
-        },
-        controlAffinity:
-            ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: CheckboxListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: isSelected,
+          onChanged: (newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          controlAffinity:
+              ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }
@@ -51,23 +54,26 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
+          border: Border.all(color: Colors.grey[300])),
       child: SizedBox(
 //        height: 50,
-        child: RadioListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-          activeColor: Theme.of(context).primaryColor,
-          title: defaultSubtitleTextOne(
-              context: context,
-              text: '${AppLocalizations.of(context).trans(titleKey)}'),
-          value: index,
-          groupValue: radioTileCardResult,
-          onChanged: (value) {
-            setState(() {
-              print(value);
-              radioTileCardResult = value;
-            });
-          }, //  <-- leading Checkbox
+        child: Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+          child: RadioListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            activeColor: Theme.of(context).primaryColor,
+            title: defaultSubtitleTextOne(
+                context: context,
+                text: '${AppLocalizations.of(context).trans(titleKey)}'),
+            value: index,
+            groupValue: radioTileCardResult,
+            onChanged: (value) {
+              setState(() {
+                print(value);
+                radioTileCardResult = value;
+              });
+            }, //  <-- leading Checkbox
+          ),
         ),
       ),
     );
@@ -287,7 +293,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                       bottom: 12.0, left: 10.0, right: 10.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: Colors.grey[300]),
                       borderRadius: BorderRadius.all(
                         Radius.circular(10.0),
                       )),
@@ -336,7 +342,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                         ),
                       ),
                       Divider(
-                        color: Colors.grey[700],
+                        color: Colors.grey[300],
                         height: 2.9,
                       ),
                       Padding(
@@ -404,7 +410,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                         ),
                       ),
                       Divider(
-                        color: Colors.grey[700],
+                        color: Colors.grey[300],
                         height: 2.9,
                       ),
                       Padding(
@@ -421,7 +427,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                         ),
                       ),
                       Divider(
-                        color: Colors.grey[700],
+                        color: Colors.grey[300],
                         height: 2.9,
                       ),
                       Text(
@@ -431,7 +437,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                             .headline4,
                       ),
                       Container(
-                        width: media.width*0.5,
+                        width: media.width*0.48,
                         height: 60.0,
                         margin: const EdgeInsets.symmetric(
                             vertical: 14.0),
@@ -442,7 +448,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                             style: TextStyle(
                               fontFamily: 'CairoBold',
                               color: Colors.white,
-                              fontSize: 17,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -491,6 +497,8 @@ class ReservationScreenStepThree extends StatefulWidget {
 class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree> {
 
   int radioTilePaymentResult = 0;
+
+
   Widget radioTileCard({BuildContext context, int index, String titleKey,bool isTextNotTitleKey=false,String imgUrl}) {
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
@@ -500,28 +508,31 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
+          border: Border.all(color: Colors.grey[300])),
       child: SizedBox(
-        child: RadioListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-          activeColor: Theme.of(context).primaryColor,
-          title: Row(
-            children: [
-              Image.asset(imgUrl??'images/insta.png',height: 35,width: 80,),
-              defaultSubtitleTextOne(
-                  context: context,
-                  text: isTextNotTitleKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}'),
-            ],
-          ),
+        child: Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+          child: RadioListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            activeColor: Theme.of(context).primaryColor,
+            title: Row(
+              children: [
+                Image.asset(imgUrl,height: 30,width: 50,fit: BoxFit.fill ,),SizedBox(width: 12.0,),
+                defaultSubtitleTextOne(
+                    context: context,
+                    text: isTextNotTitleKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}'),
+              ],
+            ),
 
-          value: index,
-          groupValue: radioTilePaymentResult,
-          onChanged: (value) {
-            setState(() {
-              print(value);
-              radioTilePaymentResult = value;
-            });
-          }, //  <-- leading Checkbox
+            value: index,
+            groupValue: radioTilePaymentResult,
+            onChanged: (value) {
+              setState(() {
+                print(value);
+                radioTilePaymentResult = value;
+              });
+            }, //  <-- leading Checkbox
+          ),
         ),
       ),
     );
@@ -572,22 +583,32 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
                       context: context,
                       index: 1,
                       titleKey: 'visa',
+                      imgUrl: 'images/visa.png'
                     ),
                     radioTileCard(
                       context: context,
                       index:2,
                       titleKey: 'STC Pay',
-                      isTextNotTitleKey:true
+                      isTextNotTitleKey:true,
+                        imgUrl: 'images/stc_pay.png'
                     ),
                     radioTileCard(
                       context: context,
                       index: 3,
                       titleKey: 'mada',
+                        imgUrl: 'images/mada.png'
+                    ),
+            radioTileCard(
+                      context: context,
+                      index: 4,
+                      titleKey: 'fawry',
+                        imgUrl: 'images/fawry_logo.png'
                     )
                     ,radioTileCard(
                       context: context,
-                      index: 4,
+                      index: 5,
                       titleKey: 'American Express',
+                        imgUrl: 'images/american_express.png',
                         isTextNotTitleKey:true
                     ),
                   ],

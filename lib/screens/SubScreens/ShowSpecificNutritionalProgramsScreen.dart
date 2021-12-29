@@ -144,7 +144,7 @@ class _ShowSpecificNutritionalProgramsScreenState
             Icon(
               Icons.arrow_forward_ios,
               size: 18.0,
-              color: isEnabled ? Colors.grey[800] : Colors.grey[400],
+              color: isEnabled ? Colors.grey[800] : Colors.grey[300],
             ),
           ],
         ),
@@ -224,7 +224,7 @@ class _ShowSpecificNutritionalProgramsScreenState
                                 context: context,
                                 textKey: 'program_details'),
                             SizedBox(
-                              width: media.width * 0.7,
+                              width: media.width * 0.78,
                               child: Text(
                                 ' لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى',
                                 maxLines: 4,
@@ -232,7 +232,7 @@ class _ShowSpecificNutritionalProgramsScreenState
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontFamily: 'CairoRegular',
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: Colors.grey[800],
                                   fontWeight: FontWeight.bold,
                                 ),

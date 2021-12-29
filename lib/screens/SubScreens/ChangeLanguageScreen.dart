@@ -21,21 +21,24 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: RadioListTile(
-        contentPadding: EdgeInsets.all(2.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: index,
-        groupValue: val,
-        onChanged: (value) {
-          setState(() {
-            print(value);
-            val = value;
-          });
-        },
-        controlAffinity:
-        ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: RadioListTile(
+          contentPadding: EdgeInsets.all(2.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: index,
+          groupValue: val,
+          onChanged: (value) {
+            setState(() {
+              print(value);
+              val = value;
+            });
+          },
+          controlAffinity:
+          ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }

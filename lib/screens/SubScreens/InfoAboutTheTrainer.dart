@@ -30,7 +30,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(
-                              color: Colors.grey,
+                              color: Colors.grey[300],
                             ),
                             borderRadius: BorderRadius.all(
                               Radius.circular(40.0),
@@ -44,6 +44,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                               fontSize: 22),
                         )),
                       ),
+                      SizedBox(),
                       defaultSubtitleTextTwo(
                         context: context,
                         text: '${AppLocalizations.of(context).trans('age')}',
@@ -53,7 +54,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                   Container(
                     width: 1,
                     height: 60,
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                   ),
                   Column(
                     children: [
@@ -85,7 +86,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: Colors.grey,
+                      color: Colors.grey[300],
                     ),
                     borderRadius: BorderRadius.all(
                       Radius.circular(12.0),
@@ -124,7 +125,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                             ),
                         separatorBuilder: (context, index) => Divider(
                               height: 2.0,
-                              color: Colors.grey[800],
+                              color: Colors.grey[300],
                             ),
                         itemCount: 4)
                   ],
@@ -138,7 +139,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: Colors.grey,
+                      color: Colors.grey[300],
                     ),
                     borderRadius: BorderRadius.all(
                       Radius.circular(12.0),

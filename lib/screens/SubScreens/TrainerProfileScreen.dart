@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import 'GoogleMapScreen.dart';
 import 'InfoAboutTheTrainer.dart';
 import 'TrainingPlaces.dart';
 
@@ -48,7 +49,6 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -57,8 +57,8 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                 AssetImage(
                   'images/arrowLeft.png',
                 ),
-                color: Colors.black87,
-                size: 18,
+                color: Colors.white,
+                size: 16,
               )),
         ),
         body: SingleChildScrollView(
@@ -68,6 +68,9 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 12.0,
+                    ),
                     CarouselSlider(
                       carouselController: _controller,
                       items: imgList
@@ -114,10 +117,7 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                                 vertical: 8.0, horizontal: 4.0),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: (Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Colors.white
-                                        : Colors.black)
+                                color: (Theme.of(context).accentColor)
                                     .withOpacity(
                                         _current == entry.key ? 0.9 : 0.4)),
                           ),
@@ -137,10 +137,13 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                             children: [
                               Text(
                                 'أنس حافظ',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.bodyText1,
                               ),
                               defaultSubtitleTextTwo(
                                   context: context, text: 'مدرب كراتية'),
+                              SizedBox(
+                                height: 5,
+                              ),
                               Row(
                                 children: [
                                   RatingBar.builder(
@@ -161,17 +164,7 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                                     },
                                   ),
                                   Spacer(),
-                                  ImageIcon(
-                                    AssetImage('images/locationMark.png'),
-                                    size: 15,
-                                    color: Colors.red,
-                                  ),
-                                  SizedBox(
-                                    width: 5.0,
-                                  ),
-                                  Expanded(
-                                      child: defaultSubtitleTextTwo(
-                                          context: context, text: 'الرياض')),
+                                  defaultLocationWithIcon(context: context,textLocation: 'الرياض')
                                 ],
                               )
                             ],
@@ -221,7 +214,7 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                     isScrollable: true,
                     labelColor: Theme.of(context).primaryColor,
                     indicatorColor: Theme.of(context).primaryColor,
-                    unselectedLabelColor: Colors.grey,
+                    unselectedLabelColor: Colors.white,
 //                    labelColor: Theme.of(context).primaryColor,
                     tabs: [
                       Tab(

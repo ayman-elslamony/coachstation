@@ -35,7 +35,7 @@ Widget showAvilableTimeInIntervalTime(
           children: [
             defaultShowTime(
                 context: context, textTime: startTime ?? 'من 30 10 ص'),
-            defaultShowTime(
+            SizedBox(width: 12.0,),defaultShowTime(
                 context: context, textTime: endTime ?? 'إلى 50 11 ص'),
           ],
         ),
@@ -53,7 +53,7 @@ Widget showCardAboutReservationPlace(
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-            color: Colors.grey,
+            color: Colors.grey[300],
           ),
           borderRadius: BorderRadius.all(
             Radius.circular(12.0),
@@ -64,7 +64,7 @@ Widget showCardAboutReservationPlace(
             padding: EdgeInsets.symmetric(horizontal: 15.0),
             height: 48,
             decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Colors.grey[300],
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(12.0),
                     topLeft: Radius.circular(12.0))),

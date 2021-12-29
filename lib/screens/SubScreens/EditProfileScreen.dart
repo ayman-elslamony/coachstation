@@ -63,6 +63,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               Theme.of(context).primaryColor,
                               child: CircleAvatar(
                                 radius: 18.0,
+                                backgroundColor: Theme.of(context).primaryColor,
                                 backgroundImage: AssetImage('images/camera.png'),
                               ),
                             ),

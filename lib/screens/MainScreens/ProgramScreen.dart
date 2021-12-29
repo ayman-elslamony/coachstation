@@ -47,7 +47,7 @@ class _ProgramScreenState extends State<ProgramScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(11.0)),
-                          border: Border.all(color: Colors.grey)),
+                          border: Border.all(color: Colors.grey[300])),
                       child: Row(
                         children: [
                           Stack(
@@ -70,7 +70,7 @@ class _ProgramScreenState extends State<ProgramScreen> {
                             children: [
                               Text(
                                 'برنامج غذائى 1',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.bodyText1,
                               ),
                               SizedBox(height: 8.0,),
                               showTextWithIcon(

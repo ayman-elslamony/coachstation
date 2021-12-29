@@ -45,7 +45,7 @@ class _AllNutritionalProgramsScreenState extends State<AllNutritionalProgramsScr
             isScrollable: true,
             labelColor: Theme.of(context).primaryColor,
             indicatorColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: Colors.grey,
+            unselectedLabelColor: Colors.white,
             tabs: [
               Tab(
                 text: '${AppLocalizations.of(context).trans('all')}',

@@ -20,7 +20,7 @@ class _ShowSpecificGymScreenState extends State<ShowSpecificGymScreen> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 int subscriptionsResult = 0;
-  Widget socialMediaWidget({String urlImg, Function function}) {
+  Widget socialMediaWidget({String urlImg, Function function,bool enableColor=false}) {
     return InkWell(
       onTap: function,
       child: Padding(
@@ -33,6 +33,7 @@ int subscriptionsResult = 0;
               fit: BoxFit.cover,
               width: 50,
               height: 50,
+              color: enableColor==true?defaultColor:null,
             ),
           ),
         ),
@@ -50,10 +51,9 @@ void getSubscriptionsResult(int selectSubscriptions){
 
     return DefaultTabController(
       length: 4,
-      initialIndex: 1,
+      initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -62,8 +62,7 @@ void getSubscriptionsResult(int selectSubscriptions){
                 AssetImage(
                   'images/arrowLeft.png',
                 ),
-                color: Colors.black87,
-                size: 18,
+                size: 16,
               )),
         ),
         body: SingleChildScrollView(
@@ -73,6 +72,7 @@ void getSubscriptionsResult(int selectSubscriptions){
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Column(
                   children: [
+                    SizedBox(height: 12.0,),
                     CarouselSlider(
                       carouselController: _controller,
                       items: imgList
@@ -119,12 +119,9 @@ void getSubscriptionsResult(int selectSubscriptions){
                                 vertical: 8.0, horizontal: 4.0),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: (Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Colors.white
-                                        : Colors.black)
-                                    .withOpacity(
-                                        _current == entry.key ? 0.9 : 0.4)),
+                                color: ( Theme.of(context).accentColor)
+                            .withOpacity(
+                        _current == entry.key ? 0.9 : 0.4)),
                           ),
                         );
                       }).toList(),
@@ -193,7 +190,7 @@ void getSubscriptionsResult(int selectSubscriptions){
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         socialMediaWidget(
-                            function: () {}, urlImg: 'images/insta.png'),
+                            function: () {}, urlImg: 'images/call.png',enableColor: true),
                         socialMediaWidget(
                             function: () {}, urlImg: 'images/whatapp.png'),
                         socialMediaWidget(
@@ -212,7 +209,7 @@ void getSubscriptionsResult(int selectSubscriptions){
                     isScrollable: true,
                     labelColor: Theme.of(context).primaryColor,
                     indicatorColor: Theme.of(context).primaryColor,
-                    unselectedLabelColor: Colors.grey,
+                    unselectedLabelColor: Colors.white,
 //                    labelColor: Theme.of(context).primaryColor,
                     tabs: [
                       Tab(
@@ -339,7 +336,7 @@ class AddressesForGym extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(11.0)),
-                    border: Border.all(color: Colors.grey)),
+                    border: Border.all(color: Colors.grey[300])),
                 child: Column(
                   children: [
                     SizedBox(
@@ -389,46 +386,48 @@ class _SubscriptionsInGymState extends State<SubscriptionsInGym> {
   }) {
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
-      child: RadioListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(
-            context: context,
-            text: '${AppLocalizations.of(context).trans(titleKey)}'),
-        subtitle: Row(
-          children: [
-            Text(
-              postfixTitle,
-              style: Theme.of(context).textTheme.headline3.copyWith(color: Theme.of(context).primaryColor),
-            ),
-            defaultSubtitleTextTwo(
-                context: context,
-                text: '  ${AppLocalizations.of(context).trans('instead_of')}  '),
-            Text(
-              prefixTitle,
-              style: Theme.of(context).textTheme.headline3.copyWith(
-                  decoration: TextDecoration.lineThrough,
-                color: Colors.grey
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: RadioListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: Text(
+            '${AppLocalizations.of(context).trans(titleKey)}',style: Theme.of(context).textTheme.headline3,),
+          subtitle: Row(
+            children: [
+              Text(
+                postfixTitle,
+                style: Theme.of(context).textTheme.headline3.copyWith(color: Theme.of(context).primaryColor),
               ),
-            ),
-          ],
+              defaultSubtitleTextTwo(
+                  context: context,
+                  text: '  ${AppLocalizations.of(context).trans('instead_of')}  '),
+              Text(
+                prefixTitle,
+                style: Theme.of(context).textTheme.headline3.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                  color: Colors.grey
+                ),
+              ),
+            ],
+          ),
+          value: index,
+          groupValue: widget.programTypeResult,
+          onChanged: (value) {
+            setState(() {
+              print(value);
+              widget.selectSubscriptions(value);
+              widget.programTypeResult = value;
+            });
+          }, //  <-- leading Checkbox
         ),
-        value: index,
-        groupValue: widget.programTypeResult,
-        onChanged: (value) {
-          setState(() {
-            print(value);
-            widget.selectSubscriptions(value);
-            widget.programTypeResult = value;
-          });
-        }, //  <-- leading Checkbox
       ),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
             12.0,
           ),
           color: Colors.white,
-          border: Border.all(color: Colors.grey[500])),
+          border: Border.all(color: Colors.grey[300])),
     );
   }
 

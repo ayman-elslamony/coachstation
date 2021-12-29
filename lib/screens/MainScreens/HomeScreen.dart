@@ -122,9 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color:
-                                (Theme.of(context).brightness == Brightness.dark
-                                        ? Colors.white
-                                        : Theme.of(context).accentColor)
+                            (Theme.of(context).accentColor)
                                     .withOpacity(
                                         _current == entry.key ? 0.9 : 0.4)),
                       ),
@@ -132,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }).toList(),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.only(right: 12.0),
                   child: Column(
                     children: [
                       Row(
@@ -219,6 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       subtitleOfHomeScreen(
+                          isHomeScreen: true,
                           function: () {
                             navigateTo(context, ShowAllGymsScreen());
                           }, context: context, textKey: 'gyms'),
@@ -242,6 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       subtitleOfHomeScreen(
+                        isHomeScreen: true,
                           function: () {
                             navigateTo(context, ShowAllArticlesScreen());
                           },
@@ -268,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
-                      SizedBox(height: 50,),
+                      SizedBox(height: 60,),
                     ],
                   ),
                 )

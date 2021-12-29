@@ -109,7 +109,7 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
                       horizontal: 10.0, vertical: 8.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: Colors.grey[300]),
                       borderRadius: BorderRadius.all(
                         Radius.circular(10.0),
                       )),

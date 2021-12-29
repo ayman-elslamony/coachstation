@@ -25,7 +25,9 @@ class _WeekProgressForSpecificExerciseState
       children: [
         Text(
           titleText,
-          style: Theme.of(context).textTheme.headline3
+          style: Theme.of(context).textTheme.headline3.copyWith(
+            color: Colors.grey[500]
+          )
         ),
         Text(
           subTitleText,
@@ -62,7 +64,7 @@ class _WeekProgressForSpecificExerciseState
                     bottom: 12.0,),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Colors.grey[300]),
                     borderRadius: BorderRadius.all(
                       Radius.circular(10.0),
                     )),
@@ -159,6 +161,7 @@ class _WeekProgressForSpecificExerciseState
                       ),
                       Icon(
                         Icons.arrow_forward_ios,
+                        color: Colors.grey[300],
                         size: 18.0,
                       ),
                     ],

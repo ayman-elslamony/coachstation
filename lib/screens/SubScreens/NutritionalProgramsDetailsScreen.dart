@@ -172,7 +172,7 @@ Widget showSelectedItem({int index}){
             25.0,
           ),
           color: Colors.white,
-          border: Border.all(color: Colors.grey[500])),
+          border: Border.all(color: Colors.grey[300])),
     );
   }
 
@@ -183,20 +183,23 @@ Widget showSelectedItem({int index}){
       height: 55.0,
       child:  SizedBox(
 //        height: 50,
-        child: RadioListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-          activeColor: Theme.of(context).primaryColor,
-          title: defaultSubtitleTextOne(
-              context: context,
-              text: '${AppLocalizations.of(context).trans(titleKey)}'),
-          value: index,
-          groupValue: programTypeResult,
-          onChanged: (value) {
-            setState(() {
-              print(value);
-             programTypeResult = value;
-            });
-          }, //  <-- leading Checkbox
+        child: Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+          child: RadioListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            activeColor: Theme.of(context).primaryColor,
+            title: defaultSubtitleTextOne(
+                context: context,
+                text: '${AppLocalizations.of(context).trans(titleKey)}'),
+            value: index,
+            groupValue: programTypeResult,
+            onChanged: (value) {
+              setState(() {
+                print(value);
+               programTypeResult = value;
+              });
+            }, //  <-- leading Checkbox
+          ),
         ),
       ),
       decoration: BoxDecoration(
@@ -204,7 +207,7 @@ Widget showSelectedItem({int index}){
             25.0,
           ),
           color: Colors.white,
-          border: Border.all(color: Colors.grey[500])),
+          border: Border.all(color: Colors.grey[300])),
     );
   }
 
@@ -344,21 +347,24 @@ class _CheckedBoxLevelState extends State<CheckedBoxLevel> {
   Widget showRaisedButton({BuildContext context, int index, String titleKey}) {
     return SizedBox(
       height: 50,
-      child: RadioListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 30.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(
-            context: context,
-            text: '${AppLocalizations.of(context).trans(titleKey)}'),
-        value: index,
-        groupValue: widget.result,
-        onChanged: (value) {
-          setState(() {
-            print(value);
-            widget.onChange(value);
-            widget.result = value;
-          });
-        }, //  <-- leading Checkbox
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: RadioListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 30.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(
+              context: context,
+              text: '${AppLocalizations.of(context).trans(titleKey)}'),
+          value: index,
+          groupValue: widget.result,
+          onChanged: (value) {
+            setState(() {
+              print(value);
+              widget.onChange(value);
+              widget.result = value;
+            });
+          }, //  <-- leading Checkbox
+        ),
       ),
     );
   }

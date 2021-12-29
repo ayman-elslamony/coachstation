@@ -19,20 +19,23 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: RadioListTile(
-        groupValue: true,
-        contentPadding: EdgeInsets.all(2.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: isSelected,
-        onChanged: (newValue) {
-          setState(() {
-            isSelected = newValue;
-          });
-        },
-        controlAffinity:
-        ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: RadioListTile(
+          groupValue: true,
+          contentPadding: EdgeInsets.all(2.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: isSelected,
+          onChanged: (newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          controlAffinity:
+          ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }
@@ -77,7 +80,7 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
                           SizedBox(height: 15.0,)
                         ]),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                      padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
                       child: ExpansionTile(
                           title: new Text(
                             '${AppLocalizations.of(context).trans('salary')}',
@@ -118,7 +121,7 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
                   defaultButton(
                       function: () {},
                       width: media.width * 0.4,
-                      background: Colors.grey,
+                      background: Colors.grey[300],
                       text:
                       '${AppLocalizations.of(context).trans('reset')}')
                 ],

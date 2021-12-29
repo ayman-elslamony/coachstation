@@ -17,19 +17,22 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: CheckboxListTile(
-        contentPadding: EdgeInsets.all(2.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: isSelected,
-        onChanged: (newValue) {
-          setState(() {
-            isSelected = newValue;
-          });
-        },
-        controlAffinity:
-            ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: CheckboxListTile(
+          contentPadding: EdgeInsets.all(2.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: isSelected,
+          onChanged: (newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          controlAffinity:
+              ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }
@@ -66,6 +69,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                       isSelected: true),
                   checkedBoxCard(
                       context: context, text: 'كرة قدم', isSelected: false),
+                  SizedBox(height: 12.0,),
                 ]),
 
             Padding(
@@ -87,6 +91,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                         context: context, text: 'أنثى', isSelected: false),
                     checkedBoxCard(
                         context: context, text: 'ذكر', isSelected: true),
+                    SizedBox(height: 12.0,),
                   ]),
             ),
 
@@ -104,7 +109,10 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   collapsedIconColor: Color(0xFF142c43),
                   collapsedBackgroundColor: Colors.white,
 
-                  children: <Widget>[]),
+                  children: <Widget>[
+
+                    SizedBox(height: 12.0,),
+                  ]),
             ),
 
             Padding(
@@ -124,8 +132,9 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   children: <Widget>[
                     checkedBoxCard(
                         context: context,
-                        text: 'كرة قدم',
+                        text: 'أعلى تقييم',
                         isSelected: false),
+                    SizedBox(height: 12.0,),
                   ]),
             ),
     SizedBox(height:100,),
@@ -141,7 +150,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   defaultButton(
                       function: () {},
                       width: media.width * 0.4,
-                      background: Colors.grey,
+                      background: Colors.grey[300],
                       text:
                       '${AppLocalizations.of(context).trans('reset')}')
                 ],

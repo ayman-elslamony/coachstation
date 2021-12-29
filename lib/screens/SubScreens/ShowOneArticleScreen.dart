@@ -29,6 +29,7 @@ class _ShowOneArticleScreenState
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 12.0,),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: Image.network(

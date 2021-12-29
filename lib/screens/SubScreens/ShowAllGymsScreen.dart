@@ -38,8 +38,8 @@ class _ShowAllGymsScreenState extends State<ShowAllGymsScreen> {
                 onPressed: () {
                   navigateTo(context, FilterAllGymScreen());
                 },
-                icon: Icon(Icons.edgesensor_high_outlined)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+                icon: Image.asset("images/filter.png",color: Colors.white,height: 30)),
+            IconButton(onPressed: () {}, icon: Image.asset("images/search.png",height: 20,)),
           ],
           title: Text(
             '${AppLocalizations.of(context).trans('gyms')}',
@@ -49,7 +49,7 @@ class _ShowAllGymsScreenState extends State<ShowAllGymsScreen> {
             isScrollable: true,
             labelColor: Theme.of(context).primaryColor,
             indicatorColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: Colors.grey,
+            unselectedLabelColor: Colors.white,
             tabs: [
               Tab(
                 text: '${AppLocalizations.of(context).trans('all')}',
@@ -92,7 +92,7 @@ class _ShowAllGymsScreenState extends State<ShowAllGymsScreen> {
                       imageUrl: imgList[index],
                       cardWidth: media.width,
                       containerTextWidth: media.width * 0.62,
-                      cardHeight: media.height * 0.25),
+                      cardHeight: media.height * 0.22),
                   itemCount: 5,
                 ),
                 SizedBox(),

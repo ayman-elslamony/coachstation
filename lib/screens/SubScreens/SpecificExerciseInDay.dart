@@ -1,6 +1,7 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/screens/SubScreens/ShowHowDoExercise.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,27 +36,26 @@ class _SpecificExerciseInDayState extends State<SpecificExerciseInDay> {
     final media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: defaultAppBar(
-          context: context,
-          titleKey: widget.title,
-          isTextNotKey: true
-      ),
+          context: context, titleKey: widget.title, isTextNotKey: true),
       body: SizedBox(
         width: media.width,
         height: media.height,
         child: ListView.builder(
           itemBuilder: (context, index) => InkWell(
             onTap: () {
-              navigateTo(context, ShowHowDoExercise(
-                title: 'Bench Press',
-              ));
+              navigateTo(
+                  context,
+                  ShowHowDoExercise(
+                    title: 'Bench Press',
+                  ));
             },
             child: Container(
               width: media.width * 0.95,
-              margin: const EdgeInsets.only(
-                  bottom: 12.0, left: 10.0, right: 10.0),
+              margin:
+                  const EdgeInsets.only(bottom: 12.0, left: 10.0, right: 10.0),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Colors.grey[300]),
                   borderRadius: BorderRadius.all(
                     Radius.circular(10.0),
                   )),
@@ -77,61 +77,59 @@ class _SpecificExerciseInDayState extends State<SpecificExerciseInDay> {
                         ),
                         Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Front Pullups',
+                                  style: Theme.of(context).textTheme.headline4),
+                              Row(
                                 children: [
-                                  Text(
-                                    'Front Pullups',
-                                      style: Theme.of(context).textTheme.headline4
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
+                                  Column(
+                                    crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                        children: [
-                                          showExerciseDetails(
-                                              text:
+                                    children: [
+                                      showExerciseDetails(
+                                          text:
                                               '${AppLocalizations.of(context).trans('groups')}'),
-                                          showExerciseDetails(
-                                              text:
+                                      showExerciseDetails(
+                                          text:
                                               '${AppLocalizations.of(context).trans('counters')}'),
-                                          showExerciseDetails(
-                                              text:
+                                      showExerciseDetails(
+                                          text:
                                               '${AppLocalizations.of(context).trans('comfort')}'),
-                                        ],
-                                      ),
-                                      SizedBox(width: 25.0,),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            showExerciseDetails(text: '3'),
-                                            showExerciseDetails(
-                                                text: '8-10-12'),
-                                            showExerciseDetails(
-                                                text: '30 sec'),
-                                          ],
-                                        ),
-                                      ),
                                     ],
-                                  )
+                                  ),
+                                  SizedBox(
+                                    width: 25.0,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        showExerciseDetails(text: '3'),
+                                        showExerciseDetails(text: '8-10-12'),
+                                        showExerciseDetails(text: '30 sec'),
+                                      ],
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            )),
+                              )
+                            ],
+                          ),
+                        )),
                         Icon(
                           Icons.arrow_forward_ios,
+                          color: Colors.grey[300],
                           size: 18.0,
                         ),
                       ],
                     ),
                   ),
                   Divider(
-                    color: Colors.grey[700],
+                    color: Colors.grey[300],
                     height: 2.3,
                   ),
                   Padding(
@@ -147,12 +145,11 @@ class _SpecificExerciseInDayState extends State<SpecificExerciseInDay> {
                         SizedBox(
                           width: 8.0,
                         ),
-                        Text(
-                          'تم عمل التمرين',
-                            style: Theme.of(context).textTheme.headline3.copyWith(
-                              color: Colors.green
-                            )
-                        ),
+                        Text('تم عمل التمرين',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline3
+                                .copyWith(color: Colors.green)),
                       ],
                     ),
                   ),
@@ -162,7 +159,26 @@ class _SpecificExerciseInDayState extends State<SpecificExerciseInDay> {
           ),
           itemCount: 8,
         ),
-      )
+      ),
+      bottomNavigationBar: Consumer<ChangeIndex>(
+        builder: (context, changeIndex, child) => bottomNavigationBar(
+            context: context,
+            onTap: (index) {
+              setState(() {
+                changeIndex.index = index;
+              });
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        NavigationHome(),
+                    transitionDuration: Duration(seconds: 0),
+                  ),
+                  (Route<dynamic> route) => false);
+            },
+            media: media,
+            currentIndex: changeIndex.index),
+      ),
     );
   }
 }

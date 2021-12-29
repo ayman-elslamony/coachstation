@@ -56,8 +56,8 @@ Widget defaultShowTime({BuildContext context, String textTime}) {
               Radius.circular(20),
             ),
           ),
-          width: 12,
-          height: 12,
+          width: 11,
+          height: 11,
           child: SizedBox()),
       SizedBox(
         width: 5.0,
@@ -95,7 +95,7 @@ Widget defaultCard({
               ),
             ),
             Container(
-              height: textSubTitleOne!=null?52:35,
+              height: textSubTitleOne!=null?52:33,
               width: containerTextWidth,
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
@@ -136,7 +136,7 @@ Widget defaultCard({
               ],):Center(
             child: Text(
               textTitle,
-              style: Theme.of(context).textTheme.headline2
+              style: Theme.of(context).textTheme.bodyText1
             ),
     ),
             ),
@@ -170,6 +170,7 @@ Widget subtitleOfHomeScreen({
   Function function,
   BuildContext context,
   String textKey,
+  bool isHomeScreen=false,
   bool isEnableSpaceBeforeArrow=false
 }) {
   return InkWell(
@@ -185,6 +186,7 @@ Widget subtitleOfHomeScreen({
   Icon(
           Icons.arrow_forward_ios,
           size: 18.0,
+    color: isHomeScreen==true?Colors.grey[800]:Colors.grey[300],
         ),
         isEnableSpaceBeforeArrow ==false? Spacer():SizedBox()
       ],
@@ -230,7 +232,7 @@ Widget defaultArticle({
                 width: articleWidth,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Colors.grey[200]),
                     borderRadius: BorderRadius.all(
                       Radius.circular(10.0),
                     )),
@@ -268,11 +270,9 @@ Widget defaultTextButton({
       onPressed: function,
       child: Text(
         '${AppLocalizations.of(context).trans(textKey)}',
-        style: TextStyle(
-          fontFamily: 'CairoRegular',
-          color: defaultColor,
-          fontSize: 18,
-        ),
+        style:Theme.of(context).textTheme.headline3.copyWith(
+          color: defaultColor
+        )
       ),
     );
 
@@ -280,11 +280,9 @@ Widget defaultSubtitleTextOne(
         {@required BuildContext context, @required String text, Color color}) =>
     Text(
       text,
-      style: TextStyle(
-        fontFamily: 'CairoBold',
-        fontSize: 14,
-        color: color ?? Colors.grey[800],
-      ),
+      style: Theme.of(context).textTheme.bodyText1.copyWith(
+        color: color??Colors.grey[800]
+      )
     );
 Widget showTextWithIcon(
     {@required BuildContext context, String iconUrl, String titleText}) {
@@ -305,7 +303,7 @@ Widget showTextWithIcon(
 Widget showAvilableTimeInOneDay(
     {BuildContext context, String dayName, String startTime, String endTime}) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 13.0),
+    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
     child: Column(
       children: [
         Container(
@@ -334,7 +332,7 @@ Widget defaultSubtitleTextTwo(
     Text(
       text,
       style: Theme.of(context).textTheme.headline1.copyWith(
-        height: 1.4,
+        height: 1.5,
         color: textColor ?? Colors.grey[700],
       )
     );
@@ -344,10 +342,10 @@ Widget defaultTrainerCard({BuildContext context,Function onTap}) {
       child: Padding(
         padding: const EdgeInsets.only(bottom:  11.0,left: 0.0,right: 0.0),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(11.0)),
-              border: Border.all(color: Colors.grey)),
+              border: Border.all(color: Colors.grey[300])),
           child: Row(
             children: [
               Stack(
@@ -389,11 +387,12 @@ Widget defaultTrainerCard({BuildContext context,Function onTap}) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'النادى الرياضى',
-                      style: Theme.of(context).textTheme.headline3,
+                      'علاء صالح',
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     defaultSubtitleTextTwo(
-                        context: context, text: 'المدرب محمد سيد'),
+                        context: context, text: 'اللياقة والعلاج الطبيعى'),
+                    const SizedBox(height: 4.0,),
                     Row(
                       children: [
                         RatingBar.builder(
@@ -442,10 +441,10 @@ Widget bottomNavigationBar({@required BuildContext context,@required Size media,
       ),
       boxShadow: [
         BoxShadow(
-          color: Colors.grey.withOpacity(0.2),
-          spreadRadius: 0.0,
-          blurRadius: 0.0,
-          offset: Offset(0, 3), // changes position of shadow
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 5,
+          blurRadius: 7,
+          offset: const Offset(0, 3), // changes position of shadow
         ),
       ],
     ),

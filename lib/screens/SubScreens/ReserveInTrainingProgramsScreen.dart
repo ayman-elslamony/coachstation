@@ -26,19 +26,22 @@ class _ReserveInTrainingProgramsScreenState
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: CheckboxListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: isSelected,
-        onChanged: (newValue) {
-          setState(() {
-            isSelected = newValue;
-          });
-        },
-        controlAffinity:
-            ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: CheckboxListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: isSelected,
+          onChanged: (newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          controlAffinity:
+              ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }
@@ -266,19 +269,22 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
-      child: CheckboxListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(context: context, text: text),
-        value: isSelected,
-        onChanged: (newValue) {
-          setState(() {
-            isSelected = newValue;
-          });
-        },
-        controlAffinity:
-            ListTileControlAffinity.leading, //  <-- leading Checkbox
+          border: Border.all(color: Colors.grey[300])),
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: CheckboxListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: defaultSubtitleTextOne(context: context, text: text),
+          value: isSelected,
+          onChanged: (newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          controlAffinity:
+              ListTileControlAffinity.leading, //  <-- leading Checkbox
+        ),
       ),
     );
   }
@@ -299,23 +305,26 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
+          border: Border.all(color: Colors.grey[300])),
       child: SizedBox(
 //        height: 50,
-        child: RadioListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-          activeColor: Theme.of(context).primaryColor,
-          title: defaultSubtitleTextOne(
-              context: context,
-              text: '${AppLocalizations.of(context).trans(titleKey)}'),
-          value: index,
-          groupValue: radioTileCardResult,
-          onChanged: (value) {
-            setState(() {
-              print(value);
-              radioTileCardResult = value;
-            });
-          }, //  <-- leading Checkbox
+        child: Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+          child: RadioListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            activeColor: Theme.of(context).primaryColor,
+            title: defaultSubtitleTextOne(
+                context: context,
+                text: '${AppLocalizations.of(context).trans(titleKey)}'),
+            value: index,
+            groupValue: radioTileCardResult,
+            onChanged: (value) {
+              setState(() {
+                print(value);
+                radioTileCardResult = value;
+              });
+            }, //  <-- leading Checkbox
+          ),
         ),
       ),
     );
@@ -389,7 +398,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(11.0),
                                   ),
-                                  border: Border.all(color: Colors.grey)),
+                                  border: Border.all(color: Colors.grey[300])),
                               child: ListTile(
                                 onTap: () async {
                                   bool waitResult = await Navigator.push(
@@ -413,6 +422,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                 ),
                                 trailing: Icon(
                                   Icons.arrow_forward_ios,
+                                  color: Colors.grey[300],
                                   size: 17.0,
                                 ),
                               ),
@@ -423,7 +433,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                               decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(11.0)),
-                                  border: Border.all(color: Colors.grey)),
+                                  border: Border.all(color: Colors.grey[300])),
                               child: Row(
                                 children: [
                                   Stack(
@@ -441,7 +451,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                       ),
                                       Positioned(
                                         child: CircleAvatar(
-                                          radius: 15,
+                                          radius: 11,
                                           child: ClipOval(
                                             child: Image.asset(
                                               "images/allah.png",
@@ -467,35 +477,32 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'النادى الرياضى',
+                                          'علاء صالح',
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline2,
                                         ),
                                         defaultSubtitleTextTwo(
                                             context: context,
-                                            text: 'المدرب محمد سيد'),
-                                        Row(
-                                          children: [
-                                            RatingBar.builder(
-                                              initialRating: 4,
-                                              minRating: 1,
-                                              itemSize: 15,
-                                              direction: Axis.horizontal,
-                                              allowHalfRating: true,
-                                              itemCount: 4,
-                                              itemPadding: EdgeInsets.symmetric(
-                                                  horizontal: 4.0),
-                                              itemBuilder: (context, _) =>
-                                                  ImageIcon(
-                                                AssetImage('images/star.png'),
-                                                color: Colors.amber,
-                                              ),
-                                              onRatingUpdate: (rating) {
-                                                print(rating);
-                                              },
-                                            ),
-                                          ],
+                                            text: 'اللياقة والعلاج الطبيعى'),
+                                        SizedBox(height: 7.0,),
+                                        RatingBar.builder(
+                                          initialRating: 4,
+                                          minRating: 1,
+                                          itemSize: 15,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
+                                          itemCount: 4,
+                                          itemPadding: EdgeInsets.symmetric(
+                                              horizontal: 4.0),
+                                          itemBuilder: (context, _) =>
+                                              ImageIcon(
+                                            AssetImage('images/star.png'),
+                                            color: Colors.amber,
+                                          ),
+                                          onRatingUpdate: (rating) {
+                                            print(rating);
+                                          },
                                         )
                                       ],
                                     ),
@@ -509,7 +516,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                       icon: ImageIcon(
                                         AssetImage('images/deleteIcon.png'),
                                         color: Colors.red,
-                                        size: 20.0,
+                                        size: 18.0,
                                       ))
                                 ],
                               ),
@@ -664,47 +671,50 @@ class _ReservationScreenStepThreeState
   }) {
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
-      child: RadioListTile(
-        isThreeLine: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 0.0),
-        activeColor: Theme.of(context).primaryColor,
-        title: Text(
-            '${AppLocalizations.of(context).trans(titleKey)}'),
-        subtitle: Row(
-          children: [
-            Text(
-              postfixTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline3
-                  .copyWith(color: Theme.of(context).primaryColor),
-            ),
-            defaultSubtitleTextTwo(
-                context: context,
-                text:
-                    '  ${AppLocalizations.of(context).trans('instead_of')}  '),
-            Text(
-              prefixTitle,
-              style: Theme.of(context).textTheme.headline3.copyWith(
-                  decoration: TextDecoration.lineThrough, color: Colors.grey),
-            ),
-          ],
+      child: Theme(
+        data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+        child: RadioListTile(
+          isThreeLine: true,
+          contentPadding: EdgeInsets.symmetric(horizontal: 0.0),
+          activeColor: Theme.of(context).primaryColor,
+          title: Text(
+              '${AppLocalizations.of(context).trans(titleKey)}',style: Theme.of(context).textTheme.headline3,),
+          subtitle: Row(
+            children: [
+              Text(
+                postfixTitle,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3
+                    .copyWith(color: Theme.of(context).primaryColor),
+              ),
+              defaultSubtitleTextTwo(
+                  context: context,
+                  text:
+                      '  ${AppLocalizations.of(context).trans('instead_of')}  '),
+              Text(
+                prefixTitle,
+                style: Theme.of(context).textTheme.headline3.copyWith(
+                    decoration: TextDecoration.lineThrough, color: Colors.grey),
+              ),
+            ],
+          ),
+          value: index,
+          groupValue: programTypeResult,
+          onChanged: (value) {
+            setState(() {
+              print(value);
+              programTypeResult = value;
+            });
+          }, //  <-- leading Checkbox
         ),
-        value: index,
-        groupValue: programTypeResult,
-        onChanged: (value) {
-          setState(() {
-            print(value);
-            programTypeResult = value;
-          });
-        }, //  <-- leading Checkbox
       ),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
             12.0,
           ),
           color: Colors.white,
-          border: Border.all(color: Colors.grey[500])),
+          border: Border.all(color: Colors.grey[300])),
     );
   }
 
@@ -863,7 +873,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                     bottom: 12.0, left: 10.0, right: 10.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Colors.grey[300]),
                     borderRadius: BorderRadius.all(
                       Radius.circular(10.0),
                     )),
@@ -921,7 +931,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                       ),
                     ),
                     Divider(
-                      color: Colors.grey[700],
+                      color: Colors.grey[300],
                       height: 2.9,
                     ),
                     Padding(
@@ -951,7 +961,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             height: 20.0,
                           ),
                           Divider(
-                            color: Colors.grey[700],
+                            color: Colors.grey[300],
                             height: 2.9,
                           ),
                           Row(
@@ -977,7 +987,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             height: 2.0,
                           ),
                           Divider(
-                            color: Colors.grey[700],
+                            color: Colors.grey[300],
                             height: 2.9,
                           ),
                           Row(
@@ -1000,7 +1010,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             ),
                           ),
                           Divider(
-                            color: Colors.grey[700],
+                            color: Colors.grey[300],
                             height: 2.9,
                           ),
                           Row(
@@ -1023,7 +1033,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             ),
                           ),
                           Divider(
-                            color: Colors.grey[700],
+                            color: Colors.grey[300],
                             height: 2.9,
                           ),
                         ],
@@ -1103,12 +1113,8 @@ class ReservationScreenStepFive extends StatefulWidget {
 class _ReservationScreenStepFiveState extends State<ReservationScreenStepFive> {
   int radioTilePaymentResult = 0;
 
-  Widget radioTileCard(
-      {BuildContext context,
-      int index,
-      String titleKey,
-      bool isTextNotTitleKey = false,
-      String imgUrl}) {
+
+  Widget radioTileCard({BuildContext context, int index, String titleKey,bool isTextNotTitleKey=false,String imgUrl}) {
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
       width: 330,
@@ -1117,39 +1123,35 @@ class _ReservationScreenStepFiveState extends State<ReservationScreenStepFive> {
           borderRadius: BorderRadius.all(
             Radius.circular(11.0),
           ),
-          border: Border.all(color: Colors.grey)),
+          border: Border.all(color: Colors.grey[300])),
       child: SizedBox(
-        child: RadioListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-          activeColor: Theme.of(context).primaryColor,
-          title: Row(
-            children: [
-              Image.asset(
-                imgUrl ?? 'images/insta.png',
-                height: 35,
-                width: 80,
-              ),
-              defaultSubtitleTextOne(
-                  context: context,
-                  text: isTextNotTitleKey
-                      ? titleKey
-                      : '${AppLocalizations.of(context).trans(titleKey)}'),
-            ],
-          ),
+        child: Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.grey[300]),
+          child: RadioListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            activeColor: Theme.of(context).primaryColor,
+            title: Row(
+              children: [
+                Image.asset(imgUrl,height: 30,width: 50,fit: BoxFit.fill ,),SizedBox(width: 12.0,),
+                defaultSubtitleTextOne(
+                    context: context,
+                    text: isTextNotTitleKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}'),
+              ],
+            ),
 
-          value: index,
-          groupValue: radioTilePaymentResult,
-          onChanged: (value) {
-            setState(() {
-              print(value);
-              radioTilePaymentResult = value;
-            });
-          }, //  <-- leading Checkbox
+            value: index,
+            groupValue: radioTilePaymentResult,
+            onChanged: (value) {
+              setState(() {
+                print(value);
+                radioTilePaymentResult = value;
+              });
+            }, //  <-- leading Checkbox
+          ),
         ),
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
@@ -1190,25 +1192,37 @@ class _ReservationScreenStepFiveState extends State<ReservationScreenStepFive> {
                 Column(
                   children: [
                     radioTileCard(
-                      context: context,
-                      index: 1,
-                      titleKey: 'visa',
+                        context: context,
+                        index: 1,
+                        titleKey: 'visa',
+                        imgUrl: 'images/visa.png'
                     ),
                     radioTileCard(
                         context: context,
-                        index: 2,
+                        index:2,
                         titleKey: 'STC Pay',
-                        isTextNotTitleKey: true),
+                        isTextNotTitleKey:true,
+                        imgUrl: 'images/stc_pay.png'
+                    ),
                     radioTileCard(
-                      context: context,
-                      index: 3,
-                      titleKey: 'mada',
+                        context: context,
+                        index: 3,
+                        titleKey: 'mada',
+                        imgUrl: 'images/mada.png'
                     ),
                     radioTileCard(
                         context: context,
                         index: 4,
+                        titleKey: 'fawry',
+                        imgUrl: 'images/fawry_logo.png'
+                    )
+                    ,radioTileCard(
+                        context: context,
+                        index: 5,
                         titleKey: 'American Express',
-                        isTextNotTitleKey: true),
+                        imgUrl: 'images/american_express.png',
+                        isTextNotTitleKey:true
+                    ),
                   ],
                 ),
                 Container(
