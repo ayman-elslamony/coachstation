@@ -2,7 +2,7 @@ import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
 import 'package:coachstation/screens/SubScreens/TrainerProfileScreen.dart';
-import 'package:coachstation/screens/SubScreens/filterTrainerScreen.dart';
+import 'package:coachstation/screens/SubScreens/FilterTrainerScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
@@ -38,8 +38,6 @@ class _TrainersScreenState extends State<TrainersScreen> {
     _refreshController.refreshCompleted();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
@@ -48,21 +46,23 @@ class _TrainersScreenState extends State<TrainersScreen> {
       controller: _refreshController,
       onRefresh: _onRefresh,
       child: Consumer<ChangeIndex>(
-          builder: (context, changeIndex, child) =>
-          Scaffold(
-            appBar: defaultAppBar(
+        builder: (context, changeIndex, child) => Scaffold(
+          appBar: defaultAppBar(
               enableLeading: false,
-                context: context, titleKey: 'trainer',
-                onClickedBackButton: (){
-                  changeIndex.changeIndexFunction(0);
-                },
-                actions: [
-                  IconButton(
-                      onPressed: () {
-                        navigateTo(context, FilterTrainerScreen());
-                      }, icon: Icon(Icons.edgesensor_high_outlined)),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-                ]),
+              context: context,
+              titleKey: 'trainer',
+              automaticallyImplyLeading: false,
+              onClickedBackButton: () {
+                changeIndex.changeIndexFunction(0);
+              },
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      navigateTo(context, FilterTrainerScreen());
+                    },
+                    icon: Image.asset("images/filter.png",color: Colors.white,height: 30)),
+                IconButton(onPressed: () {}, icon: Image.asset("images/search.png",height: 20,)),
+              ]),
           body: SizedBox(
             height: media.height,
             width: media.width,
@@ -70,16 +70,16 @@ class _TrainersScreenState extends State<TrainersScreen> {
               padding: const EdgeInsets.all(18.0),
               child: ListView.builder(
                 itemBuilder: (context, index) => defaultTrainerCard(
-                  onTap: (){
-                    navigateTo(context, TrainerProfileScreen());
-                  },
-                  context: context
-                ),
+                    onTap: () {
+                      navigateTo(context, TrainerProfileScreen());
+                    },
+                    context: context),
                 itemCount: 9,
               ),
             ),
           ),
         ),
-      ),);
+      ),
+    );
   }
 }

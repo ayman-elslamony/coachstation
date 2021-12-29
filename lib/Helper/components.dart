@@ -682,9 +682,11 @@ Widget defaultAppBar(
         String titleKey,
           bool enableLeading=true,
           bool isTextNotKey=false,
+          bool automaticallyImplyLeading =true,
         List<Widget> actions,
         Function onClickedBackButton}) =>
     AppBar(
+      automaticallyImplyLeading: automaticallyImplyLeading,
       leading: enableLeading==true?IconButton(
           onPressed: onClickedBackButton == null
               ? () {

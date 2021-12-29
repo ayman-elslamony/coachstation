@@ -1,3 +1,4 @@
+import 'package:coachstation/Screens/IntroScreens/SplashScreen.dart';
 import 'package:coachstation/Screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/provider/locale_provider.dart';
 import 'package:coachstation/screens/SubScreens/ShowPresentScreen.dart';
@@ -19,7 +20,6 @@ import 'Localization/app_localization_delegate.dart';
 import 'provider/changeIndexPage.dart';
 import 'screens/IntroScreens/LoginScreen.dart';
 import 'screens/IntroScreens/RegisterScreen.dart';
-import 'screens/IntroScreens/SplashScreen.dart';
 
 const domain = "https://wekala.greencodet.com";
 const photosPreUrl = "https://wekala.greencodet.com/storage/";
@@ -213,7 +213,7 @@ class _MyAppState extends State<MyApp> {
                   titleTextStyle: TextStyle(
                       fontFamily: 'CairoBold',
                       color: const Color(0xffffffff),
-                      fontSize: 15),
+                      fontSize: 20),
                   color: Color(0xFF142c43),
                   iconTheme: const IconThemeData(
                     color: Color(0xffffffff),
@@ -303,7 +303,7 @@ class _MyAppState extends State<MyApp> {
                     ),
                 fontFamily: 'DIN'),
             title: 'Coach Station',
-            home: NavigationHome(),
+            home: SplashScreen(),
 //
 //          ShowPresentScreen(),
             //SplashScreen(),
