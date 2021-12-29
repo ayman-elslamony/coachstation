@@ -39,9 +39,8 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                             child: Text(
                           '43',
                           style: TextStyle(
-                              fontFamily: 'CairoRegular',
+                              fontFamily: 'CairoBold',
                               color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
                               fontSize: 22),
                         )),
                       ),
@@ -103,12 +102,9 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                       child: Center(
                         child: Text(
                           '${AppLocalizations.of(context).trans('certificates')}',
-                          style: TextStyle(
-                            fontFamily: 'CairoRegular',
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.headline3.copyWith(
+                            color: Colors.white
+                          )
                         ),
                       ),
                     ),
@@ -123,7 +119,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                               child: Center(
                                 child: Text('Advance Certification DRT And NDR',
                                     style:
-                                        Theme.of(context).textTheme.headline3),
+                                        Theme.of(context).textTheme.headline2),
                               ),
                             ),
                         separatorBuilder: (context, index) => Divider(
@@ -159,11 +155,8 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                       child: Center(
                         child: Text(
                           '${AppLocalizations.of(context).trans('information_about_the_coach')}',
-                          style: TextStyle(
-                            fontFamily: 'CairoRegular',
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                          style: Theme.of(context).textTheme.headline3.copyWith(
+                              color: Colors.white
                           ),
                         ),
                       ),
@@ -179,7 +172,7 @@ class _InfoAboutTheTrainerState extends State<InfoAboutTheTrainer> {
                           Expanded(
                             child: Text(
                                 'Advance Certification DRT And NDR Advance Certification DRT And NDR Advance Certification DRT And NDR Advance Certification DRT And NDR Advance Certification DRT And NDR Advance Certification DRT And NDR Advance Certification DRT And NDR ',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.headline2,
                               maxLines: 5,
                               overflow:  TextOverflow.ellipsis,
                               textAlign: TextAlign.center,

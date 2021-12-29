@@ -1,7 +1,10 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/screens/SubScreens/ProgramDetailsScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import 'WeekProgressForSpecificExercise.dart';
@@ -18,29 +21,23 @@ class ShowSpecificVirtualExerciseDetails extends StatefulWidget {
 
 class _ShowSpecificVirtualExerciseDetailsState
     extends State<ShowSpecificVirtualExerciseDetails> {
-  Widget showExerciseDetails({String titleText, String subTitleText}) {
+  Widget showExerciseDetails({String titleText, String subTitleText,BuildContext context}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           titleText,
-          style: TextStyle(
-            fontFamily: 'CairoRegular',
-            fontSize: 15,
-            color: Colors.grey[800],
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.headline2.copyWith(
+            height: 1.7
+          )
         ),
         Text(
           subTitleText,
-          style: TextStyle(
-            height: 1.2,
-            fontFamily: 'CairoRegular',
-            fontSize: 12,
-            color: Colors.grey[800],
-            fontWeight: FontWeight.bold,
-          ),
+            style: Theme.of(context).textTheme.headline1.copyWith(
+                height: 1.2,
+              color: Colors.grey[800]
+            )
         ),
       ],
     );
@@ -153,7 +150,7 @@ class _ShowSpecificVirtualExerciseDetailsState
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 18,
+                  size: 15,
                 )),
             title: Text(
               widget.titleOfExercise,
@@ -188,11 +185,16 @@ class _ShowSpecificVirtualExerciseDetailsState
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           showExerciseDetails(
+                            context: context,
                               titleText: 'الهدف',
                               subTitleText: widget.titleOfExercise),
                           showExerciseDetails(
+                              context: context,
+
                               titleText: 'المدة', subTitleText: '5 اسابيع'),
                           showExerciseDetails(
+                              context: context,
+
                               titleText: 'المستوى', subTitleText: 'مبتدئ'),
                         ],
                       ),
@@ -216,18 +218,15 @@ class _ShowSpecificVirtualExerciseDetailsState
                             context: context,
                             textKey: 'program_details'),
                         SizedBox(
-                          width: media.width * 0.7,
+                          width: media.width * 0.8,
                           child: Text(
                             ' لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى',
                             maxLines: 4,
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              fontSize: 14,
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
-                            ),
+                              style: Theme.of(context).textTheme.headline1.copyWith(
+height: 1.5
+                              )
                           ),
                         ),
                         SizedBox(
@@ -283,6 +282,24 @@ class _ShowSpecificVirtualExerciseDetailsState
           )),
         ],
       ),
+      bottomNavigationBar: Consumer<ChangeIndex>(
+builder: (context, changeIndex, child) =>bottomNavigationBar(
+context: context,
+onTap: (index){
+setState(() {
+changeIndex.index=index;
+});
+Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+pageBuilder:
+(context, animation1, animation2) =>
+NavigationHome(),
+transitionDuration: Duration(seconds: 0),
+),(Route<dynamic> route) => false);
+},
+media: media,
+currentIndex: changeIndex.index
+),
+),
     );
   }
 }

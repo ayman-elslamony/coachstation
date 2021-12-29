@@ -51,18 +51,11 @@ class _MoreScreenState extends State<MoreScreen> {
         physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            leading: Consumer<ChangeIndex>(
-              builder: (context, changeIndex, child) => IconButton(
-                  onPressed: () {
-                    changeIndex.changeIndexFunction(0);
-                  },
-                  icon: const ImageIcon(
-                    AssetImage(
-                      'images/arrowLeft.png',
-                    ),
-                    size: 18,
-                  )),
+            centerTitle: true,
+            title: Text(
+              '${AppLocalizations.of(context).trans('more')}',
             ),
+            titleSpacing: 2.0,
           ),
           SliverToBoxAdapter(
               child: Column(
@@ -87,6 +80,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 'عادل أحمد',
                 style: Theme.of(context).textTheme.headline4,
               ),
+              SizedBox(height: 15,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

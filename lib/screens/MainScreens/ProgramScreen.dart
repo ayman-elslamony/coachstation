@@ -26,6 +26,7 @@ class _ProgramScreenState extends State<ProgramScreen> {
             automaticallyImplyLeading: false,
             backgroundColor: Theme.of(context).accentColor,
             // expandedHeight: 60,
+            centerTitle: true,
             title: Text('${AppLocalizations.of(context).trans('program')}'),
             actions: []
         ),
@@ -42,7 +43,7 @@ class _ProgramScreenState extends State<ProgramScreen> {
                   onTap: (){
                   },
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
+                    padding: const EdgeInsets.only(bottom: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(11.0)),
@@ -57,8 +58,8 @@ class _ProgramScreenState extends State<ProgramScreen> {
                                 child: Image.network(
                                   imgList[index],
                                   fit: BoxFit.fill,
-                                  height:  media.height*0.18,
-                                  width:  media.width*0.38,
+                                  height:  media.height*0.15,
+                                  width:  media.width*0.34,
                                 ),
                               ),
                             ],
@@ -68,9 +69,10 @@ class _ProgramScreenState extends State<ProgramScreen> {
                             crossAxisAlignment:CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'برنامج غذائى واحد',
-                                style: Theme.of(context).textTheme.headline4,
+                                'برنامج غذائى 1',
+                                style: Theme.of(context).textTheme.headline3,
                               ),
+                              SizedBox(height: 8.0,),
                               showTextWithIcon(
                                   context: context,
                                   iconUrl: 'images/calendar.png',

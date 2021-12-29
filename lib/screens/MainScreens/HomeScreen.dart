@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fit: BoxFit.cover, width: 1000.0)))
                       .toList(),
                   options: CarouselOptions(
-                      height: 200,
+                      height: media.height*0.25,
                       viewportFraction: 1.0,
                       enlargeCenterPage: false,
                       initialPage: 0,
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       }),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 7.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -115,8 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     return GestureDetector(
                       onTap: () => _controller.animateToPage(entry.key),
                       child: Container(
-                        width: 12.0,
-                        height: 12.0,
+                        width: 10.0,
+                        height: 10.0,
                         margin: EdgeInsets.symmetric(
                             vertical: 8.0, horizontal: 4.0),
                         decoration: BoxDecoration(
@@ -145,14 +145,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         padding:
-                        EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                        EdgeInsets.symmetric(horizontal: 12.0,),
                         child: Row(
                           children: [
                             Container(
                               padding: EdgeInsets.all(8.0),
                               decoration: BoxDecoration(
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(12.0)),
+                                  BorderRadius.all(Radius.circular(18.0)),
                                   color: Theme.of(context).primaryColor),
                               child: Column(
                                 children: [
@@ -192,6 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+                      SizedBox(height: 12.0,),
                       Row(
                         children: [
                           Text(
@@ -260,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               textTitle:
                               '${AppLocalizations.of(context).trans('gyms')}',
                               imageUrl: imgList[0],
-                              articleWidth: media.width * 0.4,
+                              articleWidth: media.width * 0.6,
                               imageHeight: media.height * 0.11,
                               articleHeight: media.height * 0.22),
                           itemCount: imgList.length,

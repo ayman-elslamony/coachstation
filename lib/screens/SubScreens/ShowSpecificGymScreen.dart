@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'InfoAboutTheTrainer.dart';
@@ -110,8 +113,8 @@ void getSubscriptionsResult(int selectSubscriptions){
                         return GestureDetector(
                           onTap: () => _controller.animateToPage(entry.key),
                           child: Container(
-                            width: 12.0,
-                            height: 12.0,
+                            width: 11.0,
+                            height: 11.0,
                             margin: EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 4.0),
                             decoration: BoxDecoration(
@@ -206,11 +209,10 @@ void getSubscriptionsResult(int selectSubscriptions){
                 height: 50,
                 child: AppBar(
                   bottom: TabBar(
+                    isScrollable: true,
                     labelColor: Theme.of(context).primaryColor,
-                    labelStyle: Theme.of(context).textTheme.headline3,
                     indicatorColor: Theme.of(context).primaryColor,
                     unselectedLabelColor: Colors.grey,
-                    unselectedLabelStyle: Theme.of(context).textTheme.headline3,
 //                    labelColor: Theme.of(context).primaryColor,
                     tabs: [
                       Tab(
@@ -250,6 +252,24 @@ void getSubscriptionsResult(int selectSubscriptions){
             ],
           ),
         ),
+        bottomNavigationBar: Consumer<ChangeIndex>(
+builder: (context, changeIndex, child) =>bottomNavigationBar(
+context: context,
+onTap: (index){
+setState(() {
+changeIndex.index=index;
+});
+Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+pageBuilder:
+(context, animation1, animation2) =>
+NavigationHome(),
+transitionDuration: Duration(seconds: 0),
+),(Route<dynamic> route) => false);
+},
+media: media,
+currentIndex: changeIndex.index
+),
+),
       ),
     );
   }
@@ -269,19 +289,14 @@ class BriefAboutGym extends StatelessWidget {
           ),
           Text(
             'عن Gold Gym',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headline3,
           ),
           SizedBox(
             width: media.width,
             child: Text(
               ' لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى',
               textAlign: TextAlign.start,
-              style: TextStyle(
-                fontFamily: 'CairoRegular',
-                fontSize: 14,
-                color: Colors.grey[800],
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.headline2
             ),
           ),
         ],
@@ -332,12 +347,7 @@ class AddressesForGym extends StatelessWidget {
                       child: Text(
                         ' لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى  لقم تم توليد هذا النص من مولد النص العربى',
                         textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontFamily: 'CairoRegular',
-                          fontSize: 14,
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.headline2
                       ),
                     ),
                     Row(
@@ -389,14 +399,14 @@ class _SubscriptionsInGymState extends State<SubscriptionsInGym> {
           children: [
             Text(
               postfixTitle,
-              style: Theme.of(context).textTheme.headline4.copyWith(color: Theme.of(context).primaryColor),
+              style: Theme.of(context).textTheme.headline3.copyWith(color: Theme.of(context).primaryColor),
             ),
             defaultSubtitleTextTwo(
                 context: context,
                 text: '  ${AppLocalizations.of(context).trans('instead_of')}  '),
             Text(
               prefixTitle,
-              style: Theme.of(context).textTheme.headline4.copyWith(
+              style: Theme.of(context).textTheme.headline3.copyWith(
                   decoration: TextDecoration.lineThrough,
                 color: Colors.grey
               ),
@@ -434,7 +444,7 @@ class _SubscriptionsInGymState extends State<SubscriptionsInGym> {
             SizedBox(height: 15,),
             Text(
               '${AppLocalizations.of(context).trans('subscribe_through_the_app_and_get_the_discount')}',
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headline3,
             ),
             SizedBox(
               height: 10.0,

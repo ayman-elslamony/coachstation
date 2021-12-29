@@ -8,10 +8,6 @@ class FilterTrainerScreen extends StatefulWidget {
 }
 
 class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
-  bool removeDividerOfSpecialist = true;
-  bool removeDividerOfNatinality = true;
-  bool removeDividerOfRegion = true;
-  bool removeDividerOfRating = true;
 
   Widget checkedBoxCard(
       {BuildContext context, String text, bool isSelected = false}) {
@@ -56,11 +52,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                 collapsedIconColor: Color(0xFF142c43),
                 collapsedBackgroundColor: Colors.white,
                 initiallyExpanded: true,
-                onExpansionChanged: (_) {
-                  setState(() {
-                    removeDividerOfSpecialist = !removeDividerOfSpecialist;
-                  });
-                },
+
                 children: <Widget>[
                   checkedBoxCard(
                       context: context,
@@ -75,11 +67,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   checkedBoxCard(
                       context: context, text: 'كرة قدم', isSelected: false),
                 ]),
-            removeDividerOfSpecialist == false
-                ? SizedBox()
-                : Divider(
-              color: Colors.grey,
-            ),
+
             Padding(
               padding: const EdgeInsets.only(
                 top: 8.0,
@@ -93,12 +81,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   backgroundColor: Colors.white,
                   collapsedIconColor: Color(0xFF142c43),
                   collapsedBackgroundColor: Colors.white,
-                  onExpansionChanged: (_) {
-                    setState(() {
-                      removeDividerOfNatinality =
-                      !removeDividerOfNatinality;
-                    });
-                  },
+
                   children: <Widget>[
                     checkedBoxCard(
                         context: context, text: 'أنثى', isSelected: false),
@@ -106,11 +89,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                         context: context, text: 'ذكر', isSelected: true),
                   ]),
             ),
-            removeDividerOfNatinality == false
-                ? SizedBox()
-                : Divider(
-              color: Colors.grey,
-            ),
+
             Padding(
               padding: const EdgeInsets.only(
                 top: 8.0,
@@ -124,18 +103,10 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   backgroundColor: Colors.white,
                   collapsedIconColor: Color(0xFF142c43),
                   collapsedBackgroundColor: Colors.white,
-                  onExpansionChanged: (_) {
-                    setState(() {
-                      removeDividerOfRegion = !removeDividerOfRegion;
-                    });
-                  },
+
                   children: <Widget>[]),
             ),
-            removeDividerOfRegion == false
-                ? SizedBox()
-                : Divider(
-              color: Colors.grey,
-            ),
+
             Padding(
               padding: const EdgeInsets.only(
                 top: 8.0,
@@ -149,11 +120,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                   backgroundColor: Colors.white,
                   collapsedIconColor: Color(0xFF142c43),
                   collapsedBackgroundColor: Colors.white,
-                  onExpansionChanged: (_) {
-                    setState(() {
-                      removeDividerOfRating = !removeDividerOfRating;
-                    });
-                  },
+
                   children: <Widget>[
                     checkedBoxCard(
                         context: context,
@@ -161,11 +128,7 @@ class _FilterTrainerScreenState extends State<FilterTrainerScreen> {
                         isSelected: false),
                   ]),
             ),
-            removeDividerOfRating == false
-                ? SizedBox()
-                : Divider(
-              color: Colors.grey,
-            ),
+    SizedBox(height:100,),
             SizedBox(
               width: media.width,
               child: Row(

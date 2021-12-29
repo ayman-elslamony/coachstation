@@ -1,6 +1,9 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'FilterAllTrainingProgramsScreen.dart';
 import 'ShowProgramsDetailsScreen.dart';
 
@@ -26,7 +29,7 @@ class _AllTrainingProgramsScreenState extends State<AllTrainingProgramsScreen> {
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 18,
+                  size: 16,
                 )),
             actions: [
               IconButton(
@@ -42,10 +45,8 @@ class _AllTrainingProgramsScreenState extends State<AllTrainingProgramsScreen> {
             bottom: TabBar(
               isScrollable: true,
               labelColor: Theme.of(context).primaryColor,
-              labelStyle: Theme.of(context).textTheme.headline3,
               indicatorColor: Theme.of(context).primaryColor,
               unselectedLabelColor: Colors.grey,
-              unselectedLabelStyle: Theme.of(context).textTheme.headline3,
               tabs: [
                 Tab(
                   text: '${AppLocalizations.of(context).trans('all')}',
@@ -94,9 +95,10 @@ class _AllTrainingProgramsScreenState extends State<AllTrainingProgramsScreen> {
                                 children: [
                                   Text(
                                    'برنامج تدريبى للياقة البدنية العامة',
-                                    style: Theme.of(context).textTheme.headline4,
+                                    style: Theme.of(context).textTheme.headline3,
                                   ),
-                                  Row(
+                                  SizedBox(height: 6.0,)
+                                  ,Row(
                                     children: [
                                       showTextWithIcon(
                                           context: context,
@@ -127,12 +129,7 @@ class _AllTrainingProgramsScreenState extends State<AllTrainingProgramsScreen> {
                               child: Center(
                                 child: Text(
                                   '250 ر.س',
-                                  style: TextStyle(
-                                    fontFamily: 'CairoRegular',
-                                    fontSize: 16,
-                                    color: Colors.grey[800],
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Theme.of(context).textTheme.headline2
                                 ),
                               ),
                             ),
@@ -148,7 +145,27 @@ class _AllTrainingProgramsScreenState extends State<AllTrainingProgramsScreen> {
                 ],
               ),
             ),
-          )),
+          ),
+        bottomNavigationBar: Consumer<ChangeIndex>(
+          builder: (context, changeIndex, child) =>bottomNavigationBar(
+              context: context,
+              onTap: (index){
+                setState(() {
+                  changeIndex.index=index;
+                });
+                Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                  pageBuilder:
+                      (context, animation1, animation2) =>
+                      NavigationHome(),
+                  transitionDuration: Duration(seconds: 0),
+                ),(Route<dynamic> route) => false);
+              },
+              media: media,
+              currentIndex: changeIndex.index
+          ),
+        ),
+      ),
+
     );
   }
 }

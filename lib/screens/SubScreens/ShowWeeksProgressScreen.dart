@@ -19,13 +19,9 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
     return Text(
       text,
       textAlign: TextAlign.start,
-      style: TextStyle(
-        fontFamily: 'CairoRegular',
-        fontSize: 14,
-        height: 1.5,
-        color: Colors.grey[800],
-        fontWeight: FontWeight.bold,
-      ),
+      style: Theme.of(context).textTheme.headline2.copyWith(
+        height: 1.4
+      )
     );
   }
 
@@ -46,6 +42,7 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 14.0),
                   child: ExpansionTileCard(
+                    contentPadding: EdgeInsets.all(0.0),
                     baseColor: Colors.white,
                     expandedColor: Colors.white,
                     initiallyExpanded: index==0?true:false,
@@ -57,11 +54,8 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                           color: Colors.green),
                       child: Text(
                         'الإثنين',
-                        style: TextStyle(
-                        fontFamily: 'CairoRegular',
-                        fontSize: 15,
+                        style: Theme.of(context).textTheme.headline1.copyWith(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                       ),
                       ),
                     ),
@@ -69,7 +63,7 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                       children: [
                         Text(
                           'عدد السعرات'
-                          ,style: Theme.of(context).textTheme.headline4,
+                          ,style: Theme.of(context).textTheme.headline3,
                         ),
                         Spacer(),
                         defaultSubtitleTextTwo(context: context, text: '1700 cool')
@@ -111,12 +105,7 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                                           children: [
                                             Text(
                                               'الإفطار - 185 سعر حرارى',
-                                              style: TextStyle(
-                                                fontFamily: 'CairoRegular',
-                                                fontSize: 17,
-                                                color: Colors.grey[700],
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style: Theme.of(context).textTheme.headline3
                                             ),
                                             Column(
                                               crossAxisAlignment:
@@ -155,12 +144,9 @@ class _ShowWeeksProgressScreenState extends State<ShowWeeksProgressScreen> {
                                   ),
                                   Text(
                                     'تم',
-                                    style: TextStyle(
-                                      fontFamily: 'CairoRegular',
-                                      fontSize: 20,
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: Theme.of(context).textTheme.headline3.copyWith(
+                                      color: Colors.green
+                                    )
                                   ),
                                 ],
                               ),

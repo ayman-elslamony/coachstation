@@ -73,7 +73,7 @@ Widget showCardAboutReservationPlace(
               children: [
                 Text(
                   'Golds Gym',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headline3,
                 ),
                 defaultLocationWithIcon(
                     context: context, textLocation: 'الرياض')

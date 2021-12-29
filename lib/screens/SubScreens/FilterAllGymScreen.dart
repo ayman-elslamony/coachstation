@@ -8,10 +8,6 @@ class FilterAllGymScreen extends StatefulWidget {
 }
 
 class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
-  bool removeDividerOfSpecialist = true;
-  bool removeDividerOfNatinality = true;
-  bool removeDividerOfRegion = true;
-  bool removeDividerOfRating = true;
 
   Widget checkedBoxCard(
       {BuildContext context, String text, bool isSelected = false}) {
@@ -56,19 +52,14 @@ class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
                     ExpansionTile(
                         title: new Text(
                           '${AppLocalizations.of(context).trans('regions')}',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                         iconColor: Color(0xFF142c43),
                         backgroundColor: Colors.white,
                         collapsedIconColor: Color(0xFF142c43),
                         collapsedBackgroundColor: Colors.white,
                         initiallyExpanded: true,
-                        onExpansionChanged: (_) {
-                          setState(() {
-                            removeDividerOfSpecialist =
-                                !removeDividerOfSpecialist;
-                          });
-                        },
+
                         children: <Widget>[
                           checkedBoxCard(
                               context: context, text: 'جدة', isSelected: true),
@@ -83,27 +74,19 @@ class _FilterAllGymScreenState extends State<FilterAllGymScreen> {
                           checkedBoxCard(
                               context: context, text: 'تبوك', isSelected: false),
                         ]),
-                    removeDividerOfSpecialist == false
-                        ? SizedBox()
-                        : Divider(
-                            color: Colors.grey,
-                          ),
+
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: ExpansionTile(
                           title: new Text(
                             '${AppLocalizations.of(context).trans('reviews')}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                           iconColor: Color(0xFF142c43),
                           backgroundColor: Colors.white,
                           collapsedIconColor: Color(0xFF142c43),
                           collapsedBackgroundColor: Colors.white,
-                          onExpansionChanged: (_) {
-                            setState(() {
-                              removeDividerOfRating = !removeDividerOfRating;
-                            });
-                          },
+
                           children: <Widget>[
                             checkedBoxCard(
                                 context: context,

@@ -29,10 +29,9 @@ Widget defaultButton({
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
           style: TextStyle(
-            fontFamily: 'CairoRegular',
-            color: Colors.black,
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
+            fontFamily: 'Cairobold',
+            color: Colors.grey[800],
+            fontSize: 16,
           ),
         ),
       ),
@@ -96,79 +95,48 @@ Widget defaultCard({
               ),
             ),
             Container(
-              height: textSubTitleOne!=null?50:35,
+              height: textSubTitleOne!=null?52:35,
               width: containerTextWidth,
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(18.0))),
+                      topLeft: Radius.circular(28.0))),
               child: textSubTitleOne!=null?Column(
 
                 children: [
                 Text(
                   textTitle,
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 16,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.headline2
                 ),
                   textSubTitleTwo!=null?Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       textSubTitleOne,
-                      style: TextStyle(
-                        height: 1.2,
-                        fontFamily: 'CairoRegular',
-                        fontSize: 13,
-                        color:Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
+                        style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.grey[800])
                     ),
                     Text(
                       ' - ',
-                      style: TextStyle(
-                        height: 1.2,
-                        fontFamily: 'CairoRegular',
-                        fontSize: 14,
-                        color:Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
+                        style: Theme.of(context).textTheme.headline1
                     ),
                     Text(
                       textSubTitleTwo,
-                      style: TextStyle(
-                        height: 0.8,
-                        fontFamily: 'CairoRegular',
-                        fontSize: 15,
-                        color:Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
+                        style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.grey[800])
                     ),
 
                   ],
                 ):Text(
                     textSubTitleOne,
-                    style: TextStyle(
-                      height: 0.8,
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      color:Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1.copyWith(
+                      height: 1.1,
+                      color: Colors.grey[800]
+                    )
                   ),
               ],):Center(
             child: Text(
               textTitle,
-              style: TextStyle(
-                fontFamily: 'CairoRegular',
-                fontSize: 16,
-                color: Colors.grey[800],
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.headline2
             ),
     ),
             ),
@@ -272,23 +240,13 @@ Widget defaultArticle({
                     textTitle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 15,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline2
                   ),
                   subtitle: Text(
                     textSubTitle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 11,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.subtitle2
                   ),
                 ),
               )
@@ -323,10 +281,9 @@ Widget defaultSubtitleTextOne(
     Text(
       text,
       style: TextStyle(
-        fontFamily: 'CairoRegular',
-        fontSize: 16,
+        fontFamily: 'CairoBold',
+        fontSize: 14,
         color: color ?? Colors.grey[800],
-        fontWeight: FontWeight.bold,
       ),
     );
 Widget showTextWithIcon(
@@ -363,6 +320,7 @@ Widget showAvilableTimeInOneDay(
                   text: dayName ?? 'الأحد',
                   textColor: Colors.white)),
         ),
+        SizedBox(height: 8.0,),
         defaultShowTime(context: context, textTime: startTime ?? 'من 30 10 ص'),
         defaultShowTime(context: context, textTime: endTime ?? 'إلى 50 11 ص'),
       ],
@@ -375,18 +333,16 @@ Widget defaultSubtitleTextTwo(
         Color textColor}) =>
     Text(
       text,
-      style: TextStyle(
-        fontFamily: 'CairoRegular',
-        fontSize: 14,
-        color: textColor ?? Colors.grey[800],
-        fontWeight: FontWeight.bold,
-      ),
+      style: Theme.of(context).textTheme.headline1.copyWith(
+        height: 1.4,
+        color: textColor ?? Colors.grey[700],
+      )
     );
 Widget defaultTrainerCard({BuildContext context,Function onTap}) {
   return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(top: 10.0,left: 8.0,right: 8.0),
+        padding: const EdgeInsets.only(bottom:  11.0,left: 0.0,right: 0.0),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
           decoration: BoxDecoration(
@@ -545,14 +501,14 @@ Widget bottomNavigationBar({@required BuildContext context,@required Size media,
               icon: Padding(
                 padding: const EdgeInsets.only(bottom: 4),
                 child: ImageIcon(
-                  AssetImage('images/fileGrey.png'),
+                  AssetImage('images/greyCoaches.png'),
                   size: media.width * 0.06,
                 ),
               ),
               activeIcon: Padding(
                 padding: const EdgeInsets.only(bottom: 4),
                 child: ImageIcon(
-                  AssetImage('images/fileSilver.png'),
+                  AssetImage('images/coloredCoaches.png'),
                   size: media.width * 0.06,
                 ),
               ),
@@ -565,15 +521,16 @@ Widget bottomNavigationBar({@required BuildContext context,@required Size media,
               icon: Padding(
                 padding: const EdgeInsets.only(bottom: 4),
                 child: ImageIcon(
-                  AssetImage('images/homeBottomGrey.png'),
+                  AssetImage('images/heart.png'),
                   size: media.width * 0.06,
                 ),
               ),
               activeIcon: Padding(
                 padding: const EdgeInsets.only(bottom: 4),
                 child: ImageIcon(
-                  AssetImage('images/homeBottomSilver.png'),
+                  AssetImage('images/heart.png'),
                   size: media.width * 0.06,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               title: Text(
@@ -690,7 +647,7 @@ Widget defaultFormField({
             ) : null ,
             labelStyle: TextStyle(
               color: Colors.grey[600],
-              fontSize: 18
+              fontSize: 15
             ),
             suffixIcon: suffix != null
                 ? IconButton(
@@ -723,11 +680,12 @@ OutlineInputBorder textFormFieldBorder = OutlineInputBorder(
 Widget defaultAppBar(
         {@required BuildContext context,
         String titleKey,
+          bool enableLeading=true,
           bool isTextNotKey=false,
         List<Widget> actions,
         Function onClickedBackButton}) =>
     AppBar(
-      leading: IconButton(
+      leading: enableLeading==true?IconButton(
           onPressed: onClickedBackButton == null
               ? () {
                   Navigator.pop(context);
@@ -737,8 +695,9 @@ Widget defaultAppBar(
             AssetImage(
               'images/arrowLeft.png',
             ),
-            size: 18,
-          )),
+            size: 16,
+          )):null,
+      centerTitle: !enableLeading,
       title: Text(
           isTextNotKey?titleKey:'${AppLocalizations.of(context).trans(titleKey)}',
       ),

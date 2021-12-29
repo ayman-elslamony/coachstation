@@ -85,12 +85,7 @@ class _SpecificExerciseInDayState extends State<SpecificExerciseInDay> {
                                 children: [
                                   Text(
                                     'Front Pullups',
-                                    style: TextStyle(
-                                      fontFamily: 'CairoRegular',
-                                      fontSize: 20,
-                                      color: Colors.grey[700],
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                      style: Theme.of(context).textTheme.headline4
                                   ),
                                   Row(
                                     children: [
@@ -154,12 +149,9 @@ class _SpecificExerciseInDayState extends State<SpecificExerciseInDay> {
                         ),
                         Text(
                           'تم عمل التمرين',
-                          style: TextStyle(
-                            fontFamily: 'CairoRegular',
-                            fontSize: 20,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                          ),
+                            style: Theme.of(context).textTheme.headline3.copyWith(
+                              color: Colors.green
+                            )
                         ),
                       ],
                     ),

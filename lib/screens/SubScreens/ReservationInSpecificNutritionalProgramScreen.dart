@@ -32,11 +32,7 @@ class _ReservationInSpecificNutritionalProgramScreenState
                     child: Center(
                         child: Text(
                       '1',
-                      style: TextStyle(
-                          fontFamily: 'CairoRegular',
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          style: Theme.of(context).textTheme.headline3,
                     )),
                   ),
                   title: Text(
@@ -45,13 +41,7 @@ class _ReservationInSpecificNutritionalProgramScreenState
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step1_of_2')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 SizedBox(
@@ -94,7 +84,7 @@ class _ReservationInSpecificNutritionalProgramScreenState
                                   Text(
                                     'برنامج رقم 1',
                                     style:
-                                        Theme.of(context).textTheme.headline4,
+                                        Theme.of(context).textTheme.headline3,
                                   ),
                                   defaultSubtitleTextTwo(
                                       context: context, text: 'مكثف'),
@@ -122,11 +112,8 @@ class _ReservationInSpecificNutritionalProgramScreenState
                           onPressed: null,
                           child: Text(
                             '250 ر.س',
-                            style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              color: Colors.white,
-                              fontSize: 21,
-                              fontWeight: FontWeight.bold,
+                            style: Theme.of(context).textTheme.headline4.copyWith(
+                              color: Colors.white
                             ),
                           ),
                         ),
@@ -232,11 +219,7 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
                     child: Center(
                         child: Text(
                           '2',
-                          style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          style: Theme.of(context).textTheme.headline3,
                         )),
                   ),
                   title: Text(
@@ -245,13 +228,7 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step2_of_2')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 SizedBox(

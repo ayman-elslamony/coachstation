@@ -105,11 +105,7 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
                     child: Center(
                         child: Text(
                           '1',
-                          style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          style: Theme.of(context).textTheme.headline3,
                         )),
                   ),
                   title: Text(
@@ -118,13 +114,7 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step1_of_3')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 SizedBox(
@@ -138,7 +128,7 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
                         children: [
                           Text(
                             '${AppLocalizations.of(context).trans('training_days')}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                         ],
                       ),
@@ -166,7 +156,7 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
                           children: [
                             Text(
                               '${AppLocalizations.of(context).trans('reservation_type')}',
-                              style: Theme.of(context).textTheme.headline4,
+                              style: Theme.of(context).textTheme.headline3,
                             ),
                           ],
                         ),
@@ -191,7 +181,7 @@ class _ReservationScreenStepOneState extends State<ReservationScreenStepOne> {
                                   Text(
                                     '${AppLocalizations.of(context).trans('number_of_people')}',
                                     style:
-                                    Theme.of(context).textTheme.headline4,
+                                    Theme.of(context).textTheme.headline3,
                                   ),
                                 ],
                               ),
@@ -276,11 +266,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                     child: Center(
                         child: Text(
                           '2',
-                          style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          style: Theme.of(context).textTheme.headline3,
                         )),
                   ),
                   title: Text(
@@ -289,13 +275,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step2_of_3')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 SizedBox(
@@ -341,7 +321,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                     'أنس حافظ',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headline4,
+                                        .headline3,
                                   ),
                                   defaultSubtitleTextTwo(
                                       context: context,
@@ -373,7 +353,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                   'Gold Gym',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headline4,
+                                      .headline3,
                                 ),
                               ],
                             ),
@@ -385,7 +365,9 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                   'الأحد',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headline3,
+                                      .headline2.copyWith(
+                                    height: 1.2
+                                  ),
                                 ),
                                 defaultShowTime(
                                     context: context,
@@ -405,7 +387,9 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                   'الأحد',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headline3,
+                                      .headline2.copyWith(
+                                      height: 1.2
+                                  ),
                                 ),
                                 defaultShowTime(
                                     context: context,
@@ -431,7 +415,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                               'جماعى -7 أفراد',
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline3,
+                                  .headline2,
                             ),
                           ],
                         ),
@@ -456,10 +440,9 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                           child: Text(
                             '250 ر.س',
                             style: TextStyle(
-                              fontFamily: 'CairoRegular',
+                              fontFamily: 'CairoBold',
                               color: Colors.white,
-                              fontSize: 21,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
                             ),
                           ),
                         ),
@@ -567,11 +550,7 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
                     child: Center(
                         child: Text(
                           '3',
-                          style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          style: Theme.of(context).textTheme.headline3,
                         )),
                   ),
                   title: Text(
@@ -580,13 +559,7 @@ class _ReservationScreenStepThreeState extends State<ReservationScreenStepThree>
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step3_of_3')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 SizedBox(

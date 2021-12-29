@@ -87,7 +87,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                     icon: ImageIcon(
                       AssetImage('images/deleteIcon.png'),
                       color: Colors.red,
-                      size: 25.0,
+                      size: 20.0,
                     ))
               ],
             ),
@@ -105,29 +105,15 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              leading: Consumer<ChangeIndex>(
-                builder: (context, changeIndex, child) => IconButton(
-                    onPressed: () {
-                      changeIndex.changeIndexFunction(0);
-                    },
-                    icon: const ImageIcon(
-                      AssetImage(
-                        'images/arrowLeft.png',
-                      ),
-                      size: 18,
-                    )),
-              ),
+              centerTitle: true,
               title: Text(
                 '${AppLocalizations.of(context).trans('favourite')}',
               ),
               titleSpacing: 2.0,
               bottom: TabBar(
                 labelColor: Theme.of(context).primaryColor,
-                labelStyle: Theme.of(context).textTheme.headline3,
                 indicatorColor: Theme.of(context).primaryColor,
                 unselectedLabelColor: Colors.grey,
-                unselectedLabelStyle: Theme.of(context).textTheme.headline3,
-//                    labelColor: Theme.of(context).primaryColor,
                 tabs: [
                   Tab(
                     text:
@@ -141,18 +127,21 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               ),
             ),
             SliverToBoxAdapter(
-              child: SizedBox(
+              child:
+              SizedBox(
                 width: media.width,
                 height: media.height,
                 child: TabBarView(
                   children: [
                     ListView.builder(
+                      padding: EdgeInsets.all(12.0),
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) => trainerCard(),
-                      itemCount: 9,
+                      itemCount: 8,
                     ),
                     ListView.builder(
+                      padding: EdgeInsets.all(12.0),
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) => Stack(
@@ -170,11 +159,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             child: InkWell(
                               onTap: () {},
                               child: CircleAvatar(
+                                radius: 20,
                                   backgroundColor: Colors.white,
                                   child: ImageIcon(
                                     AssetImage('images/deleteIcon.png'),
                                     color: Colors.red,
-                                    size: 20,
+                                    size: 18,
                                   )),
                             ),
                             top: 20.0,

@@ -1,6 +1,7 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'ShowVirtualExerciseDetails.dart';
@@ -33,7 +34,7 @@ class _VirtualExerciseHomeScreenState extends State<VirtualExerciseHomeScreen> {
                       AssetImage(
                         'images/arrowLeft.png',
                       ),
-                      size: 18,
+                      size: 15,
                     )),
               ),
               title: Text(
@@ -43,10 +44,8 @@ class _VirtualExerciseHomeScreenState extends State<VirtualExerciseHomeScreen> {
               bottom: TabBar(
                 isScrollable: true,
                 labelColor: Theme.of(context).primaryColor,
-                labelStyle: Theme.of(context).textTheme.headline3,
                 indicatorColor: Theme.of(context).primaryColor,
                 unselectedLabelColor: Colors.grey,
-                unselectedLabelStyle: Theme.of(context).textTheme.headline3,
                 tabs: [
                   Tab(
                     text: '${AppLocalizations.of(context).trans('all')}',
@@ -70,41 +69,63 @@ class _VirtualExerciseHomeScreenState extends State<VirtualExerciseHomeScreen> {
               child: SizedBox(
                 width: media.width,
                 height: media.height,
-                child: TabBarView(
-                  children: [
-                    GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                      childAspectRatio: 1.2
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TabBarView(
+                    children: [
+                      GridView.builder(
+                        padding: EdgeInsets.all(0),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                        childAspectRatio: 1.2
+                        ),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => defaultCard(
+                            function: () {
+                              print('dfvbdf');
+                              navigateTo(context, ShowVirtualExerciseDetails(
+                                titleOfExercise: 'Chest',
+                              ));
+                            },
+                            context: context,
+                            textTitle:
+                            'Chest',
+                            textSubTitleOne: '10 تمارين',
+                            imageUrl: imgList[index],
+                            cardWidth: media.width,
+                            containerTextWidth: media.width * 0.35,
+                            cardHeight: media.height*0.3),
+                        itemCount: imgList.length,
                       ),
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => defaultCard(
-                          function: () {
-                            print('dfvbdf');
-                            navigateTo(context, ShowVirtualExerciseDetails(
-                              titleOfExercise: 'Chest',
-                            ));
-                          },
-                          context: context,
-                          textTitle:
-                          'Chest',
-                          textSubTitleOne: '10 تمارين',
-                          imageUrl: imgList[index],
-                          cardWidth: media.width,
-                          containerTextWidth: media.width * 0.4,
-                          cardHeight: media.height*0.3),
-                      itemCount: imgList.length,
-                    ),
-                   SizedBox(),
-                   SizedBox(),
-                   SizedBox(),
-                   SizedBox(),
-                  ],
+                     SizedBox(),
+                     SizedBox(),
+                     SizedBox(),
+                     SizedBox(),
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
+        ),
+        bottomNavigationBar: Consumer<ChangeIndex>(
+          builder: (context, changeIndex, child) =>bottomNavigationBar(
+              context: context,
+              onTap: (index){
+                setState(() {
+                  changeIndex.index=index;
+                });
+                Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                  pageBuilder:
+                      (context, animation1, animation2) =>
+                      NavigationHome(),
+                  transitionDuration: Duration(seconds: 0),
+                ),(Route<dynamic> route) => false);
+              },
+              media: media,
+              currentIndex: changeIndex.index
+          ),
         ),
       ),
     );

@@ -1,6 +1,9 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 
 class ChangeLanguageScreen extends StatefulWidget {
   @override
@@ -40,55 +43,57 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const ImageIcon(
-                  AssetImage(
-                    'images/arrowLeft.png',
-                  ),
-                  size: 18,
-                )),
-            title: Text(
-              '${AppLocalizations.of(context).trans('language')}',
-            ),
-          ),
-          SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40.0,horizontal: 15.0),
-                child: Column(
-                  children: [
-                    SizedBox(height: 20.0,),
-                    Image.asset(
-                      'images/language.png',
-                      color: Theme.of(context).primaryColor,
-                      fit: BoxFit.fill,
-                      height: 120,
-                      width: 110,
-                    ),
-                    SizedBox(height: 80.0,),
-                    checkedBoxCard(
-                        context: context,
-                        text: 'English',
-                       index: listVal[0]
-                    ),
-                    SizedBox(height: 8.0,),
-                    checkedBoxCard(
-                      context: context,
-                      text: 'عربى',
-                        index: listVal[1]
-                    ),
-
-                  ],
-                ),
-              )),
-        ],
+      appBar: defaultAppBar(context: context,
+        titleKey: 'language',
       ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40.0,horizontal: 15.0),
+          child: Column(
+            children: [
+              SizedBox(height: 20.0,),
+              Image.asset(
+                'images/language.png',
+                color: Theme.of(context).primaryColor,
+                fit: BoxFit.fill,
+                height: media.height*0.18,
+                width: media.width*0.29,
+              ),
+              SizedBox(height: 80.0,),
+              checkedBoxCard(
+                  context: context,
+                  text: 'English',
+                  index: listVal[0]
+              ),
+              SizedBox(height: 8.0,),
+              checkedBoxCard(
+                  context: context,
+                  text: 'عربى',
+                  index: listVal[1]
+              ),
+
+            ],
+          ),
+        ),
+      ),
+        bottomNavigationBar:  Consumer<ChangeIndex>(
+    builder: (context, changeIndex, child) =>bottomNavigationBar(
+        context: context,
+        onTap: (index){
+          setState(() {
+            changeIndex.index=index;
+          });
+          Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+            pageBuilder:
+                (context, animation1, animation2) =>
+                NavigationHome(),
+            transitionDuration: Duration(seconds: 0),
+          ),(Route<dynamic> route) => false);
+        },
+        media: media,
+        currentIndex: changeIndex.index
+    ),
+    ),
     );
   }
 }

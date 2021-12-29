@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'InfoAboutTheTrainer.dart';
@@ -215,11 +218,10 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
                 height: 50,
                 child: AppBar(
                   bottom: TabBar(
+                    isScrollable: true,
                     labelColor: Theme.of(context).primaryColor,
-                    labelStyle: Theme.of(context).textTheme.headline3,
                     indicatorColor: Theme.of(context).primaryColor,
                     unselectedLabelColor: Colors.grey,
-                    unselectedLabelStyle: Theme.of(context).textTheme.headline3,
 //                    labelColor: Theme.of(context).primaryColor,
                     tabs: [
                       Tab(
@@ -246,6 +248,25 @@ class _TrainerProfileScreenState extends State<TrainerProfileScreen> {
               ),
             ],
           ),
+        ),
+        bottomNavigationBar: Consumer<ChangeIndex>(
+          builder: (context, changeIndex, child) => bottomNavigationBar(
+              context: context,
+              onTap: (index) {
+                setState(() {
+                  changeIndex.index = index;
+                });
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) =>
+                          NavigationHome(),
+                      transitionDuration: Duration(seconds: 0),
+                    ),
+                    (Route<dynamic> route) => false);
+              },
+              media: media,
+              currentIndex: changeIndex.index),
         ),
       ),
     );

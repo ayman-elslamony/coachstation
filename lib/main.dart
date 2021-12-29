@@ -211,14 +211,21 @@ class _MyAppState extends State<MyApp> {
                 appBarTheme: AppBarTheme(
                   elevation: 0.0,
                   titleTextStyle: TextStyle(
-                      fontFamily: 'CairoRegular',
+                      fontFamily: 'CairoBold',
                       color: const Color(0xffffffff),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
+                      fontSize: 15),
                   color: Color(0xFF142c43),
                   iconTheme: const IconThemeData(
                     color: Color(0xffffffff),
                   ),
+                ),
+                tabBarTheme: TabBarTheme(
+                  labelStyle: TextStyle(
+                      fontFamily: 'CairoBold',
+                      fontSize: 14),
+                  unselectedLabelStyle: TextStyle(
+                      fontFamily: 'CairoBold',
+                      fontSize: 14),
                 ),
                 dialogTheme: DialogTheme(
                     contentTextStyle: TextStyle(
@@ -259,43 +266,43 @@ class _MyAppState extends State<MyApp> {
                         fontWeight: FontWeight.normal,
                       ),
                       subtitle2: TextStyle(
-                        fontFamily: 'CairoRegular',
-                        color: Colors.grey[800],
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
+                        fontFamily: 'CairoBold',
+                        fontSize: 11,
+                        height: 1.5,
+                        color: Colors.grey[600],
+                        // fontWeight: FontWeight.bold,
                       ),
                       headline1: TextStyle(
-                        fontFamily: 'DIN',
-                        fontSize: 19,
-                        color: Colors.grey[700],
+                        fontFamily: 'CairoBold',
+                        fontSize: 12,
+                        height: 1.5,
+                        color: Colors.grey[600],
                         // fontWeight: FontWeight.bold,
                       ),
                       headline2: TextStyle(
-                        fontFamily: 'CairoRegular',
+                        fontFamily: 'CairoBold',
                         fontSize: 14,
                         color: Colors.grey[800],
                         // fontWeight: FontWeight.bold,
                       ),
                       headline3: TextStyle(
-                        fontFamily: 'DIN',
-                        fontSize: 18,
+                        fontFamily: 'CairoBold',
+                        fontSize: 16,
                         color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
                       ),
                       headline4: TextStyle(
                         fontFamily: 'CairoBold',
-                        fontSize: 18,
+                        fontSize: 17,
                         color: Colors.grey[800],
                       ),
                       headline5: TextStyle(
                         fontFamily: 'CairoBold',
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                 fontFamily: 'DIN'),
-            title: 'Wekalah',
+            title: 'Coach Station',
             home: NavigationHome(),
 //
 //          ShowPresentScreen(),

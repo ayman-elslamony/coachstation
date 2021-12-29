@@ -34,7 +34,7 @@ class _AllNutritionalProgramsScreenState extends State<AllNutritionalProgramsScr
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 18,
+                  size: 15,
                 )),
           ),
           title: Text(
@@ -42,11 +42,10 @@ class _AllNutritionalProgramsScreenState extends State<AllNutritionalProgramsScr
           ),
           titleSpacing: 2.0,
           bottom: TabBar(
+            isScrollable: true,
             labelColor: Theme.of(context).primaryColor,
-            labelStyle: Theme.of(context).textTheme.headline3,
             indicatorColor: Theme.of(context).primaryColor,
             unselectedLabelColor: Colors.grey,
-            unselectedLabelStyle: Theme.of(context).textTheme.headline3,
             tabs: [
               Tab(
                 text: '${AppLocalizations.of(context).trans('all')}',

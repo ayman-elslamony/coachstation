@@ -32,7 +32,7 @@ Widget showSelectedItem({int index}){
         children: [
           Text(
             '${AppLocalizations.of(context).trans('weight_required_to_lose_per_week')}',
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context).textTheme.headline4,
           ),
           SizedBox(
             height: 10.0,
@@ -109,15 +109,10 @@ Widget showSelectedItem({int index}){
       return SizedBox();
   }
 }
-  Widget showText({String textKey}) {
+  Widget showText({String textKey,BuildContext context}) {
     return Text(
       textKey,
-      style: TextStyle(
-        fontFamily: 'CairoRegular',
-        color: Colors.grey[800],
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
+      style: Theme.of(context).textTheme.headline2
     );
   }
 
@@ -159,16 +154,16 @@ Widget showSelectedItem({int index}){
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            showText(textKey: '${AppLocalizations.of(context).trans(textKey)}'),
+            showText(textKey: '${AppLocalizations.of(context).trans(textKey)}',context: context),
             if (textKey == 'age' && _currentAge != 0)
               showText(
                   textKey:
-                      '${_currentAge} ${AppLocalizations.of(context).trans('year')}'),
+                      '${_currentAge} ${AppLocalizations.of(context).trans('year')}',context: context),
             if (textKey == 'height' && _currentHeight != 0)
-              showText(textKey: '${_currentHeight} Cm '),
+              showText(textKey: '${_currentHeight} Cm ',context: context),
             if (textKey == 'weight' && _currentWeight != 0)
-              showText(textKey: '${_currentWeight} Kg'),
-              if (_currentSelectedLoseAndWeightWeight != 0 && textKey == 'choose_weight') showText(textKey: '${_currentSelectedLoseAndWeightWeight} Kg'),
+              showText(textKey: '${_currentWeight} Kg',context: context),
+              if (_currentSelectedLoseAndWeightWeight != 0 && textKey == 'choose_weight') showText(textKey: '${_currentSelectedLoseAndWeightWeight} Kg',context: context),
           ],
         ),
       ),
@@ -239,7 +234,7 @@ Widget showSelectedItem({int index}){
                 ),
                 Text(
                   '${AppLocalizations.of(context).trans('please_enter_the_following_data')}',
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(
                   height: 40.0,
@@ -287,7 +282,7 @@ Widget showSelectedItem({int index}){
                 ),
                 Text(
                   '${AppLocalizations.of(context).trans('program_type')}',
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(
                   height: 10.0,

@@ -51,6 +51,7 @@ class _TrainersScreenState extends State<TrainersScreen> {
           builder: (context, changeIndex, child) =>
           Scaffold(
             appBar: defaultAppBar(
+              enableLeading: false,
                 context: context, titleKey: 'trainer',
                 onClickedBackButton: (){
                   changeIndex.changeIndexFunction(0);
@@ -65,14 +66,17 @@ class _TrainersScreenState extends State<TrainersScreen> {
           body: SizedBox(
             height: media.height,
             width: media.width,
-            child: ListView.builder(
-              itemBuilder: (context, index) => defaultTrainerCard(
-                onTap: (){
-                  navigateTo(context, TrainerProfileScreen());
-                },
-                context: context
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: ListView.builder(
+                itemBuilder: (context, index) => defaultTrainerCard(
+                  onTap: (){
+                    navigateTo(context, TrainerProfileScreen());
+                  },
+                  context: context
+                ),
+                itemCount: 9,
               ),
-              itemCount: 9,
             ),
           ),
         ),

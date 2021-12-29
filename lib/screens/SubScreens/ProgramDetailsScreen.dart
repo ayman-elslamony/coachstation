@@ -63,7 +63,7 @@ class _ProgramDetailsScreenState
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 18,
+                  size: 15,
                 )),
             title: Text(
               widget.titleOfExercise,

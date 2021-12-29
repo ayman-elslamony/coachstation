@@ -10,10 +10,6 @@ class FilterAllTrainingProgramsScreen extends StatefulWidget {
 }
 
 class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgramsScreen> {
-  bool removeDividerOfSpecialist = true;
-  bool removeDividerOfNatinality = true;
-  bool removeDividerOfRegion = true;
-  bool removeDividerOfRating = true;
 
   Widget checkedBoxCard(
       {BuildContext context, String text, bool isSelected = false}) {
@@ -65,12 +61,6 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
                         collapsedIconColor: Color(0xFF142c43),
                         collapsedBackgroundColor: Colors.white,
                         initiallyExpanded: true,
-                        onExpansionChanged: (_) {
-                          setState(() {
-                            removeDividerOfSpecialist =
-                            !removeDividerOfSpecialist;
-                          });
-                        },
                         children: <Widget>[
                           checkedBoxCard(
                               context: context, text: 'جدة', isSelected: true),
@@ -84,12 +74,8 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
                               isSelected: false),
                           checkedBoxCard(
                               context: context, text: 'تبوك', isSelected: false),
+                          SizedBox(height: 15.0,)
                         ]),
-                    removeDividerOfSpecialist == false
-                        ? SizedBox()
-                        : Divider(
-                      color: Colors.grey,
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: ExpansionTile(
@@ -101,11 +87,6 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
                           backgroundColor: Colors.white,
                           collapsedIconColor: Color(0xFF142c43),
                           collapsedBackgroundColor: Colors.white,
-                          onExpansionChanged: (_) {
-                            setState(() {
-                              removeDividerOfRating = !removeDividerOfRating;
-                            });
-                          },
                           children: <Widget>[
                             checkedBoxCard(
                                 context: context,
@@ -125,7 +106,7 @@ class _FilterAllTrainingProgramsScreenState extends State<FilterAllTrainingProgr
             ),
             Container(
               width: media.width,
-              height: 80,
+              height: media.height*0.18,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

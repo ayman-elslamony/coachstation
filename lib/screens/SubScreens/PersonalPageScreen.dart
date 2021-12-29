@@ -1,7 +1,10 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/screens/SubScreens/EditProfileScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 
 import 'ChangePasswordScreen.dart';
 
@@ -15,27 +18,12 @@ class _PersonalPageScreenState extends State<PersonalPageScreen> {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const ImageIcon(
-                  AssetImage(
-                    'images/arrowLeft.png',
-                  ),
-                  size: 18,
-                )),
-            title: Text(
-              '${AppLocalizations.of(context).trans('personal_page')}',
-            ),
-          ),
-          SliverToBoxAdapter(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+      appBar: defaultAppBar(context: context,
+      titleKey: 'personal_page'),
+      body: SingleChildScrollView(
+        child:  SizedBox(
+          width: media.width,
+          child: Column(
             children: [
               SizedBox(
                 height: 18.0,
@@ -45,19 +33,19 @@ class _PersonalPageScreenState extends State<PersonalPageScreen> {
                 child: Image.asset(
                   'images/userProfile.png',
                   fit: BoxFit.fill,
-                  height: 250,
-                  width: 300,
+                  height: media.height*0.35,
+                  width: media.width*0.7,
                 ),
               ),
               SizedBox(
-                height: 5.0,
+                height: 10.0,
               ),
               Text(
                 'عادل أحمد',
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headline5,
               ),
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               Container(
                 width: 300,
@@ -67,13 +55,8 @@ class _PersonalPageScreenState extends State<PersonalPageScreen> {
                     navigateTo(context, EditProfileScreen());
                   },
                   child: Text(
-                    '${AppLocalizations.of(context).trans('edit')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      color: Colors.black,
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold,
-                    ),
+                      '${AppLocalizations.of(context).trans('edit')}',
+                      style: Theme.of(context).textTheme.headline3
                   ),
                 ),
                 decoration: BoxDecoration(
@@ -81,7 +64,7 @@ class _PersonalPageScreenState extends State<PersonalPageScreen> {
                       18.0,
                     ),
                     color: Colors.white,
-                    border: Border.all(color: Colors.grey[500])),
+                    border: Border.all(color: Colors.grey[300])),
               ),
               SizedBox(
                 height: 20.0,
@@ -94,13 +77,8 @@ class _PersonalPageScreenState extends State<PersonalPageScreen> {
                     navigateTo(context, ChangePasswordScreen());
                   },
                   child: Text(
-                    '${AppLocalizations.of(context).trans('change_pass')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      color: Colors.black,
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold,
-                    ),
+                      '${AppLocalizations.of(context).trans('change_pass')}',
+                      style: Theme.of(context).textTheme.headline3
                   ),
                 ),
                 decoration: BoxDecoration(
@@ -108,14 +86,32 @@ class _PersonalPageScreenState extends State<PersonalPageScreen> {
                       18.0,
                     ),
                     color: Colors.white,
-                    border: Border.all(color: Colors.grey[500])),
+                    border: Border.all(color: Colors.grey[300])),
               ),
               SizedBox(
                 height: 65,
               )
             ],
-          )),
-        ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Consumer<ChangeIndex>(
+        builder: (context, changeIndex, child) =>bottomNavigationBar(
+            context: context,
+            onTap: (index){
+              setState(() {
+                changeIndex.index=index;
+              });
+              Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                pageBuilder:
+                    (context, animation1, animation2) =>
+                    NavigationHome(),
+                transitionDuration: Duration(seconds: 0),
+              ),(Route<dynamic> route) => false);
+            },
+            media: media,
+            currentIndex: changeIndex.index
+        ),
       ),
     );
   }

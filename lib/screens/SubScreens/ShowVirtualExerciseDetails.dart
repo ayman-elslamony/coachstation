@@ -49,7 +49,7 @@ class _ShowVirtualExerciseDetailsState
                           ),
                         ),
                         Container(
-                          height: 50,
+                          height: 45,
                           width: media.width*0.42,
                           decoration: BoxDecoration(
                               color: Theme.of(context).primaryColor,
@@ -59,12 +59,7 @@ class _ShowVirtualExerciseDetailsState
                           child: Center(
                             child: Text(
                               'Bench Press',
-                              style: TextStyle(
-                                fontFamily: 'CairoRegular',
-                                fontSize: 18,
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
-                              ),
+                             style: Theme.of(context).textTheme.headline3,
                             ),
                           ),
                         ),

@@ -1,7 +1,10 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
+import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:coachstation/screens/SubScreens/ProgramDetailsScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import 'ReservationInSpecificNutritionalProgramScreen.dart';
@@ -312,6 +315,27 @@ class _ShowSpecificNutritionalProgramsScreenState
               ),
             ),
           ],
-        ));
+        ),
+      bottomNavigationBar: Consumer<ChangeIndex>(
+        builder: (context, changeIndex, child) =>
+            bottomNavigationBar(
+                context: context,
+                onTap: (index) {
+                  setState(() {
+                    changeIndex.index = index;
+                  });
+                  Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                    pageBuilder:
+                        (context, animation1, animation2) =>
+                        NavigationHome(),
+                    transitionDuration: Duration(seconds: 0),
+                  ), (Route<dynamic> route) => false);
+                },
+                media: media,
+                currentIndex: changeIndex.index
+            ),
+      ),
+
+    );
   }
 }

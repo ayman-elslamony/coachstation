@@ -9,7 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:coachstation/Helper/Helper.dart';
-import 'package:coachstation/Helper/Widgets.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 //import 'package:coachstation/provider/UserProvider.dart';
 import 'package:coachstation/provider/locale_provider.dart';
@@ -305,24 +304,24 @@ class _VerificationState extends State<Verification> {
                                         color: Theme.of(context).primaryColor,
                                         size: 40.0,
                                       )
-                                          :
-                                      submitButton(
-                                          height: 40.0,
-                                          borderRadius: 10.0,
-                                          context: context,
-                                          titleFontSize: 16.0,
-                                          buttonW: media.width*0.8,
-                                          borderColor: Theme.of(context).primaryColor,
-                                          buttonColor: Theme.of(context).primaryColor,
-                                          buttonTitle: '${AppLocalizations.of(context).trans('send')}',
-                                          titleColor: Colors.white,
-                                          onClicked: (){
-                                           // _submit();
-                                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-                                          }
+                                          :SizedBox()
+//                                      submitButton(
+//                                          height: 40.0,
+//                                          borderRadius: 10.0,
+//                                          context: context,
+//                                          titleFontSize: 16.0,
+//                                          buttonW: media.width*0.8,
+//                                          borderColor: Theme.of(context).primaryColor,
+//                                          buttonColor: Theme.of(context).primaryColor,
+//                                          buttonTitle: '${AppLocalizations.of(context).trans('send')}',
+//                                          titleColor: Colors.white,
+//                                          onClicked: (){
+//                                           // _submit();
+//                                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+//                                          }
                                       ),
                                     ),
-                                  ),
+
                                 ],
                                 ),
                               ),

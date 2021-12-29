@@ -20,16 +20,10 @@ class _VirtualExerciseState extends State<VirtualExercise> {
   int _currentLevel = 0;
   bool _enableConfirmedButton = false;
 
-  Widget showText({String textKey}) {
+  Widget showText({String textKey,BuildContext context}) {
     return Text(
       textKey,
-      style: TextStyle(
-        fontFamily: 'CairoRegular',
-        color: Colors.black,
-        fontSize: 19,
-        fontWeight: FontWeight.bold,
-      ),
-    );
+    style: Theme.of(context).textTheme.headline3,);
   }
 
   void changeAge(int age) {
@@ -73,18 +67,18 @@ class _VirtualExerciseState extends State<VirtualExercise> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            showText(textKey: '${AppLocalizations.of(context).trans(textKey)}'),
+            showText(textKey: '${AppLocalizations.of(context).trans(textKey)}',context: context),
             if (textKey == 'age' && _currentAge != 0)
               showText(
                   textKey:
-                      '${_currentAge} ${AppLocalizations.of(context).trans('year')}'),
+                      '${_currentAge} ${AppLocalizations.of(context).trans('year')}',context: context),
             if (textKey == 'height' && _currentHeight != 0)
-              showText(textKey: '${_currentHeight} Cm '),
+              showText(textKey: '${_currentHeight} Cm ',context: context),
             if (textKey == 'weight' && _currentWeight != 0)
-              showText(textKey: '${_currentWeight} Kg'),
+              showText(textKey: '${_currentWeight} Kg',context: context),
             if (textKey == 'level' && _currentLevel != 0)
               showText(
-                  textKey: '${AppLocalizations.of(context).trans(levelKey)}'),
+                  textKey: '${AppLocalizations.of(context).trans(levelKey)}',context: context),
           ],
         ),
       ),
@@ -122,7 +116,7 @@ class _VirtualExerciseState extends State<VirtualExercise> {
                   AssetImage(
                     'images/arrowLeft.png',
                   ),
-                  size: 18,
+                  size: 15,
                 )),
             title: Text(
               '${AppLocalizations.of(context).trans('virtual_exercise')}',
@@ -136,7 +130,7 @@ class _VirtualExerciseState extends State<VirtualExercise> {
               ),
               Text(
                 '${AppLocalizations.of(context).trans('please_enter_the_following_data')}',
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headline4,
               ),
               SizedBox(
                 height: 40.0,

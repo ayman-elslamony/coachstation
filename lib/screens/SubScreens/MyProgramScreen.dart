@@ -1,6 +1,7 @@
 import 'package:coachstation/Helper/components.dart';
 import 'package:coachstation/Localization/app_localizations.dart';
 import 'package:coachstation/provider/changeIndexPage.dart';
+import 'package:coachstation/screens/MainScreens/NavigationHome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'ShowSpecificVirtualExerciseDetails.dart';
@@ -11,7 +12,6 @@ class MyProgramScreen extends StatefulWidget {
 }
 
 class _MyProgramScreenState extends State<MyProgramScreen> {
-
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
@@ -28,7 +28,7 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
                 AssetImage(
                   'images/arrowLeft.png',
                 ),
-                size: 18,
+                size: 16,
               )),
           title: Text(
             '${AppLocalizations.of(context).trans('virtual_exercise')}',
@@ -37,22 +37,19 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
           bottom: TabBar(
             isScrollable: true,
             labelColor: Theme.of(context).primaryColor,
-            labelStyle: Theme.of(context).textTheme.headline3,
             indicatorColor: Theme.of(context).primaryColor,
             unselectedLabelColor: Colors.grey,
-            unselectedLabelStyle: Theme.of(context).textTheme.headline3,
             tabs: [
               Tab(
                 text:
-                '${AppLocalizations.of(context).trans('virtual_exercise')}',
+                    '${AppLocalizations.of(context).trans('virtual_exercise')}',
+              ),
+              Tab(
+                text: '${AppLocalizations.of(context).trans('home_workout')}',
               ),
               Tab(
                 text:
-                '${AppLocalizations.of(context).trans('home_workout')}',
-              ),
-              Tab(
-                text:
-                '${AppLocalizations.of(context).trans('nutritional_programs')}',
+                    '${AppLocalizations.of(context).trans('nutritional_programs')}',
               ),
             ],
           ),
@@ -94,15 +91,9 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
                                       topRight: Radius.circular(10.0),
                                       bottomLeft: Radius.circular(30.0))),
                               child: Center(
-                                child: Text(
-                                  'Bench Press',
-                                  style: TextStyle(
-                                    fontFamily: 'CairoRegular',
-                                    fontSize: 18,
-                                    color: Colors.grey[800],
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                child: Text('Bench Press',
+                                    style:
+                                        Theme.of(context).textTheme.headline3),
                               ),
                             ),
                           ],
@@ -111,8 +102,9 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
               ),
               ListView.builder(
                 itemBuilder: (context, index) => Container(
-                  width: media.width*0.95,
-                  margin: const EdgeInsets.only(bottom: 12.0,left: 10.0,right: 10.0),
+                  width: media.width * 0.95,
+                  margin: const EdgeInsets.only(
+                      bottom: 12.0, left: 10.0, right: 10.0),
                   padding: const EdgeInsets.symmetric(
                       horizontal: 10.0, vertical: 8.0),
                   decoration: BoxDecoration(
@@ -125,25 +117,16 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            'تمرين منزلى',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontFamily: 'CairoRegular',
-                              fontSize: 17,
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('تمرين منزلى',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context).textTheme.headline3),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             showTextWithIcon(
                                 context: context,
@@ -166,25 +149,26 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
                         child: Center(
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) =>
-                                Container(
-                                  height: 35,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      color:
-                                      Theme.of(context).accentColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(8.0))),
-                                  child: Center(
-                                      child: defaultSubtitleTextTwo(
-                                          context: context,
-                                          text: 'الأحد',
-                                          textColor: Colors.white)),
-                                ),
+                            itemBuilder: (context, index) => Container(
+                              height: 35,
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                              ),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).accentColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8.0))),
+                              child: Center(
+                                  child: Text(
+                                'الأحد',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline1
+                                    .copyWith(color: Colors.white),
+                              )),
+                            ),
                             itemCount: 4,
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
@@ -198,9 +182,7 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
               ),
               ListView.builder(
                 itemBuilder: (context, index) => defaultCard(
-                    function: () {
-
-                    },
+                    function: () {},
                     context: context,
                     textTitle: 'برنامج رقم 1',
                     textSubTitleOne: '4 أسابيع',
@@ -208,10 +190,29 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
                     cardWidth: media.width,
                     containerTextWidth: media.width * 0.4,
                     cardHeight: media.height * 0.3),
-                itemCount: 8,
+                itemCount: imgList.length,
               ),
             ],
           ),
+        ),
+        bottomNavigationBar: Consumer<ChangeIndex>(
+          builder: (context, changeIndex, child) => bottomNavigationBar(
+              context: context,
+              onTap: (index) {
+                setState(() {
+                  changeIndex.index = index;
+                });
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) =>
+                          NavigationHome(),
+                      transitionDuration: Duration(seconds: 0),
+                    ),
+                    (Route<dynamic> route) => false);
+              },
+              media: media,
+              currentIndex: changeIndex.index),
         ),
       ),
     );

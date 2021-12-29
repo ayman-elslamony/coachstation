@@ -65,15 +65,11 @@ class _ReserveInTrainingProgramsScreenState
                         borderRadius: BorderRadius.all(
                           Radius.circular(20.0),
                         )),
-                    child: Center(
-                        child: Text(
+                    child: Text(
                       '1',
-                      style: TextStyle(
-                          fontFamily: 'CairoRegular',
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )),
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline3
+                    ),
                   ),
                   title: Text(
                     '${AppLocalizations.of(context).trans('reservation_details')}',
@@ -81,13 +77,7 @@ class _ReserveInTrainingProgramsScreenState
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step1_of_4')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1
                   ),
                 ),
                 SizedBox(
@@ -364,12 +354,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                     child: Center(
                         child: Text(
                       '2',
-                      style: TextStyle(
-                          fontFamily: 'CairoRegular',
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )),
+                      style: Theme.of(context).textTheme.headline3)),
                   ),
                   title: Text(
                     '${AppLocalizations.of(context).trans('reservation_details')}',
@@ -377,13 +362,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step2_of_4')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1
                   ),
                 ),
                 SizedBox(
@@ -397,14 +376,14 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                         children: [
                           Text(
                             '${AppLocalizations.of(context).trans('choose_the_coach')}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                         ],
                       ),
                       isCoachSelected == false
                           ? Container(
                               width: 330,
-                              height: 55.0,
+                              height: 60.0,
                               margin: EdgeInsets.only(bottom: 15.0),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all(
@@ -428,11 +407,13 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                 },
                                 title: Text(
                                   '${AppLocalizations.of(context).trans('choose_the_coach')}',
-                                  style: Theme.of(context).textTheme.headline4,
+                                  style: Theme.of(context).textTheme.headline3.copyWith(
+                                    color: Colors.grey
+                                  ),
                                 ),
                                 trailing: Icon(
                                   Icons.arrow_forward_ios,
-                                  size: 18.0,
+                                  size: 17.0,
                                 ),
                               ),
                             )
@@ -448,13 +429,13 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                   Stack(
                                     children: [
                                       CircleAvatar(
-                                        radius: 45,
+                                        radius: 35,
                                         child: ClipOval(
                                           child: Image.asset(
                                             "images/userProfile.png",
                                             fit: BoxFit.cover,
-                                            width: 90,
-                                            height: 90,
+                                            width: 80,
+                                            height: 80,
                                           ),
                                         ),
                                       ),
@@ -489,7 +470,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                           'النادى الرياضى',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline3,
+                                              .headline2,
                                         ),
                                         defaultSubtitleTextTwo(
                                             context: context,
@@ -528,7 +509,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                                       icon: ImageIcon(
                                         AssetImage('images/deleteIcon.png'),
                                         color: Colors.red,
-                                        size: 25.0,
+                                        size: 20.0,
                                       ))
                                 ],
                               ),
@@ -540,7 +521,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                         children: [
                           Text(
                             '${AppLocalizations.of(context).trans('training_days')}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                         ],
                       ),
@@ -583,7 +564,7 @@ class _ReservationScreenStepTwoState extends State<ReservationScreenStepTwo> {
                           children: [
                             Text(
                               '${AppLocalizations.of(context).trans('reservation_type')}',
-                              style: Theme.of(context).textTheme.headline4,
+                              style: Theme.of(context).textTheme.headline3,
                             ),
                           ],
                         ),
@@ -684,18 +665,18 @@ class _ReservationScreenStepThreeState
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
       child: RadioListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+        isThreeLine: true,
+        contentPadding: EdgeInsets.symmetric(horizontal: 0.0),
         activeColor: Theme.of(context).primaryColor,
-        title: defaultSubtitleTextOne(
-            context: context,
-            text: '${AppLocalizations.of(context).trans(titleKey)}'),
+        title: Text(
+            '${AppLocalizations.of(context).trans(titleKey)}'),
         subtitle: Row(
           children: [
             Text(
               postfixTitle,
               style: Theme.of(context)
                   .textTheme
-                  .headline4
+                  .headline3
                   .copyWith(color: Theme.of(context).primaryColor),
             ),
             defaultSubtitleTextTwo(
@@ -704,7 +685,7 @@ class _ReservationScreenStepThreeState
                     '  ${AppLocalizations.of(context).trans('instead_of')}  '),
             Text(
               prefixTitle,
-              style: Theme.of(context).textTheme.headline4.copyWith(
+              style: Theme.of(context).textTheme.headline3.copyWith(
                   decoration: TextDecoration.lineThrough, color: Colors.grey),
             ),
           ],
@@ -749,11 +730,7 @@ class _ReservationScreenStepThreeState
                   child: Center(
                       child: Text(
                     '3',
-                    style: TextStyle(
-                        fontFamily: 'CairoRegular',
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
+                    style: Theme.of(context).textTheme.headline3
                   )),
                 ),
                 title: Text(
@@ -762,13 +739,7 @@ class _ReservationScreenStepThreeState
                 ),
                 subtitle: Text(
                   '${AppLocalizations.of(context).trans('step3_of_4')}',
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 14,
-                    height: 1.2,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.headline1
                 ),
               ),
               SizedBox(
@@ -782,7 +753,7 @@ class _ReservationScreenStepThreeState
                       children: [
                         Text(
                           '${AppLocalizations.of(context).trans('subscription_type')}',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headline3,
                         ),
                       ],
                     ),
@@ -871,11 +842,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                   child: Center(
                       child: Text(
                     '4',
-                    style: TextStyle(
-                        fontFamily: 'CairoRegular',
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
+                     style: Theme.of(context).textTheme.headline3,
                   )),
                 ),
                 title: Text(
@@ -884,13 +851,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                 ),
                 subtitle: Text(
                   '${AppLocalizations.of(context).trans('step4_of_4')}',
-                  style: TextStyle(
-                    fontFamily: 'CairoRegular',
-                    fontSize: 14,
-                    height: 1.2,
-                    color: Colors.grey[800],
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               SizedBox(
@@ -932,7 +893,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                               children: [
                                 Text(
                                   'أنس حافظ',
-                                  style: Theme.of(context).textTheme.headline4,
+                                  style: Theme.of(context).textTheme.headline3,
                                 ),
                                 defaultSubtitleTextTwo(
                                     context: context, text: 'مدرب كراتية'),
@@ -980,11 +941,9 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             width: media.width,
                             child: Text('الرياض - جدة',
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontFamily: 'CairoRegular',
-                                fontSize: 14,
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
+                              style: Theme.of(context).textTheme.headline2.copyWith(
+                                color: Colors.grey,
+                                height: 1.4
                               ),
                             ),
                           ),
@@ -1008,11 +967,9 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             child: Text(
                               'السبت الأحد الأربعاء',
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontFamily: 'CairoRegular',
-                                fontSize: 14,
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
+                              style: Theme.of(context).textTheme.headline2.copyWith(
+                                  color: Colors.grey,
+                                  height: 1.4
                               ),
                             ),
                           ),
@@ -1036,11 +993,9 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             child: Text(
                               'جماعى - 3',
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontFamily: 'CairoRegular',
-                                fontSize: 14,
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
+                              style: Theme.of(context).textTheme.headline2.copyWith(
+                                  color: Colors.grey,
+                                  height: 1.4
                               ),
                             ),
                           ),
@@ -1061,11 +1016,9 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             child: Text(
                               'شهرى 100 ر.س',
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontFamily: 'CairoRegular',
-                                fontSize: 14,
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.bold,
+                              style: Theme.of(context).textTheme.headline2.copyWith(
+                                  color: Colors.grey,
+                                  height: 1.4
                               ),
                             ),
                           ),
@@ -1092,11 +1045,9 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
                             onPressed: null,
                             child: Text(
                               '250 ر.س',
-                              style: TextStyle(
-                                fontFamily: 'CairoRegular',
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                              style: Theme.of(context).textTheme.headline2.copyWith(
+                                  color: Colors.white,
+                                  height: 1.4
                               ),
                             ),
                           ),
@@ -1115,7 +1066,7 @@ class _ReservationScreenStepFourState extends State<ReservationScreenStepFour> {
               ),
               Container(
                 width: media.width,
-                height: 200,
+                height: 120,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -1221,11 +1172,7 @@ class _ReservationScreenStepFiveState extends State<ReservationScreenStepFive> {
                     child: Center(
                         child: Text(
                       '4',
-                      style: TextStyle(
-                          fontFamily: 'CairoRegular',
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          style: Theme.of(context).textTheme.headline3,
                     )),
                   ),
                   title: Text(
@@ -1234,13 +1181,7 @@ class _ReservationScreenStepFiveState extends State<ReservationScreenStepFive> {
                   ),
                   subtitle: Text(
                     '${AppLocalizations.of(context).trans('step4_of_4')}',
-                    style: TextStyle(
-                      fontFamily: 'CairoRegular',
-                      fontSize: 14,
-                      height: 1.2,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
+                   style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 SizedBox(
