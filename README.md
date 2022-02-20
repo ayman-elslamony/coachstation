@@ -35,17 +35,17 @@ It is a sports application that allows the users to find the best coaches, train
 
 ## Screenshots
 <p>
-<img src="screenshoots/mobile-white.png" alt="Eau De Milano" width="180">
+<img src="screenshoots/mobile-white.png" alt="Coach Station" width="180">
 &nbsp;
-<img src="screenshoots/mobile-white (1).png" alt="Eau De Milano" width="180">
+<img src="screenshoots/mobile-white (1).png" alt="Coach Station" width="180">
 &nbsp;
-<img src="screenshoots/mobile-white (2).png" alt="Eau De Milano" width="180">
+<img src="screenshoots/mobile-white (2).png" alt="Coach Station" width="180">
 &nbsp;
-<img src="screenshoots/mobile-white (3).png" alt="Eau De Milano" width="180">
+<img src="screenshoots/mobile-white (3).png" alt="Coach Station" width="180">
 &nbsp;
-<img src="screenshoots/mobile-white (4).png" alt="Eau De Milano" width="180">
+<img src="screenshoots/mobile-white (4).png" alt="Coach Station" width="180">
 &nbsp;
-<img src="screenshoots/mobile-white (5).png" alt="Eau De Milano" width="180">
+<img src="screenshoots/mobile-white (5).png" alt="Coach Station" width="180">
 </p>
 
 #### Dependencies:
